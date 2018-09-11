@@ -13,6 +13,11 @@ const (
 	BianGua
 	//互卦
 	HuGua
+	//错卦
+	CuoGua
+	//综卦
+	ZongGua
+	GuaMax
 )
 
 const (
@@ -49,10 +54,31 @@ var gua = [...]string{
 
 //Yi 周易卦象
 type Yi struct {
-	gua [3]*GuaXiang
+	gua [GuaMax]*GuaXiang
 }
 
-func StrokeQiGua(shang int, xia int, t *time.Time) *Yi {
+//NumberQiGua
+func NumberQiGua(shang int, xia int, t time.Time) *Yi {
+	ben := benGua(shang, xia)
+	bian := bianGua(ben, timeToBian(t))
+	hu := ben
+	if ben.ShangShu == KunGua && ben.XiaShu == KunGua ||
+		ben.ShangShu == QianGua && ben.XiaShu == QianGua {
+		hu = bian
+	}
+	hu = huGua(hu)
+	cuo := cuoGua(ben)
+	zong := zongGua(ben)
+	return &Yi{
+		gua: [GuaMax]*GuaXiang{
+			BenGua:  ben,
+			BianGua: bian,
+			HuGua:   hu,
+			CuoGua:  cuo,
+			ZongGua: zong,
+		},
+	}
+
 	return &Yi{}
 }
 
@@ -70,30 +96,6 @@ func timeToBian(t time.Time) int {
 		return bnum % 6
 	}
 	return bnum
-}
-
-//QiGua 起卦
-func QiGua(zhu, ke string, time *time.Time) *Yi {
-	x := 0
-	m := 0
-	b := 0
-	ben := benGua(x, m)
-	bian := bianGua(ben, b)
-	hu := ben
-	if ben.ShangShu == KunGua && ben.XiaShu == KunGua ||
-		ben.ShangShu == QianGua && ben.XiaShu == QianGua {
-		hu = bian
-	}
-	hu = huGua(hu)
-	return &Yi{
-		gua: [3]*GuaXiang{
-			BenGua:  ben,
-			BianGua: bian,
-			HuGua:   hu,
-		},
-	}
-
-	return nil
 }
 
 //Set 设定卦象
@@ -197,6 +199,15 @@ func cuo(gua int) int {
 	return gua
 }
 
+//错卦
+func cuoGua(ben *GuaXiang) *GuaXiang {
+	gx := GetGuaXiang()
+	sg := gua[cuo(ben.ShangShu)]
+	xg := gua[cuo(ben.XiaShu)]
+	newGua := strings.Join([]string{sg, xg}, "")
+	return gx[newGua]
+}
+
 //综
 func zong(shang, xia int) (int, int) {
 	zShang := 0
@@ -220,6 +231,13 @@ func zong(shang, xia int) (int, int) {
 		zShang |= 1 << 2
 	}
 	return zShang, zXia
+}
+
+//综卦
+func zongGua(ben *GuaXiang) *GuaXiang {
+	sg, xg := zong(ben.ShangShu, ben.XiaShu)
+	newGua := strings.Join([]string{gua[sg], gua[xg]}, "")
+	return gx[newGua]
 }
 
 //互卦

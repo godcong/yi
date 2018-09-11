@@ -23,6 +23,5 @@ func TestSetGuaXiang(t *testing.T) {
 }
 
 func TestGetGuaXiang(t *testing.T) {
-
 	t.Log(getGuaXiang())
 }

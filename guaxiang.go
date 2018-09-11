@@ -2,7 +2,6 @@ package core
 
 import (
 	"encoding/json"
-	"log"
 )
 
 //GuaXiang 卦象
@@ -28,7 +27,6 @@ func getGuaXiang() map[string]*GuaXiang {
 	if gx == nil {
 		gx = make(map[string]*GuaXiang)
 		data, err := libDecompress()
-		log.Println("data", string(data), err)
 		if err == nil {
 			json.Unmarshal(data, &gx)
 		}

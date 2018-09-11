@@ -1,37 +1,44 @@
 package core
 
 import (
+	"bytes"
 	"compress/zlib"
+	"io"
 	"os"
 )
 
 const defaultPath = "yi.data"
 
 func libCompress(b []byte) error {
+	buff := bytes.NewBuffer(b)
 	file, err := os.OpenFile(defaultPath, os.O_RDWR|os.O_CREATE, os.ModePerm)
 	if err != nil {
 		return err
 	}
+	defer file.Close()
+
 	w := zlib.NewWriter(file)
-	if _, err := w.Write(b); err != nil {
+	if _, err := io.Copy(w, buff); err != nil {
 		return err
 	}
+	w.Flush()
+	defer w.Close()
 	return nil
 }
 
 func libDecompress() ([]byte, error) {
-	var b []byte
-	file, err := os.OpenFile(defaultPath, os.O_RDONLY, os.ModePerm)
+	buff := bytes.Buffer{}
+	file, err := os.OpenFile(defaultPath, os.O_RDWR, os.ModePerm)
 	if err != nil {
 		return nil, err
 	}
+	defer file.Close()
 	r, err := zlib.NewReader(file)
 	if err == nil {
-		if _, err := r.Read(b); err == nil {
-			return b, nil
-		} else {
-
+		if _, err := io.Copy(&buff, r); err == nil {
+			return buff.Bytes(), nil
 		}
 	}
+	defer r.Close()
 	return nil, err
 }
