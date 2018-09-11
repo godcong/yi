@@ -2,6 +2,7 @@ package core
 
 import (
 	"encoding/json"
+	"os"
 )
 
 //GuaXiang 卦象
