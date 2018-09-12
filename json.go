@@ -20,7 +20,6 @@ func transFromJson(output interface{}) error {
 	if _, err := io.Copy(&b, buff); err != nil {
 		return err
 	}
-
 	output = b.Bytes()
 
 	return nil
