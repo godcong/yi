@@ -7,6 +7,7 @@ import (
 	"os"
 )
 
+//源数据转换
 func transFromJson(output interface{}) error {
 	file, err := os.OpenFile("yi.json", os.O_RDONLY, os.ModePerm)
 	if err != nil {
