@@ -25,3 +25,9 @@ func transFromJson(output interface{}) error {
 
 	return nil
 }
+
+//Transfer 读取卦象json
+func Transfer() {
+	gx := make(map[string]*GuaXiang)
+	transFromJson(&gx)
+}
