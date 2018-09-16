@@ -2,7 +2,6 @@ package core
 
 import (
 	"encoding/json"
-	"os"
 )
 
 //GuaXiang 卦象
@@ -17,6 +16,12 @@ type GuaXiang struct {
 	GuaYun   string `bson:"gua_yun"`   //卦云
 	XiangYue string `bson:"xiang_yue"` //象曰
 	FuHao    string `bson:"fu_hao"`    //符号
+	ChuYao   string `bson:"chu_yao"`   //初爻
+	ErYao    string `bson:"er_yao"`    //二爻
+	SanYao   string `bson:"san_yao"`   //三爻
+	SiYao    string `bson:"si_yao"`    //四爻
+	WuYao    string `bson:"wu_yao"`    //五爻
+	ShangYao string `bson:"shang_yao"` //上爻
 }
 
 var gx map[string]*GuaXiang
