@@ -10,6 +10,7 @@ type GuaXiang struct {
 	ShangShu int    `bson:"shang_shu"` //上卦数
 	XiaGua   string `bson:"xia_gua"`   //下卦
 	XiaShu   int    `bson:"xia_shu"`   //下卦数
+	HeGua    string `bson:"he_gua"`    //
 	GuaXiang string `bson:"gua_xiang"` //卦象
 	GuaMing  string `bson:"gua_ming"`  //卦名
 	GuaYi    string `bson:"gua_yi"`    //卦意
@@ -22,6 +23,7 @@ type GuaXiang struct {
 	SiYao    string `bson:"si_yao"`    //四爻
 	WuYao    string `bson:"wu_yao"`    //五爻
 	ShangYao string `bson:"shang_yao"` //上爻
+	Yong     string `bson:"yong"`      //用九,用六
 }
 
 var gx map[string]*GuaXiang
