@@ -10,6 +10,7 @@ func TestSetGuaXiang(t *testing.T) {
 		ShangShu: 0x07,
 		XiaGua:   "乾为天",
 		XiaShu:   0x07,
+		JiXiong:  "吉",
 		GuaXiang: "乾",
 		GuaMing:  "乾为天",
 		GuaYi:    "元亨，利贞",
