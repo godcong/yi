@@ -73,6 +73,13 @@ func TestSetGuaXiang(t *testing.T) {
 		XiaShu:   0x02,
 	}
 
+	gx["乾兑"] = &GuaXiang{
+		ShangGua: "乾为天",
+		ShangShu: 0x00,
+		XiaGua:   "兑为泽",
+		XiaShu:   0x01,
+	}
+
 	gx["坤坤"] = &GuaXiang{
 		ShangGua: "坤为地",
 		ShangShu: 0x07,
