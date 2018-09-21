@@ -186,27 +186,27 @@ func TestSetGuaXiang(t *testing.T) {
 		GuaMing:  "山雷颐",
 	}
 
-	gx["坤离"] = &GuaXiang{
-		ShangGua: "坤为地",
-		ShangShu: 0x07,
+	gx["艮离"] = &GuaXiang{
+		ShangGua: "艮为山",
+		ShangShu: 0x06,
 		XiaGua:   "离为火",
 		XiaShu:   0x02,
-		GuaMing:  "地火明夷",
+		GuaMing:  "山火贲",
 	}
 
-	gx["坤兑"] = &GuaXiang{
-		ShangGua: "坤为地",
-		ShangShu: 0x07,
+	gx["艮兑"] = &GuaXiang{
+		ShangGua: "艮为山",
+		ShangShu: 0x06,
 		XiaGua:   "兑为泽",
 		XiaShu:   0x01,
-		GuaMing:  "地泽临",
+		GuaMing:  "山泽损",
 	}
-	gx["坤乾"] = &GuaXiang{
-		ShangGua: "坤为地",
-		ShangShu: 0x07,
+	gx["艮乾"] = &GuaXiang{
+		ShangGua: "艮为山",
+		ShangShu: 0x06,
 		XiaGua:   "乾为天",
 		XiaShu:   0x00,
-		GuaMing:  "地天泰",
+		GuaMing:  "山天大畜",
 	}
 
 	setGuaXiang(gx)
