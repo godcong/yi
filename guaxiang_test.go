@@ -68,6 +68,7 @@ func TestSetGuaXiang(t *testing.T) {
 		ShangShu: 0x00,
 		XiaGua:   "震为雷",
 		XiaShu:   0x03,
+		GuaMing:  "天雷无妄",
 	}
 
 	gx["乾离"] = &GuaXiang{
@@ -75,6 +76,7 @@ func TestSetGuaXiang(t *testing.T) {
 		ShangShu: 0x00,
 		XiaGua:   "离为火",
 		XiaShu:   0x02,
+		GuaMing:  "天火同人",
 	}
 
 	gx["乾兑"] = &GuaXiang{
@@ -82,6 +84,7 @@ func TestSetGuaXiang(t *testing.T) {
 		ShangShu: 0x00,
 		XiaGua:   "兑为泽",
 		XiaShu:   0x01,
+		GuaMing:  "天泽履",
 	}
 
 	gx["坤坤"] = &GuaXiang{
@@ -89,6 +92,7 @@ func TestSetGuaXiang(t *testing.T) {
 		ShangShu: 0x07,
 		XiaGua:   "坤为地",
 		XiaShu:   0x07,
+		GuaMing:  "坤为地",
 	}
 
 	setGuaXiang(gx)
