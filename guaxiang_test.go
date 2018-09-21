@@ -7,9 +7,9 @@ func TestSetGuaXiang(t *testing.T) {
 
 	gx["乾乾"] = &GuaXiang{
 		ShangGua:        "乾为天",
-		ShangShu:        0x07,
+		ShangShu:        0x00,
 		XiaGua:          "乾为天",
-		XiaShu:          0x07,
+		XiaShu:          0x00,
 		JiXiong:         "吉",
 		GuaXiang:        "乾",
 		GuaMing:         "乾为天",
@@ -41,22 +41,29 @@ func TestSetGuaXiang(t *testing.T) {
 
 	gx["乾艮"] = &GuaXiang{
 		ShangGua: "乾为天",
-		ShangShu: 0x07,
+		ShangShu: 0x00,
 		XiaGua:   "艮为山",
 		XiaShu:   0x06,
 	}
 	gx["乾坎"] = &GuaXiang{
 		ShangGua: "乾为天",
-		ShangShu: 0x07,
+		ShangShu: 0x00,
 		XiaGua:   "坎为水",
 		XiaShu:   0x05,
 	}
 
 	gx["乾巽"] = &GuaXiang{
 		ShangGua: "乾为天",
-		ShangShu: 0x07,
+		ShangShu: 0x00,
 		XiaGua:   "巽为风",
 		XiaShu:   0x04,
+	}
+
+	gx["乾巽"] = &GuaXiang{
+		ShangGua: "乾为天",
+		ShangShu: 0x00,
+		XiaGua:   "震为雷",
+		XiaShu:   0x03,
 	}
 
 	gx["坤坤"] = &GuaXiang{
