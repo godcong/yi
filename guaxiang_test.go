@@ -32,32 +32,11 @@ func TestSetGuaXiang(t *testing.T) {
 		Yong:            "天德不可为首也。",
 		YongJiXiong:     "-",
 	}
-	gx["坤坤"] = &GuaXiang{
-		ShangGua:        "坤为地",
-		ShangShu:        0x00,
-		XiaGua:          "坤为地",
-		XiaShu:          0x00,
-		JiXiong:         "",
-		GuaXiang:        "",
-		GuaMing:         "",
-		GuaYi:           "",
-		GuaYun:          "",
-		XiangYue:        "",
-		FuHao:           "",
-		ChuYao:          "",
-		ChuYaoJiXiong:   "",
-		ErYao:           "",
-		ErYaoJiXiong:    "",
-		SanYao:          "",
-		SanYaoJiXiong:   "",
-		SiYao:           "",
-		SiYaoJiXiong:    "",
-		WuYao:           "",
-		WuYaoJiXiong:    "",
-		ShangYao:        "",
-		ShangYaoJiXiong: "",
-		Yong:            "",
-		YongJiXiong:     "",
+	gx["乾坤"] = &GuaXiang{
+		ShangGua: "乾为天",
+		ShangShu: 0x07,
+		XiaGua:   "坤为地",
+		XiaShu:   0x00,
 	}
 
 	setGuaXiang(gx)
