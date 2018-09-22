@@ -209,65 +209,65 @@ func TestSetGuaXiang(t *testing.T) {
 		GuaMing:  "山天大畜",
 	}
 
-	gx["艮坤"] = &GuaXiang{
+	gx["坎坤"] = &GuaXiang{
 		ShangGua: "坎为水",
 		ShangShu: 0x05,
 		XiaGua:   "坤为地",
 		XiaShu:   0x07,
-		GuaMing:  "山地剥",
+		GuaMing:  "水地比",
 	}
 
-	gx["艮艮"] = &GuaXiang{
+	gx["坎艮"] = &GuaXiang{
 		ShangGua: "坎为水",
 		ShangShu: 0x05,
 		XiaGua:   "艮为山",
 		XiaShu:   0x06,
-		GuaMing:  "艮为山",
+		GuaMing:  "水山蹇",
 	}
 
-	gx["艮坎"] = &GuaXiang{
+	gx["坎坎"] = &GuaXiang{
 		ShangGua: "坎为水",
 		ShangShu: 0x05,
 		XiaGua:   "坎为水",
 		XiaShu:   0x05,
-		GuaMing:  "山水蒙",
+		GuaMing:  "坎为水",
 	}
-	gx["艮巽"] = &GuaXiang{
+	gx["坎巽"] = &GuaXiang{
 		ShangGua: "坎为水",
 		ShangShu: 0x05,
 		XiaGua:   "巽为风",
 		XiaShu:   0x04,
-		GuaMing:  "山风蛊",
+		GuaMing:  "水风井",
 	}
-	gx["艮震"] = &GuaXiang{
+	gx["坎震"] = &GuaXiang{
 		ShangGua: "坎为水",
 		ShangShu: 0x05,
 		XiaGua:   "震为雷",
 		XiaShu:   0x03,
-		GuaMing:  "山雷颐",
+		GuaMing:  "水雷屯",
 	}
 
-	gx["艮离"] = &GuaXiang{
+	gx["坎离"] = &GuaXiang{
 		ShangGua: "坎为水",
 		ShangShu: 0x05,
 		XiaGua:   "离为火",
 		XiaShu:   0x02,
-		GuaMing:  "山火贲",
+		GuaMing:  "水火既济",
 	}
 
-	gx["艮兑"] = &GuaXiang{
+	gx["坎兑"] = &GuaXiang{
 		ShangGua: "坎为水",
 		ShangShu: 0x05,
 		XiaGua:   "兑为泽",
 		XiaShu:   0x01,
-		GuaMing:  "山泽损",
+		GuaMing:  "水泽节",
 	}
-	gx["艮乾"] = &GuaXiang{
+	gx["坎乾"] = &GuaXiang{
 		ShangGua: "坎为水",
 		ShangShu: 0x05,
 		XiaGua:   "乾为天",
 		XiaShu:   0x00,
-		GuaMing:  "山天大畜",
+		GuaMing:  "水天需",
 	}
 
 	setGuaXiang(gx)
