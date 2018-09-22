@@ -434,27 +434,27 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x05,
 		GuaMing:  "雷水解",
 	}
-	gx["巽巽"] = &GuaXiang{
+	gx["震巽"] = &GuaXiang{
 		ShangGua: "震为雷",
 		ShangShu: 0x03,
 		XiaGua:   "巽为风",
 		XiaShu:   0x04,
-		GuaMing:  "巽为风",
+		GuaMing:  "雷风恒",
 	}
-	gx["巽震"] = &GuaXiang{
+	gx["震震"] = &GuaXiang{
 		ShangGua: "震为雷",
 		ShangShu: 0x03,
 		XiaGua:   "震为雷",
 		XiaShu:   0x03,
-		GuaMing:  "风雷益",
+		GuaMing:  "震为雷",
 	}
 
-	gx["巽离"] = &GuaXiang{
+	gx["震离"] = &GuaXiang{
 		ShangGua: "震为雷",
 		ShangShu: 0x03,
 		XiaGua:   "离为火",
 		XiaShu:   0x02,
-		GuaMing:  "风火家人",
+		GuaMing:  "雷火丰",
 	}
 
 	gx["巽兑"] = &GuaXiang{
