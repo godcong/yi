@@ -399,12 +399,12 @@ func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x01,
 		GuaMing:  "风泽中孚",
 	}
-	gx["坎乾"] = &GuaXiang{
+	gx["巽乾"] = &GuaXiang{
 		ShangGua: "巽为风",
 		ShangShu: 0x04,
 		XiaGua:   "乾为天",
 		XiaShu:   0x00,
-		GuaMing:  "水天需",
+		GuaMing:  "风天小畜",
 	}
 	return gx
 }
