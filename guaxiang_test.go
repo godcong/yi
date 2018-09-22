@@ -226,8 +226,7 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
 
-func TestSetGuaXiang(t *testing.T) {
-	gx := make(map[string]*GuaXiang)
+func kan(gx map[string]*GuaXiang) map[string]*GuaXiang {
 
 	gx["坎艮"] = &GuaXiang{
 		ShangGua: "坎为水",
@@ -342,6 +341,76 @@ func TestSetGuaXiang(t *testing.T) {
 		XiaShu:   0x00,
 		GuaMing:  "水天需",
 	}
+	return gx
+}
+
+func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
+
+	gx["巽坤"] = &GuaXiang{
+		ShangGua: "巽为风",
+		ShangShu: 0x04,
+		XiaGua:   "坤为地",
+		XiaShu:   0x07,
+		GuaMing:  "风地观",
+	}
+
+	gx["巽艮"] = &GuaXiang{
+		ShangGua: "巽为风",
+		ShangShu: 0x04,
+		XiaGua:   "艮为山",
+		XiaShu:   0x06,
+		GuaMing:  "风山渐",
+	}
+
+	gx["巽坎"] = &GuaXiang{
+		ShangGua: "巽为风",
+		ShangShu: 0x04,
+		XiaGua:   "坎为水",
+		XiaShu:   0x05,
+		GuaMing:  "风水涣",
+	}
+	gx["巽巽"] = &GuaXiang{
+		ShangGua: "巽为风",
+		ShangShu: 0x04,
+		XiaGua:   "巽为风",
+		XiaShu:   0x04,
+		GuaMing:  "巽为风",
+	}
+	gx["巽震"] = &GuaXiang{
+		ShangGua: "巽为风",
+		ShangShu: 0x04,
+		XiaGua:   "震为雷",
+		XiaShu:   0x03,
+		GuaMing:  "风雷益",
+	}
+
+	gx["巽离"] = &GuaXiang{
+		ShangGua: "巽为风",
+		ShangShu: 0x04,
+		XiaGua:   "离为火",
+		XiaShu:   0x02,
+		GuaMing:  "风火家人",
+	}
+
+	gx["巽兑"] = &GuaXiang{
+		ShangGua: "巽为风",
+		ShangShu: 0x04,
+		XiaGua:   "兑为泽",
+		XiaShu:   0x01,
+		GuaMing:  "风泽中孚",
+	}
+	gx["坎乾"] = &GuaXiang{
+		ShangGua: "巽为风",
+		ShangShu: 0x04,
+		XiaGua:   "乾为天",
+		XiaShu:   0x00,
+		GuaMing:  "水天需",
+	}
+	return gx
+}
+
+func TestSetGuaXiang(t *testing.T) {
+	gx := make(map[string]*GuaXiang)
 
 	setGuaXiang(gx)
 
