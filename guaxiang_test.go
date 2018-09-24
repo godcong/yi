@@ -574,6 +574,13 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		GuaMing:  "火山旅",
 	}
 
+	gx["兑坎"] = &GuaXiang{
+		ShangGua: "兑为泽",
+		ShangShu: 0x01,
+		XiaGua:   "坎为水",
+		XiaShu:   0x05,
+		GuaMing:  "火水未济",
+	}
 	return gx
 }
 func TestSetGuaXiang(t *testing.T) {
