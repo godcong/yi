@@ -475,6 +475,41 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 }
 
 func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
+	gx["离坤"] = &GuaXiang{
+		ShangGua: "离为火",
+		ShangShu: 0x02,
+		XiaGua:   "坤为地",
+		XiaShu:   0x07,
+		GuaMing:  "火地晋",
+	}
+	gx["离艮"] = &GuaXiang{
+		ShangGua: "离为火",
+		ShangShu: 0x02,
+		XiaGua:   "艮为山",
+		XiaShu:   0x06,
+		GuaMing:  "火山旅",
+	}
+	gx["离坎"] = &GuaXiang{
+		ShangGua: "离为火",
+		ShangShu: 0x02,
+		XiaGua:   "坎为水",
+		XiaShu:   0x05,
+		GuaMing:  "火水未济",
+	}
+	gx["离巽"] = &GuaXiang{
+		ShangGua: "离为火",
+		ShangShu: 0x02,
+		XiaGua:   "巽为风",
+		XiaShu:   0x04,
+		GuaMing:  "火风鼎",
+	}
+	gx["离震"] = &GuaXiang{
+		ShangGua: "离为火",
+		ShangShu: 0x02,
+		XiaGua:   "震为雷",
+		XiaShu:   0x03,
+		GuaMing:  "火雷噬嗑",
+	}
 	return gx
 }
 func TestSetGuaXiang(t *testing.T) {
