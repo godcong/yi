@@ -524,6 +524,13 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x01,
 		GuaMing:  "火泽睽",
 	}
+	gx["离乾"] = &GuaXiang{
+		ShangGua: "离为火",
+		ShangShu: 0x02,
+		XiaGua:   "乾为天",
+		XiaShu:   0x00,
+		GuaMing:  "火天大有",
+	}
 	return gx
 }
 func TestSetGuaXiang(t *testing.T) {
