@@ -475,6 +475,7 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 }
 
 func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
+
 	gx["离坤"] = &GuaXiang{
 		ShangGua: "离为火",
 		ShangShu: 0x02,
@@ -482,6 +483,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x07,
 		GuaMing:  "火地晋",
 	}
+
 	gx["离艮"] = &GuaXiang{
 		ShangGua: "离为火",
 		ShangShu: 0x02,
@@ -489,6 +491,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x06,
 		GuaMing:  "火山旅",
 	}
+
 	gx["离坎"] = &GuaXiang{
 		ShangGua: "离为火",
 		ShangShu: 0x02,
@@ -496,6 +499,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x05,
 		GuaMing:  "火水未济",
 	}
+
 	gx["离巽"] = &GuaXiang{
 		ShangGua: "离为火",
 		ShangShu: 0x02,
@@ -503,6 +507,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x04,
 		GuaMing:  "火风鼎",
 	}
+
 	gx["离震"] = &GuaXiang{
 		ShangGua: "离为火",
 		ShangShu: 0x02,
@@ -510,6 +515,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x03,
 		GuaMing:  "火雷噬嗑",
 	}
+
 	gx["离离"] = &GuaXiang{
 		ShangGua: "离为火",
 		ShangShu: 0x02,
@@ -517,6 +523,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x02,
 		GuaMing:  "离为火",
 	}
+
 	gx["离兑"] = &GuaXiang{
 		ShangGua: "离为火",
 		ShangShu: 0x02,
@@ -524,6 +531,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaShu:   0x01,
 		GuaMing:  "火泽睽",
 	}
+
 	gx["离乾"] = &GuaXiang{
 		ShangGua: "离为火",
 		ShangShu: 0x02,
