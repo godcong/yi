@@ -158,6 +158,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		GuaXiang: "临",
 		GuaMing:  "地泽临",
 	}
+
 	gx["坤乾"] = &GuaXiang{
 		ShangGua: "坤为地",
 		ShangShu: 0x07,
@@ -580,6 +581,14 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		XiaGua:   "坎为水",
 		XiaShu:   0x05,
 		GuaMing:  "火水未济",
+	}
+
+	gx["兑巽"] = &GuaXiang{
+		ShangGua: "兑为泽",
+		ShangShu: 0x01,
+		XiaGua:   "巽为风",
+		XiaShu:   0x04,
+		GuaMing:  "火风鼎",
 	}
 	return gx
 }
