@@ -474,6 +474,9 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
 
+func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
+	return gx
+}
 func TestSetGuaXiang(t *testing.T) {
 	gx := make(map[string]*GuaXiang)
 
