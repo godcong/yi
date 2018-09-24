@@ -8,6 +8,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x00,
 		XiaGua:   "坤为地",
 		XiaShu:   0x07,
+		GuaXiang: "否",
 		GuaMing:  "天地否",
 	}
 
@@ -16,6 +17,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x00,
 		XiaGua:   "艮为山",
 		XiaShu:   0x06,
+		GuaXiang: "遁",
 		GuaMing:  "天山遁",
 	}
 	gx["乾坎"] = &GuaXiang{
@@ -23,6 +25,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x00,
 		XiaGua:   "坎为水",
 		XiaShu:   0x05,
+		GuaXiang: "讼",
 		GuaMing:  "天水讼",
 	}
 
@@ -31,6 +34,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x00,
 		XiaGua:   "巽为风",
 		XiaShu:   0x04,
+		GuaXiang: "姤",
 		GuaMing:  "天风姤",
 	}
 
@@ -39,6 +43,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x00,
 		XiaGua:   "震为雷",
 		XiaShu:   0x03,
+		GuaXiang: "无妄",
 		GuaMing:  "天雷无妄",
 	}
 
@@ -47,6 +52,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x00,
 		XiaGua:   "离为火",
 		XiaShu:   0x02,
+		GuaXiang: "同人",
 		GuaMing:  "天火同人",
 	}
 
@@ -55,6 +61,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x00,
 		XiaGua:   "兑为泽",
 		XiaShu:   0x01,
+		GuaXiang: "履",
 		GuaMing:  "天泽履",
 	}
 
@@ -96,6 +103,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x07,
 		XiaGua:   "坤为地",
 		XiaShu:   0x07,
+		GuaXiang: "坤",
 		GuaMing:  "坤为地",
 	}
 
@@ -104,6 +112,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x07,
 		XiaGua:   "艮为山",
 		XiaShu:   0x06,
+		GuaXiang: "谦",
 		GuaMing:  "地山谦",
 	}
 
@@ -112,6 +121,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x07,
 		XiaGua:   "坎为水",
 		XiaShu:   0x05,
+		GuaXiang: "师",
 		GuaMing:  "地水师",
 	}
 	gx["坤巽"] = &GuaXiang{
@@ -119,6 +129,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x07,
 		XiaGua:   "巽为风",
 		XiaShu:   0x04,
+		GuaXiang: "升",
 		GuaMing:  "地风升",
 	}
 	gx["坤震"] = &GuaXiang{
@@ -126,6 +137,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x07,
 		XiaGua:   "震为雷",
 		XiaShu:   0x03,
+		GuaXiang: "复",
 		GuaMing:  "地雷复",
 	}
 
@@ -134,6 +146,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x07,
 		XiaGua:   "离为火",
 		XiaShu:   0x02,
+		GuaXiang: "明夷",
 		GuaMing:  "地火明夷",
 	}
 
@@ -142,6 +155,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x07,
 		XiaGua:   "兑为泽",
 		XiaShu:   0x01,
+		GuaXiang: "临",
 		GuaMing:  "地泽临",
 	}
 	gx["坤乾"] = &GuaXiang{
@@ -149,6 +163,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu: 0x07,
 		XiaGua:   "乾为天",
 		XiaShu:   0x00,
+		GuaXiang: "泰",
 		GuaMing:  "地天泰",
 	}
 	return gx
@@ -541,6 +556,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	}
 	return gx
 }
+
 func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
