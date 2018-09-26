@@ -627,13 +627,24 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 
 	return gx
 }
+
 func TestSetGuaXiang(t *testing.T) {
 	gx := make(map[string]*GuaXiang)
-
+	gx = qian(gx)
+	gx = kun(gx)
+	gx = gen(gx)
+	gx = kan(gx)
+	gx = xun(gx)
+	gx = zhen(gx)
+	gx = li(gx)
+	gx = dui(gx)
 	setGuaXiang(gx)
 
 }
 
 func TestGetGuaXiang(t *testing.T) {
-	t.Log(getGuaXiang())
+	if len(getGuaXiang()) != 64 {
+		t.Log("not enough", getGuaXiang())
+	}
+
 }
