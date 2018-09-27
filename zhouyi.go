@@ -1,7 +1,6 @@
 package core
 
 import (
-	"strconv"
 	"strings"
 	"time"
 )
@@ -83,19 +82,12 @@ func NumberQiGua(shang int, xia int, t time.Time) *Yi {
 }
 
 func timeToBian(t time.Time) int {
-	bs := strings.Split(t.Format("2006-01-02-15-04"), "-")
-	bnum := 0
-	for k := range bs {
-		if i, err := strconv.Atoi(bs[k]); err == nil {
-			bnum += i
-			continue
-		}
-		bnum = 0
-	}
+	t, _ = time.ParseInLocation("2006-01-02-15-04", t.Format("2006-01-02-15-04"), t.Location())
+	bnum := t.Unix()
 	if bnum != 0 {
-		return bnum % 6
+		return int(bnum % 6)
 	}
-	return bnum
+	return 0
 }
 
 //Set 设定卦象
