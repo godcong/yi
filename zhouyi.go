@@ -1,7 +1,6 @@
 package core
 
 import (
-	"log"
 	"strings"
 	"time"
 )
@@ -56,7 +55,8 @@ var gua = [...]string{
 
 //Yi 周易卦象
 type Yi struct {
-	gua [GuaMax]*GuaXiang
+	gua     [GuaMax]*GuaXiang
+	bianShu int
 }
 
 func (y *Yi) Get(m GuaMing) *GuaXiang {
@@ -71,7 +71,8 @@ func (y *Yi) Get(m GuaMing) *GuaXiang {
 //NumberQiGua
 func NumberQiGua(shang int, xia int, t time.Time) *Yi {
 	ben := benGua(shang, xia)
-	bian := bianGua(ben, timeToBian(t))
+	bs := timeToBian(t)
+	bian := bianGua(ben, bs)
 	hu := ben
 	if ben.ShangShu == KunGua && ben.XiaShu == KunGua ||
 		ben.ShangShu == QianGua && ben.XiaShu == QianGua {
@@ -80,7 +81,6 @@ func NumberQiGua(shang int, xia int, t time.Time) *Yi {
 	hu = huGua(hu)
 	cuo := cuoGua(ben)
 	zong := zongGua(ben)
-	log.Println(ben, "bian", bian, hu, cuo, zong)
 	return &Yi{
 		gua: [GuaMax]*GuaXiang{
 			BenGua:  ben,
@@ -89,6 +89,7 @@ func NumberQiGua(shang int, xia int, t time.Time) *Yi {
 			CuoGua:  cuo,
 			ZongGua: zong,
 		},
+		bianShu: bs,
 	}
 
 	return &Yi{}

@@ -43,5 +43,5 @@ func TestTimeToBian(t *testing.T) {
 
 func TestNumberQiGua(t *testing.T) {
 	gua := NumberQiGua(43, 28, StringToTime("2018-09-27 18:00"))
-	log.Println(gua, StringToTime("2018-09-27 18:00").String())
+	log.Println(gua.Get(BenGua), gua.Get(BianGua))
 }
