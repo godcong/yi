@@ -1,13 +1,16 @@
 package core
 
 import (
+	"log"
 	"strings"
 	"time"
 )
 
+type GuaMing int
+
 const (
 	//本卦
-	BenGua = iota
+	BenGua GuaMing = iota
 	//变卦
 	BianGua
 	//互卦
@@ -56,6 +59,15 @@ type Yi struct {
 	gua [GuaMax]*GuaXiang
 }
 
+func (y *Yi) Get(m GuaMing) *GuaXiang {
+
+	if m < 0 && m >= GuaMax {
+		return nil
+	}
+
+	return y.gua[m]
+}
+
 //NumberQiGua
 func NumberQiGua(shang int, xia int, t time.Time) *Yi {
 	ben := benGua(shang, xia)
@@ -68,6 +80,7 @@ func NumberQiGua(shang int, xia int, t time.Time) *Yi {
 	hu = huGua(hu)
 	cuo := cuoGua(ben)
 	zong := zongGua(ben)
+	log.Println(ben, "bian", bian, hu, cuo, zong)
 	return &Yi{
 		gua: [GuaMax]*GuaXiang{
 			BenGua:  ben,
@@ -81,8 +94,17 @@ func NumberQiGua(shang int, xia int, t time.Time) *Yi {
 	return &Yi{}
 }
 
+//StringToTime trans string to time
+func StringToTime(s string) time.Time {
+	t, err := time.ParseInLocation("2006-01-02 15:04", s, time.Local)
+	if err != nil {
+		return time.Time{}
+	}
+	return t
+}
+
 func timeToBian(t time.Time) int {
-	t, _ = time.ParseInLocation("2006-01-02-15-04", t.Format("2006-01-02-15-04"), t.Location())
+	t, _ = time.ParseInLocation("2006-01-02 15:04", t.Format("2006-01-02 15:04"), t.Location())
 	bnum := t.Unix()
 	if bnum != 0 {
 		return int(bnum % 6)
@@ -124,14 +146,16 @@ func benGua(x, m int) *GuaXiang {
 func bianGua(ben *GuaXiang, b int) *GuaXiang {
 	gx := GetGuaXiang()
 	bz := getYao(b)
-	sg := ben.ShangGua
-	xg := ben.XiaGua
+	sg := gua[ben.ShangShu]
+	xg := gua[ben.XiaShu]
 	if b > 2 {
 		sg = gua[bian(ben.ShangShu, bz-3)]
+
 	} else {
 		xg = gua[bian(ben.XiaShu, bz-3)]
 	}
 	gua := strings.Join([]string{sg, xg}, "")
+
 	return gx[gua]
 }
 

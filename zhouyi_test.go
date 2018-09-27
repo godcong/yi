@@ -1,6 +1,7 @@
 package core
 
 import (
+	"log"
 	"testing"
 	"time"
 )
@@ -38,4 +39,9 @@ func TestZong(t *testing.T) {
 
 func TestTimeToBian(t *testing.T) {
 	t.Log(timeToBian(time.Now()))
+}
+
+func TestNumberQiGua(t *testing.T) {
+	gua := NumberQiGua(43, 28, StringToTime("2018-09-27 18:00"))
+	log.Println(gua, StringToTime("2018-09-27 18:00").String())
 }
