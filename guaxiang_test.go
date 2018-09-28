@@ -30,12 +30,31 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	}
 
 	gx["乾巽"] = &GuaXiang{
-		ShangGua: "乾为天",
-		ShangShu: 0x00,
-		XiaGua:   "巽为风",
-		XiaShu:   0x04,
-		GuaXiang: "姤",
-		GuaMing:  "天风姤",
+		ShangGua:        "乾为天",
+		ShangShu:        0x00,
+		XiaGua:          "巽为风",
+		XiaShu:          0x04,
+		JiXiong:         "",
+		GuaXiang:        "姤",
+		GuaMing:         "天风姤",
+		GuaYi:           "",
+		GuaYun:          "",
+		XiangYue:        "",
+		FuHao:           "",
+		ChuYao:          "",
+		ChuYaoJiXiong:   "",
+		ErYao:           "",
+		ErYaoJiXiong:    "",
+		SanYao:          "",
+		SanYaoJiXiong:   "",
+		SiYao:           "无鱼之凶，远民也。",
+		SiYaoJiXiong:    "凶",
+		WuYao:           "九五含章，中正也。有陨自天，志不舍命也。",
+		WuYaoJiXiong:    "凶",
+		ShangYao:        "姤其角，上穷吝也。",
+		ShangYaoJiXiong: "凶",
+		Yong:            "",
+		YongJiXiong:     "",
 	}
 
 	gx["乾震"] = &GuaXiang{
