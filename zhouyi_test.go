@@ -42,6 +42,9 @@ func TestTimeToBian(t *testing.T) {
 }
 
 func TestNumberQiGua(t *testing.T) {
-	gua := NumberQiGua(17, 19, StringToTime("2018-09-27 18:00"))
+	//t.Log(bian(7, 0))
+	gua := ShuQiGua(17, 19, 1)
 	log.Println(gua.Get(BenGua), gua.Get(BianGua))
+	gua2 := ShuQiGua(17, 19, 4)
+	log.Println(gua2.Get(BenGua), gua2.Get(BianGua))
 }

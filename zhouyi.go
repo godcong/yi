@@ -1,6 +1,7 @@
 package core
 
 import (
+	"log"
 	"strings"
 	"time"
 )
@@ -173,13 +174,14 @@ func benGua(x, m int) *GuaXiang {
 func bianGua(ben *GuaXiang, b int) *GuaXiang {
 	gx := GetGuaXiang()
 	bz := getYao(b)
+	log.Println("yao", bz)
 	sg := gua[ben.ShangShu]
 	xg := gua[ben.XiaShu]
 	if b > 2 {
 		sg = gua[bian(ben.ShangShu, bz-3)]
 
 	} else {
-		xg = gua[bian(ben.XiaShu, bz-3)]
+		xg = gua[bian(ben.XiaShu, bz)]
 	}
 	gua := strings.Join([]string{sg, xg}, "")
 
@@ -188,7 +190,7 @@ func bianGua(ben *GuaXiang, b int) *GuaXiang {
 
 //变
 func bian(gua, bian int) int {
-	idx := 1 << uint(bian)
+	idx := 1 << (2 - uint(bian))
 	if gua&idx == 0 {
 		gua = gua | idx
 	} else {
