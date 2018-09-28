@@ -70,7 +70,7 @@ func (y *Yi) Get(m GuaMing) *GuaXiang {
 }
 
 //NumberQiGua
-func NumberQiGua(xia int, shang int, t time.Time) *Yi {
+func TimeQiGua(xia int, shang int, t time.Time) *Yi {
 	ben := benGua(shang, xia)
 	bs := timeToBian(t)
 	bian := bianGua(ben, bs)
@@ -97,7 +97,7 @@ func NumberQiGua(xia int, shang int, t time.Time) *Yi {
 }
 
 //ShuQiGua
-func ShuQiGua(xia int, shang int, bs int) *Yi {
+func NumberQiGua(xia int, shang int, bs int) *Yi {
 	ben := benGua(shang, xia)
 	bian := bianGua(ben, bs)
 	hu := ben
@@ -128,6 +128,7 @@ func StringToTime(s string) time.Time {
 	if err != nil {
 		return time.Time{}
 	}
+	log.Println(t.String(), t.Unix())
 	return t
 }
 
@@ -174,10 +175,9 @@ func benGua(x, m int) *GuaXiang {
 func bianGua(ben *GuaXiang, b int) *GuaXiang {
 	gx := GetGuaXiang()
 	bz := getYao(b)
-	log.Println("yao", bz)
 	sg := gua[ben.ShangShu]
 	xg := gua[ben.XiaShu]
-	if b > 2 {
+	if bz > 2 {
 		sg = gua[bian(ben.ShangShu, bz-3)]
 
 	} else {
