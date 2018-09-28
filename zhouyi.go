@@ -95,6 +95,32 @@ func NumberQiGua(xia int, shang int, t time.Time) *Yi {
 	return &Yi{}
 }
 
+//ShuQiGua
+func ShuQiGua(xia int, shang int, bs int) *Yi {
+	ben := benGua(shang, xia)
+	bian := bianGua(ben, bs)
+	hu := ben
+	if ben.ShangShu == KunGua && ben.XiaShu == KunGua ||
+		ben.ShangShu == QianGua && ben.XiaShu == QianGua {
+		hu = bian
+	}
+	hu = huGua(hu)
+	cuo := cuoGua(ben)
+	zong := zongGua(ben)
+	return &Yi{
+		gua: [GuaMax]*GuaXiang{
+			BenGua:  ben,
+			BianGua: bian,
+			HuGua:   hu,
+			CuoGua:  cuo,
+			ZongGua: zong,
+		},
+		bianShu: bs,
+	}
+
+	return &Yi{}
+}
+
 //StringToTime trans string to time
 func StringToTime(s string) time.Time {
 	t, err := time.ParseInLocation("2006-01-02 15:04", s, time.Local)
