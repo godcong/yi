@@ -57,7 +57,7 @@ var gua = [...]string{
 //Yi 周易卦象
 type Yi struct {
 	gua     [GuaMax]*GuaXiang
-	bianShu int
+	bianShu []int
 }
 
 func (y *Yi) Get(m GuaMing) *GuaXiang {
@@ -90,16 +90,16 @@ func TimeQiGua(xia int, shang int, t time.Time) *Yi {
 			CuoGua:  cuo,
 			ZongGua: zong,
 		},
-		bianShu: bs,
+		bianShu: []int{bs},
 	}
 
 	return &Yi{}
 }
 
 //ShuQiGua
-func NumberQiGua(xia int, shang int, bs int) *Yi {
+func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 	ben := benGua(shang, xia)
-	bian := bianGua(ben, bs)
+	bian := bianGua(ben, bs[0])
 	hu := ben
 	if ben.ShangShu == KunGua && ben.XiaShu == KunGua ||
 		ben.ShangShu == QianGua && ben.XiaShu == QianGua {
