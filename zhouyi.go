@@ -69,7 +69,7 @@ func (y *Yi) Get(m GuaMing) *GuaXiang {
 	return y.gua[m]
 }
 
-//NumberQiGua
+//TimeQiGua
 func TimeQiGua(xia int, shang int, t time.Time) *Yi {
 	ben := benGua(shang, xia)
 	bs := timeToBian(t)
@@ -96,7 +96,7 @@ func TimeQiGua(xia int, shang int, t time.Time) *Yi {
 	return &Yi{}
 }
 
-//ShuQiGua
+//NumberQiGua
 func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 	ben := benGua(shang, xia)
 	bian := bianGua(ben, bs[0])
