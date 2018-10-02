@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-const defaultPath = "yi.data"
+const defaultPath = "gua.data"
 
 func libCompress(b []byte) error {
 	buff := bytes.NewBuffer(b)
