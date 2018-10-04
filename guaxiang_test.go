@@ -538,11 +538,31 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	}
 
 	gx["离巽"] = &GuaXiang{
-		ShangGua: "离为火",
-		ShangShu: 0x02,
-		XiaGua:   "巽为风",
-		XiaShu:   0x04,
-		GuaMing:  "火风鼎",
+		ShangGua:        "离为火",
+		ShangShu:        0x02,
+		XiaGua:          "巽为风",
+		XiaShu:          0x04,
+		JiXiong:         "",
+		GuaXiang:        "",
+		GuaMing:         "火风鼎",
+		GuaYi:           "",
+		GuaYun:          "",
+		XiangYue:        "",
+		FuHao:           "",
+		ChuYao:          "鼎颠趾，未悖也。利出否，以从贵也。",
+		ChuYaoJiXiong:   "平",
+		ErYao:           "鼎有实，慎所之也。我仇有疾，终无尤也。",
+		ErYaoJiXiong:    "吉",
+		SanYao:          "鼎耳革，失其义也。",
+		SanYaoJiXiong:   "吉",
+		SiYao:           "",
+		SiYaoJiXiong:    "",
+		WuYao:           "",
+		WuYaoJiXiong:    "",
+		ShangYao:        "",
+		ShangYaoJiXiong: "",
+		Yong:            "",
+		YongJiXiong:     "",
 	}
 
 	gx["离震"] = &GuaXiang{
