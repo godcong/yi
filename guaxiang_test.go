@@ -214,8 +214,8 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		SiYaoJiXiong:    "凶",
 		WuYao:           "以宫人宠，终无尤也。",
 		WuYaoJiXiong:    "吉",
-		ShangYao:        "",
-		ShangYaoJiXiong: "",
+		ShangYao:        "君子得舆，民所载也；小人剥庐，终不可用也。",
+		ShangYaoJiXiong: "平",
 		Yong:            "",
 		YongJiXiong:     "",
 	}
