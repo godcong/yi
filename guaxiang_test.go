@@ -193,11 +193,31 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 
 func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	gx["艮坤"] = &GuaXiang{
-		ShangGua: "艮为山",
-		ShangShu: 0x06,
-		XiaGua:   "坤为地",
-		XiaShu:   0x07,
-		GuaMing:  "山地剥",
+		ShangGua:        "艮为山",
+		ShangShu:        0x06,
+		XiaGua:          "坤为地",
+		XiaShu:          0x07,
+		JiXiong:         "",
+		GuaXiang:        "",
+		GuaMing:         "山地剥",
+		GuaYi:           "",
+		GuaYun:          "",
+		XiangYue:        "",
+		FuHao:           "",
+		ChuYao:          "剥床以足，以灭下也。",
+		ChuYaoJiXiong:   "凶",
+		ErYao:           "",
+		ErYaoJiXiong:    "",
+		SanYao:          "",
+		SanYaoJiXiong:   "",
+		SiYao:           "",
+		SiYaoJiXiong:    "",
+		WuYao:           "",
+		WuYaoJiXiong:    "",
+		ShangYao:        "",
+		ShangYaoJiXiong: "",
+		Yong:            "",
+		YongJiXiong:     "",
 	}
 
 	gx["艮艮"] = &GuaXiang{
@@ -560,7 +580,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		WuYao:           "鼎黄耳，中以为实也。",
 		WuYaoJiXiong:    "吉",
 		ShangYao:        "玉铉在上，刚柔节也。",
-		ShangYaoJiXiong: "吉",
+		ShangYaoJiXiong: "吉 ",
 		Yong:            "",
 		YongJiXiong:     "",
 	}
