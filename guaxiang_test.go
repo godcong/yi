@@ -154,12 +154,31 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	}
 
 	gx["坤震"] = &GuaXiang{
-		ShangGua: "坤为地",
-		ShangShu: 0x07,
-		XiaGua:   "震为雷",
-		XiaShu:   0x03,
-		GuaXiang: "复",
-		GuaMing:  "地雷复",
+		ShangGua:        "坤为地",
+		ShangShu:        0x07,
+		XiaGua:          "震为雷",
+		XiaShu:          0x03,
+		JiXiong:         "",
+		GuaXiang:        "复",
+		GuaMing:         "地雷复",
+		GuaYi:           "",
+		GuaYun:          "",
+		XiangYue:        "",
+		FuHao:           "",
+		ChuYao:          "不远之复，以修身也。",
+		ChuYaoJiXiong:   "吉",
+		ErYao:           "",
+		ErYaoJiXiong:    "",
+		SanYao:          "",
+		SanYaoJiXiong:   "",
+		SiYao:           "",
+		SiYaoJiXiong:    "",
+		WuYao:           "",
+		WuYaoJiXiong:    "",
+		ShangYao:        "",
+		ShangYaoJiXiong: "",
+		Yong:            "",
+		YongJiXiong:     "",
 	}
 
 	gx["坤离"] = &GuaXiang{
