@@ -118,12 +118,31 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 
 	gx["坤坤"] = &GuaXiang{
-		ShangGua: "坤为地",
-		ShangShu: 0x07,
-		XiaGua:   "坤为地",
-		XiaShu:   0x07,
-		GuaXiang: "坤",
-		GuaMing:  "坤为地",
+		ShangGua:        "坤为地",
+		ShangShu:        0x07,
+		XiaGua:          "坤为地",
+		XiaShu:          0x07,
+		JiXiong:         "",
+		GuaXiang:        "坤",
+		GuaMing:         "坤为地",
+		GuaYi:           "",
+		GuaYun:          "",
+		XiangYue:        "",
+		FuHao:           "",
+		ChuYao:          "履霜坚冰，阴始凝也。驯致其道，至坚冰也。",
+		ChuYaoJiXiong:   "平",
+		ErYao:           "六二之动，直以方也；不习无不利，地道光也。",
+		ErYaoJiXiong:    "吉",
+		SanYao:          "含章可贞，以时发也；或从王事，知光大也。",
+		SanYaoJiXiong:   "平",
+		SiYao:           "括囊无咎，慎不害也。",
+		SiYaoJiXiong:    "平",
+		WuYao:           "黄裳元吉，文在中也。",
+		WuYaoJiXiong:    "吉",
+		ShangYao:        "龙战于野，其道穷也。",
+		ShangYaoJiXiong: "凶",
+		Yong:            "",
+		YongJiXiong:     "",
 	}
 
 	gx["坤艮"] = &GuaXiang{
