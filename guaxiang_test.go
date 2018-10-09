@@ -80,6 +80,8 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		FuHao:         "",
 		ChuYao:        "出门同人，又谁咎也。",
 		ChuYaoJiXiong: "平",
+		ErYao:         "同人于宗，吝道也。",
+		ErYaoJiXiong:  "凶",
 
 		Yong:        "",
 		YongJiXiong: "",
