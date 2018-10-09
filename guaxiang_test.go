@@ -67,12 +67,22 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	}
 
 	gx["乾离"] = &GuaXiang{
-		ShangGua: "乾为天",
-		ShangShu: 0x00,
-		XiaGua:   "离为火",
-		XiaShu:   0x02,
-		GuaXiang: "同人",
-		GuaMing:  "天火同人",
+		ShangGua:      "乾为天",
+		ShangShu:      0x00,
+		XiaGua:        "离为火",
+		XiaShu:        0x02,
+		JiXiong:       "",
+		GuaXiang:      "同人",
+		GuaMing:       "天火同人",
+		GuaYi:         "",
+		GuaYun:        "",
+		XiangYue:      "",
+		FuHao:         "",
+		ChuYao:        "出门同人，又谁咎也。",
+		ChuYaoJiXiong: "平",
+
+		Yong:        "",
+		YongJiXiong: "",
 	}
 
 	gx["乾兑"] = &GuaXiang{
