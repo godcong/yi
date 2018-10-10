@@ -731,6 +731,8 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		FuHao:         "",
 		ChuYao:        "巩用黄牛，不可以有为也。",
 		ChuYaoJiXiong: "平",
+		ErYao:         "己日革之，行有嘉也。",
+		ErYaoJiXiong:  "吉",
 
 		Yong:        "",
 		YongJiXiong: "",
