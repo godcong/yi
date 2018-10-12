@@ -186,8 +186,8 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		SiYaoJiXiong:    "吉",
 		WuYao:           "利用侵伐，征不服也。",
 		WuYaoJiXiong:    "平",
-		ShangYao:        "",
-		ShangYaoJiXiong: "",
+		ShangYao:        "鸣谦，志未得也；可用行师，征邑国也。",
+		ShangYaoJiXiong: "平",
 		Yong:            "",
 		YongJiXiong:     "",
 	}
