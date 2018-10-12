@@ -174,7 +174,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		GuaMing:         "地山谦",
 		GuaYi:           "",
 		GuaYun:          "",
-		XiangYue:        "",
+		XiangYue:        "地中有山，谦。君子以裒多益寡，称物平施。",
 		FuHao:           "",
 		ChuYao:          "谦谦君子，卑以自牧也。",
 		ChuYaoJiXiong:   "平",
