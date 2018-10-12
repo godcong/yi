@@ -169,7 +169,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangShu:        0x07,
 		XiaGua:          "艮为山",
 		XiaShu:          0x06,
-		JiXiong:         "",
+		JiXiong:         "吉",
 		GuaXiang:        "谦",
 		GuaMing:         "地山谦",
 		GuaYi:           "",
