@@ -686,11 +686,31 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	}
 
 	gx["离乾"] = &GuaXiang{
-		ShangGua: "离为火",
-		ShangShu: 0x02,
-		XiaGua:   "乾为天",
-		XiaShu:   0x00,
-		GuaMing:  "火天大有",
+		ShangGua:        "离为火",
+		ShangShu:        0x02,
+		XiaGua:          "乾为天",
+		XiaShu:          0x00,
+		JiXiong:         "",
+		GuaXiang:        "",
+		GuaMing:         "火天大有",
+		GuaYi:           "",
+		GuaYun:          "",
+		XiangYue:        "",
+		FuHao:           "",
+		ChuYao:          "大有初九，无交害也。",
+		ChuYaoJiXiong:   "平",
+		ErYao:           "大车以载，积中不败也。",
+		ErYaoJiXiong:    "吉",
+		SanYao:          "公用亨于天子，小人害也。",
+		SanYaoJiXiong:   "平",
+		SiYao:           "匪其彭，无咎，明辩晰也。",
+		SiYaoJiXiong:    "平",
+		WuYao:           "厥孚交如，信以发志也；威如之吉，易而无备也。",
+		WuYaoJiXiong:    "吉",
+		ShangYao:        "大有上吉，自天祐也。",
+		ShangYaoJiXiong: "吉",
+		Yong:            "",
+		YongJiXiong:     "",
 	}
 	return gx
 }
