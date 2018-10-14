@@ -749,11 +749,31 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	}
 
 	gx["兑震"] = &GuaXiang{
-		ShangGua: "兑为泽",
-		ShangShu: 0x01,
-		XiaGua:   "震为雷",
-		XiaShu:   0x03,
-		GuaMing:  "火雷噬嗑",
+		ShangGua:        "兑为泽",
+		ShangShu:        0x01,
+		XiaGua:          "震为雷",
+		XiaShu:          0x03,
+		JiXiong:         "",
+		GuaXiang:        "",
+		GuaMing:         "火雷噬嗑",
+		GuaYi:           "",
+		GuaYun:          "",
+		XiangYue:        "",
+		FuHao:           "",
+		ChuYao:          "屦校灭趾，不行也。",
+		ChuYaoJiXiong:   "凶",
+		ErYao:           "",
+		ErYaoJiXiong:    "",
+		SanYao:          "",
+		SanYaoJiXiong:   "",
+		SiYao:           "",
+		SiYaoJiXiong:    "",
+		WuYao:           "",
+		WuYaoJiXiong:    "",
+		ShangYao:        "",
+		ShangYaoJiXiong: "",
+		Yong:            "",
+		YongJiXiong:     "",
 	}
 
 	gx["兑离"] = &GuaXiang{
