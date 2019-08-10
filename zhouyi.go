@@ -126,8 +126,6 @@ func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 		},
 		bianShu: bs,
 	}
-
-	return &Yi{}
 }
 
 //StringToTime trans string to time
