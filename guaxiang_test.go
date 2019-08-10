@@ -1,6 +1,8 @@
 package yi
 
-import "testing"
+import (
+	"testing"
+)
 
 func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	gx["乾坤"] = &GuaXiang{

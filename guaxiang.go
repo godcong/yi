@@ -41,7 +41,7 @@ func GetGuaXiang() map[string]*GuaXiang {
 func getGuaXiang() map[string]*GuaXiang {
 	if gx == nil {
 		gx = make(map[string]*GuaXiang)
-		data, err := libDecompressFromStatik()
+		data, err := libDecompressStatik()
 		if err != nil {
 			panic(err)
 		}

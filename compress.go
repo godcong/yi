@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-const filePath = "./gua.data"
+const filePath = "guadata"
 
 func libCompress(b []byte) error {
 	buff := bytes.NewBuffer(b)
@@ -45,17 +45,17 @@ func libDecompress() ([]byte, error) {
 	return nil, err
 }
 
-func libDecompressFromStatik() ([]byte, error) {
+func libDecompressStatik() ([]byte, error) {
 	buff := bytes.Buffer{}
 	sfs, err := fs.New()
 	if err != nil {
 		return nil, err
 	}
-	file, err := sfs.Open(filePath)
+
+	file, err := sfs.Open("/" + filePath)
 	if err != nil {
 		return nil, err
 	}
-	defer file.Close()
 	r, err := zlib.NewReader(file)
 	if err == nil {
 		if _, err := io.Copy(&buff, r); err == nil {
