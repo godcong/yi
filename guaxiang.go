@@ -42,8 +42,12 @@ func getGuaXiang() map[string]*GuaXiang {
 	if gx == nil {
 		gx = make(map[string]*GuaXiang)
 		data, err := libDecompressFromStatik()
-		if err == nil {
-			json.Unmarshal(data, &gx)
+		if err != nil {
+			panic(err)
+		}
+		err = json.Unmarshal(data, &gx)
+		if err != nil {
+			panic(err)
 		}
 	}
 	return gx

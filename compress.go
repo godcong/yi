@@ -6,11 +6,10 @@ import (
 	_ "github.com/godcong/yi/statik"
 	"github.com/rakyll/statik/fs"
 	"io"
-	"log"
 	"os"
 )
 
-const filePath = "./data/gua.data"
+const filePath = "./gua.data"
 
 func libCompress(b []byte) error {
 	buff := bytes.NewBuffer(b)
@@ -50,9 +49,8 @@ func libDecompressFromStatik() ([]byte, error) {
 	buff := bytes.Buffer{}
 	sfs, err := fs.New()
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
-
 	file, err := sfs.Open(filePath)
 	if err != nil {
 		return nil, err
