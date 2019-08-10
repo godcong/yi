@@ -96,10 +96,18 @@ func TimeQiGua(xia int, shang int, t time.Time) *Yi {
 	return &Yi{}
 }
 
+func getBianShu(bs ...int) int {
+	bNum := 0
+	if bs != nil {
+		bNum = bs[0]
+	}
+	return bNum
+}
+
 //NumberQiGua
 func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 	ben := benGua(shang, xia)
-	bian := bianGua(ben, bs[0])
+	bian := bianGua(ben, getBianShu(bs...))
 	hu := ben
 	if ben.ShangShu == KunGua && ben.XiaShu == KunGua ||
 		ben.ShangShu == QianGua && ben.XiaShu == QianGua {
