@@ -107,7 +107,7 @@ func getBianShu(bs ...int) int {
 //NumberQiGua
 func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 	ben := benGua(shang, xia)
-	bian := bianGua(ben, getBianShu(bs...))
+	bian := bianGua(ben, bs...)
 	hu := ben
 	if ben.ShangShu == KunGua && ben.XiaShu == KunGua ||
 		ben.ShangShu == QianGua && ben.XiaShu == QianGua {
@@ -154,8 +154,12 @@ func (y *Yi) set(idx int, xiang *GuaXiang) {
 
 //BianYao 变卦，爻
 func (y *Yi) BianYao() int {
-	bs := getBianShu(y.bianShu...)
-	return getYao(bs)
+	return bianYao(y.bianShu...)
+}
+
+func bianYao(bs ...int) int {
+	s := getBianShu(bs...)
+	return getYao(s)
 }
 
 func getGua(i int) string {
@@ -184,9 +188,9 @@ func benGua(x, m int) *GuaXiang {
 }
 
 //变卦
-func bianGua(ben *GuaXiang, b int) *GuaXiang {
+func bianGua(ben *GuaXiang, b ...int) *GuaXiang {
 	gx := GetGuaXiang()
-	bz := getYao(b)
+	bz := bianYao(b...)
 	sg := gua[ben.ShangShu]
 	xg := gua[ben.XiaShu]
 	if bz > 2 {
