@@ -147,9 +147,15 @@ func timeToBian(t time.Time) int {
 	return 0
 }
 
-//Set 设定卦象
-func (y *Yi) Set(idx int, xiang *GuaXiang) {
+//set 设定卦象
+func (y *Yi) set(idx int, xiang *GuaXiang) {
 	y.gua[idx] = xiang
+}
+
+//BianYao 变卦，爻
+func (y *Yi) BianYao() int {
+	bs := getBianShu(y.bianShu...)
+	return getYao(bs)
 }
 
 func getGua(i int) string {

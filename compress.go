@@ -9,7 +9,7 @@ import (
 	"os"
 )
 
-const filePath = "guadata"
+const filePath = "gua.data"
 
 func libCompress(b []byte) error {
 	buff := bytes.NewBuffer(b)
