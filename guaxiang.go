@@ -2,6 +2,7 @@ package yi
 
 import (
 	"encoding/json"
+	_ "github.com/godcong/yi/statik"
 )
 
 //GuaXiang 卦象
