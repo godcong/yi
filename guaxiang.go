@@ -35,21 +35,19 @@ type GuaXiang struct {
 
 var gx map[string]*GuaXiang
 
-func GetGuaXiang() map[string]*GuaXiang {
-	return getGuaXiang()
-}
-func getGuaXiang() map[string]*GuaXiang {
-	if gx == nil {
-		gx = make(map[string]*GuaXiang)
-		data, err := libDecompressStatik()
-		if err != nil {
-			panic(err)
-		}
-		err = json.Unmarshal(data, &gx)
-		if err != nil {
-			panic(err)
-		}
+func init() {
+	gx = make(map[string]*GuaXiang)
+	data, err := libDecompressStatik()
+	if err != nil {
+		panic(err)
 	}
+	err = json.Unmarshal(data, &gx)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func GetGuaXiang() map[string]*GuaXiang {
 	return gx
 }
 

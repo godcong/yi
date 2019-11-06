@@ -1482,8 +1482,8 @@ func TestSetGuaXiang(t *testing.T) {
 }
 
 func TestGetGuaXiang(t *testing.T) {
-	if len(getGuaXiang()) != 64 {
-		t.Log("not enough", getGuaXiang())
+	if len(GetGuaXiang()) != 64 {
+		t.Log("not enough", GetGuaXiang())
 	}
 
 }
