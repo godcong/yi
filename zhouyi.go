@@ -92,8 +92,6 @@ func TimeQiGua(xia int, shang int, t time.Time) *Yi {
 		},
 		bianShu: []int{bs},
 	}
-
-	return &Yi{}
 }
 
 func getBianShu(bs ...int) int {
