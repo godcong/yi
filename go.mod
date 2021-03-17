@@ -1,4 +1,4 @@
-module github.com/godcong/yi
+module yi
 
 go 1.12
 

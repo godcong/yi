@@ -2,15 +2,15 @@ package yi
 
 import (
 	"log"
+	"math/bits"
+	"strconv"
 	"strings"
 	"time"
 )
 
-type GuaMing int
-
 const (
 	//本卦
-	BenGua GuaMing = iota
+	BenGua = iota
 	//变卦
 	BianGua
 	//互卦
@@ -41,18 +41,9 @@ const (
 	KunGua = 0x07
 )
 
-var fu = []string{"☰", "☱", "☲", "☳", "☴", "☵", "☶", "☷"}
+var fu map[int]string
 
-var gua = [...]string{
-	KunGua:  "坤",
-	GenGua:  "艮",
-	KanGua:  "坎",
-	XunGua:  "巽",
-	ZhenGua: "震",
-	LiGua:   "离",
-	DuiGua:  "兑",
-	QianGua: "乾",
-}
+var gua map[int]string
 
 //Yi 周易卦象
 type Yi struct {
@@ -60,13 +51,33 @@ type Yi struct {
 	bianShu []int
 }
 
-func (y *Yi) Get(m GuaMing) *GuaXiang {
+func (y *Yi) Get(m int) *GuaXiang {
 
 	if m < 0 && m >= GuaMax {
 		return nil
 	}
 
 	return y.gua[m]
+}
+
+func init() {
+	fu = make(map[int]string)
+	gua = make(map[int]string)
+
+	records, err := readData("data/8gua.csv")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, record := range records {
+		guashu, err := strconv.ParseInt(record[1], 10, bits.UintSize)
+		if err != nil {
+			panic(err)
+		}
+		fu[int(guashu)] = record[2]
+		gua[int(guashu)] = record[0]
+	}
 }
 
 //TimeQiGua
@@ -176,8 +187,8 @@ func getYao(i int) int {
 }
 
 //本卦
-func benGua(x, m int) *GuaXiang {
-	bg := strings.Join([]string{getGua(x), getGua(m)}, "")
+func benGua(shang, xia int) *GuaXiang {
+	bg := strings.Join([]string{getGua(shang), getGua(xia)}, "")
 	gx := GetGuaXiang()
 	if v, b := gx[bg]; b {
 		return v

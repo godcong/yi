@@ -1,8 +1,10 @@
 package yi
 
 import (
-	"encoding/json"
-	_ "github.com/godcong/yi/statik"
+	"encoding/csv"
+	"math/bits"
+	"os"
+	"strconv"
 )
 
 //GuaXiang 卦象
@@ -38,13 +40,56 @@ var gx map[string]*GuaXiang
 
 func init() {
 	gx = make(map[string]*GuaXiang)
-	data, err := libDecompressStatik()
+
+	records, err := readData("data/64gua.csv")
+
 	if err != nil {
 		panic(err)
 	}
-	err = json.Unmarshal(data, &gx)
-	if err != nil {
-		panic(err)
+
+	for _, record := range records {
+		shangshu, err := strconv.ParseInt(record[2], 10, bits.UintSize)
+		if err != nil {
+			panic(err)
+		}
+		xiashu, err := strconv.ParseInt(record[4], 10, bits.UintSize)
+		if err != nil {
+			panic(err)
+		}
+		guaxiang := GuaXiang{
+			ShangGua:        record[1],
+			ShangShu:        int(shangshu),
+			XiaGua:          record[3],
+			XiaShu:          int(xiashu),
+			JiXiong:         record[5],
+			GuaXiang:        record[6],
+			GuaMing:         record[7],
+			GuaYi:           record[8],
+			GuaYun:          record[9],
+			XiangYue:        record[10],
+			FuHao:           record[11],
+			ChuYao:          record[12],
+			ChuYaoJiXiong:   record[13],
+			ErYao:           record[14],
+			ErYaoJiXiong:    record[15],
+			SanYao:          record[16],
+			SanYaoJiXiong:   record[17],
+			SiYao:           record[18],
+			SiYaoJiXiong:    record[19],
+			WuYao:           record[20],
+			WuYaoJiXiong:    record[21],
+			ShangYao:        record[22],
+			ShangYaoJiXiong: record[23],
+			Yong:            record[24],
+			YongJiXiong:     record[25],
+		}
+
+		gx_index := record[0]
+		if len(gx_index) < 1 {
+			panic("index is wrong")
+		}
+
+		gx[gx_index] = &guaxiang
 	}
 }
 
@@ -52,8 +97,29 @@ func GetGuaXiang() map[string]*GuaXiang {
 	return gx
 }
 
-func setGuaXiang(gx map[string]*GuaXiang) {
-	if data, err := json.Marshal(gx); err == nil {
-		libCompress(data)
+func readData(fileName string) ([][]string, error) {
+
+	f, err := os.Open(fileName)
+
+	if err != nil {
+		return [][]string{}, err
 	}
+	defer f.Close()
+
+	r := csv.NewReader(f)
+	r.Comma = ','
+	r.Comment = '#'
+
+	// skip first line
+	if _, err := r.Read(); err != nil {
+		return [][]string{}, err
+	}
+
+	records, err := r.ReadAll()
+
+	if err != nil {
+		return [][]string{}, err
+	}
+
+	return records, nil
 }
