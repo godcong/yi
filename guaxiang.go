@@ -4,6 +4,8 @@ import (
 	"encoding/csv"
 	"math/bits"
 	"os"
+	"path/filepath"
+	"runtime"
 	"strconv"
 )
 
@@ -46,7 +48,11 @@ var gx map[string]*GuaXiang
 func init() {
 	gx = make(map[string]*GuaXiang)
 
-	records, err := readData("data/64gua.csv")
+	var (
+		_, b, _, _ = runtime.Caller(0)
+		basepath   = filepath.Dir(b)
+	)
+	records, err := readData(filepath.Join(basepath, "data/64gua.csv"))
 
 	if err != nil {
 		panic(err)
@@ -98,7 +104,7 @@ func init() {
 			YongJiXiong:     record[30],
 		}
 
-		gx_index := record[0]
+		gx_index := record[1]
 		if len(gx_index) < 1 {
 			panic("index is wrong")
 		}

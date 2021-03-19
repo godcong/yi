@@ -3,6 +3,8 @@ package yi
 import (
 	"log"
 	"math/bits"
+	"path/filepath"
+	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -64,7 +66,11 @@ func init() {
 	fu = make(map[int]string)
 	gua = make(map[int]string)
 
-	records, err := readData("data/8gua.csv")
+	var (
+		_, b, _, _ = runtime.Caller(0)
+		basepath   = filepath.Dir(b)
+	)
+	records, err := readData(filepath.Join(basepath, "data/8gua.csv"))
 
 	if err != nil {
 		log.Fatal(err)
