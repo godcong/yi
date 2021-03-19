@@ -9,31 +9,36 @@ import (
 
 //GuaXiang 卦象
 type GuaXiang struct {
-	ShangGua        string `bson:"shang_gua"`          //上卦
-	ShangShu        int    `bson:"shang_shu"`          //上卦数
-	XiaGua          string `bson:"xia_gua"`            //下卦
-	XiaShu          int    `bson:"xia_shu"`            //下卦数
-	JiXiong         string `bson:"ji_xiong"`           //吉凶
-	GuaXiang        string `bson:"gua_xiang"`          //卦象
-	GuaMing         string `bson:"gua_ming"`           //卦名
-	GuaYi           string `bson:"gua_yi"`             //卦意
-	GuaYun          string `bson:"gua_yun"`            //卦云
-	XiangYue        string `bson:"xiang_yue"`          //象曰
-	FuHao           string `bson:"fu_hao"`             //符号
-	ChuYao          string `bson:"chu_yao"`            //初爻
-	ChuYaoJiXiong   string `bson:"chu_yao_ji_xiong"`   //初爻吉凶
-	ErYao           string `bson:"er_yao"`             //二爻
-	ErYaoJiXiong    string `bson:"er_yao_ji_xiong"`    //二爻吉凶
-	SanYao          string `bson:"san_yao"`            //三爻
-	SanYaoJiXiong   string `bson:"san_yao_ji_xiong"`   //三爻吉凶
-	SiYao           string `bson:"si_yao"`             //四爻
-	SiYaoJiXiong    string `bson:"si_yao_ji_xiong"`    //四爻吉凶
-	WuYao           string `bson:"wu_yao"`             //五爻
-	WuYaoJiXiong    string `bson:"wu_yao_ji_xiong"`    //五爻吉凶
-	ShangYao        string `bson:"shang_yao"`          //上爻
-	ShangYaoJiXiong string `bson:"shang_yao_ji_xiong"` //上爻吉凶
-	Yong            string `bson:"yong"`               //用九,用六
-	YongJiXiong     string `bson:"yong_ji_xiong"`      //用九,用六吉凶
+	GuaXu           int    //卦序
+	ShangGua        string //上卦
+	ShangShu        int    //上卦数
+	XiaGua          string //下卦
+	XiaShu          int    //下卦数
+	JiXiong         string //吉凶（？）
+	GuaXiang        string //卦象
+	GuaMing         string //卦名
+	GuaYi           string //卦意（邵雍）
+	FuHao           string //符号
+	ChuYao          string //初爻
+	ChuYaoJiXiong   string //初爻吉凶
+	ChuYaoNvMing    string //初爻女命
+	ErYao           string //二爻
+	ErYaoJiXiong    string //二爻吉凶
+	ErYaoNvMing     string //二爻女命
+	SanYao          string //三爻
+	SanYaoJiXiong   string //三爻吉凶
+	SanYaoNvMing    string //三爻女命
+	SiYao           string //四爻
+	SiYaoJiXiong    string //四爻吉凶
+	SiYaoNvMing     string //四爻女命
+	WuYao           string //五爻
+	WuYaoJiXiong    string //五爻吉凶
+	WuYaoNvMing     string //五爻女命
+	ShangYao        string //上爻
+	ShangYaoJiXiong string //上爻吉凶
+	ShangYaoNvMing  string //上爻女命
+	Yong            string //用九,用六
+	YongJiXiong     string //用九,用六吉凶
 }
 
 var gx map[string]*GuaXiang
@@ -48,40 +53,49 @@ func init() {
 	}
 
 	for _, record := range records {
-		shangshu, err := strconv.ParseInt(record[2], 10, bits.UintSize)
+		guaxu, err := strconv.ParseInt(record[0], 10, bits.UintSize)
 		if err != nil {
 			panic(err)
 		}
-		xiashu, err := strconv.ParseInt(record[4], 10, bits.UintSize)
+		shangshu, err := strconv.ParseInt(record[3], 10, bits.UintSize)
+		if err != nil {
+			panic(err)
+		}
+		xiashu, err := strconv.ParseInt(record[5], 10, bits.UintSize)
 		if err != nil {
 			panic(err)
 		}
 		guaxiang := GuaXiang{
-			ShangGua:        record[1],
+			GuaXu:           int(guaxu),
+			ShangGua:        record[2],
 			ShangShu:        int(shangshu),
-			XiaGua:          record[3],
+			XiaGua:          record[4],
 			XiaShu:          int(xiashu),
-			JiXiong:         record[5],
-			GuaXiang:        record[6],
-			GuaMing:         record[7],
-			GuaYi:           record[8],
-			GuaYun:          record[9],
-			XiangYue:        record[10],
-			FuHao:           record[11],
-			ChuYao:          record[12],
-			ChuYaoJiXiong:   record[13],
+			JiXiong:         record[6],
+			GuaXiang:        record[7],
+			GuaMing:         record[8],
+			GuaYi:           record[9],
+			FuHao:           record[10],
+			ChuYao:          record[11],
+			ChuYaoJiXiong:   record[12],
+			ChuYaoNvMing:    record[13],
 			ErYao:           record[14],
 			ErYaoJiXiong:    record[15],
-			SanYao:          record[16],
-			SanYaoJiXiong:   record[17],
-			SiYao:           record[18],
-			SiYaoJiXiong:    record[19],
-			WuYao:           record[20],
-			WuYaoJiXiong:    record[21],
-			ShangYao:        record[22],
-			ShangYaoJiXiong: record[23],
-			Yong:            record[24],
-			YongJiXiong:     record[25],
+			ErYaoNvMing:     record[16],
+			SanYao:          record[17],
+			SanYaoJiXiong:   record[18],
+			SanYaoNvMing:    record[19],
+			SiYao:           record[20],
+			SiYaoJiXiong:    record[21],
+			SiYaoNvMing:     record[22],
+			WuYao:           record[23],
+			WuYaoJiXiong:    record[24],
+			WuYaoNvMing:     record[25],
+			ShangYao:        record[26],
+			ShangYaoJiXiong: record[27],
+			ShangYaoNvMing:  record[28],
+			Yong:            record[29],
+			YongJiXiong:     record[30],
 		}
 
 		gx_index := record[0]
