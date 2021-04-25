@@ -3,8 +3,6 @@ package yi
 import (
 	"log"
 	"math/bits"
-	"path/filepath"
-	"runtime"
 	"strconv"
 	"strings"
 	"time"
@@ -24,23 +22,25 @@ const (
 	GuaMax
 )
 
+type BaGua = int
+
 const (
 	//卦象:乾
-	QianGua = 0x00
+	QianGua BaGua = 0b000
 	//卦象:兑
-	DuiGua = 0x01
+	DuiGua BaGua = 0b001
 	//卦象:离
-	LiGua = 0x02
+	LiGua BaGua = 0b010
 	//卦象:震
-	ZhenGua = 0x03
+	ZhenGua BaGua = 0b011
 	//卦象:巽
-	XunGua = 0x04
+	XunGua BaGua = 0b100
 	//卦象:坎
-	KanGua = 0x05
+	KanGua BaGua = 0b101
 	//卦象:艮
-	GenGua = 0x06
+	GenGua BaGua = 0b110
 	//卦象:坤
-	KunGua = 0x07
+	KunGua BaGua = 0b111
 )
 
 var fu map[int]string
@@ -66,11 +66,12 @@ func init() {
 	fu = make(map[int]string)
 	gua = make(map[int]string)
 
-	var (
-		_, b, _, _ = runtime.Caller(0)
-		basepath   = filepath.Dir(b)
-	)
-	records, err := readData(filepath.Join(basepath, "data/8gua.csv"))
+	file_8gua, err := DataFiles.Open("data/8gua.csv")
+	if err != nil {
+		panic(err)
+	}
+
+	records, err := readData(file_8gua)
 
 	if err != nil {
 		log.Fatal(err)
@@ -79,11 +80,19 @@ func init() {
 	for _, record := range records {
 		guashu, err := strconv.ParseInt(record[1], 10, bits.UintSize)
 		if err != nil {
+			if len(record[1]) == 0 {
+				continue
+			}
 			panic(err)
 		}
 		fu[int(guashu)] = record[2]
 		gua[int(guashu)] = record[0]
 	}
+}
+
+//QiGua 起卦
+func QiGua(xia, shang int) *Yi {
+	return NumberQiGua(shang, xia)
 }
 
 //TimeQiGua
@@ -162,11 +171,6 @@ func timeToBian(t time.Time) int {
 	return 0
 }
 
-//set 设定卦象
-func (y *Yi) set(idx int, xiang *GuaXiang) {
-	y.gua[idx] = xiang
-}
-
 //BianYao 变卦，爻
 func (y *Yi) BianYao() int {
 	return bianYao(y.bianShu...)
@@ -177,11 +181,20 @@ func bianYao(bs ...int) int {
 	return getYao(s)
 }
 
+//由数取卦
 func getGua(i int) string {
 	if i = i % 8; i != 0 {
 		return gua[i-1]
 	}
 	return gua[7]
+}
+
+//三数取卦数(1~8)
+func GetGua3Num(shang, zhong, xia int) int {
+	shangYao := shang % 2
+	zhongYao := zhong % 2
+	xiaYao := xia % 2
+	return shangYao<<2 + zhongYao<<1 + xiaYao + 1
 }
 
 //取爻
@@ -195,7 +208,7 @@ func getYao(i int) int {
 //本卦
 func benGua(shang, xia int) *GuaXiang {
 	bg := strings.Join([]string{getGua(shang), getGua(xia)}, "")
-	gx := GetGuaXiang()
+	gx := getGuaXiangs()
 	if v, b := gx[bg]; b {
 		return v
 	}
@@ -204,7 +217,7 @@ func benGua(shang, xia int) *GuaXiang {
 
 //变卦
 func bianGua(ben *GuaXiang, b ...int) *GuaXiang {
-	gx := GetGuaXiang()
+	gx := getGuaXiangs()
 	bz := bianYao(b...)
 	sg := gua[ben.ShangShu]
 	xg := gua[ben.XiaShu]
@@ -215,6 +228,10 @@ func bianGua(ben *GuaXiang, b ...int) *GuaXiang {
 		xg = gua[bian(ben.XiaShu, bz)]
 	}
 	gua := strings.Join([]string{sg, xg}, "")
+
+	if gx[gua] == nil {
+		panic(gua)
+	}
 
 	return gx[gua]
 }
@@ -277,7 +294,7 @@ func cuo(gua int) int {
 
 //错卦
 func cuoGua(ben *GuaXiang) *GuaXiang {
-	gx := GetGuaXiang()
+	gx := getGuaXiangs()
 	sg := gua[cuo(ben.ShangShu)]
 	xg := gua[cuo(ben.XiaShu)]
 	newGua := strings.Join([]string{sg, xg}, "")
@@ -319,7 +336,7 @@ func zongGua(ben *GuaXiang) *GuaXiang {
 //互卦
 func huGua(ben *GuaXiang) *GuaXiang {
 	bg := strings.Join([]string{getGua(jiao(ben.ShangShu, ben.XiaShu)), getGua(hu(ben.ShangShu, ben.XiaShu))}, "")
-	gx := GetGuaXiang()
+	gx := getGuaXiangs()
 	if v, b := gx[bg]; b {
 		return v
 	}
