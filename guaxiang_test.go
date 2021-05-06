@@ -23,7 +23,7 @@ func TestGetGuaXiang(t *testing.T) {
 		args args
 		want *GuaXiang
 	}{
-		// TODO: Add test cases.
+		// TODO: Add more cases.
 		{
 			name: "",
 			args: args{
