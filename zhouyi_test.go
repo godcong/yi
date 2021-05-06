@@ -1,6 +1,8 @@
 package yi
 
 import (
+	"fmt"
+	"reflect"
 	"testing"
 	"time"
 )
@@ -62,4 +64,58 @@ func TestNumberQiGua(t *testing.T) {
 	//log.Println(gua6.Get(BenGua), gua6.Get(BianGua))
 	//gua7 := NumberQiGua(23, 20, int(StringToTime("2024-01-01 00:00").Unix()/1000000%6))
 	//log.Println(gua7.Get(BenGua), gua7.Get(BianGua))
+}
+
+func TestQiGua1(t *testing.T) {
+	type args struct {
+		xia   int
+		shang int
+	}
+	tests := []struct {
+		name string
+		args args
+		want *Yi
+	}{
+		// TODO: Add more cases.
+		{
+			name: "",
+			args: args{
+				xia:   7,
+				shang: 7,
+			},
+			want: &Yi{
+				gua: [GuaMax]*GuaXiang{
+					{
+						GuaXu:       0,
+						ShangGua:    "",
+						ShangShu:    0,
+						XiaGua:      "",
+						XiaShu:      0,
+						JiXiong:     "",
+						GuaXiang:    "",
+						GuaMing:     "",
+						GuaYi:       "",
+						FuHao:       "",
+						GuaYaos:     [YaoMax]*GuaYao{},
+						Yong:        "",
+						YongJiXiong: "",
+					},
+				},
+				bianShu: nil,
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(
+			tt.name, func(t *testing.T) {
+				if got := QiGua(tt.args.xia, tt.args.shang); !reflect.DeepEqual(got, tt.want) {
+					for _, xiang := range got.gua {
+						fmt.Printf("%+v", xiang)
+					}
+
+					t.Errorf("QiGua() = %v, want %v", got, tt.want)
+				}
+			},
+		)
+	}
 }
