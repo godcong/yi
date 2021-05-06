@@ -1,5 +1,5 @@
-module github.com/godcong/yi
+module yi
 
-go 1.12
+go 1.16
 
-require github.com/rakyll/statik v0.1.6
+replace github.com/godcong/yi => ../yi

@@ -5,6 +5,12 @@ import (
 	"time"
 )
 
+func TestQiGua(t *testing.T) {
+	yi := QiGua(7, 7)
+	get := yi.Get(0)
+	t.Log(get)
+}
+
 func TestJiaoHu(t *testing.T) {
 	for i, j := 0, 0; i <= 7; j++ {
 		t.Log(fu[i], fu[j], fu[hu(i, j)])
