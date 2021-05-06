@@ -17,6 +17,7 @@ func getGuaYao(xiang *GuaXiang, yao int) GuaYao {
 	return *xiang.GuaYaos[yao]
 }
 
+//FilterYao 过滤爻
 func (y *Yi) FilterYao(sex Sex, fs ...string) bool {
 	yao := getGuaYao(y.Get(BianGua), y.BianYao())
 	for _, s := range fs {
@@ -35,6 +36,7 @@ func (y *Yi) FilterYao(sex Sex, fs ...string) bool {
 	return true
 }
 
+//IsLucky 是否为吉
 func (y *Yi) IsLucky(sex Sex) bool {
 	yao := getGuaYao(y.Get(BianGua), y.BianYao())
 
