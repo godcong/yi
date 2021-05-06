@@ -1,7 +1,6 @@
 package yi
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 	"time"
@@ -80,25 +79,32 @@ func TestQiGua1(t *testing.T) {
 		{
 			name: "",
 			args: args{
+				xia:   8,
+				shang: 8,
+			},
+			want: &Yi{
+				gua: [GuaMax]*GuaXiang{
+					BenGua: {
+						GuaXu:    2,
+						ShangShu: 7,
+						XiaShu:   7,
+					},
+				},
+				bianShu: nil,
+			},
+		},
+		{
+			name: "",
+			args: args{
 				xia:   7,
 				shang: 7,
 			},
 			want: &Yi{
 				gua: [GuaMax]*GuaXiang{
-					{
-						GuaXu:       0,
-						ShangGua:    "",
-						ShangShu:    0,
-						XiaGua:      "",
-						XiaShu:      0,
-						JiXiong:     "",
-						GuaXiang:    "",
-						GuaMing:     "",
-						GuaYi:       "",
-						FuHao:       "",
-						GuaYaos:     [YaoMax]*GuaYao{},
-						Yong:        "",
-						YongJiXiong: "",
+					BenGua: {
+						GuaXu:    52,
+						ShangShu: 6,
+						XiaShu:   6,
 					},
 				},
 				bianShu: nil,
@@ -109,11 +115,15 @@ func TestQiGua1(t *testing.T) {
 		t.Run(
 			tt.name, func(t *testing.T) {
 				if got := QiGua(tt.args.xia, tt.args.shang); !reflect.DeepEqual(got, tt.want) {
-					for _, xiang := range got.gua {
-						fmt.Printf("%+v", xiang)
+					t.Logf("本卦：%+v", got.gua[BenGua])
+					if got.gua[BenGua].ShangShu != tt.want.gua[BenGua].ShangShu {
+						t.Errorf("Shang QiGua() = %v, want %v", got.gua[BenGua], tt.want.gua[BenGua])
 					}
 
-					t.Errorf("QiGua() = %v, want %v", got, tt.want)
+					if got.gua[BenGua].XiaShu != tt.want.gua[BenGua].XiaShu {
+						t.Errorf("Xia QiGua() = %v, want %v", got.gua[BenGua], tt.want.gua[BenGua])
+					}
+
 				}
 			},
 		)
