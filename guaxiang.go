@@ -5,21 +5,33 @@ import (
 	"strconv"
 )
 
+type Yao int
+
+const (
+	ChuYao Yao = iota
+	ErYao
+	SanYao
+	SiYao
+	WuYao
+	ShangYao
+	YaoMax
+)
+
 //GuaXiang 卦象
 type GuaXiang struct {
-	GuaXu       int        //卦序
-	ShangGua    string     //上卦
-	ShangShu    int        //上卦数
-	XiaGua      string     //下卦
-	XiaShu      int        //下卦数
-	JiXiong     string     //吉凶（？）
-	GuaXiang    string     //卦象
-	GuaMing     string     //卦名
-	GuaYi       string     //卦意（邵雍）
-	FuHao       string     //符号
-	GuaYaos     [6]*GuaYao //初，二，三，四，五，上
-	Yong        string     //用九,用六
-	YongJiXiong string     //用九,用六吉凶
+	GuaXu       int             //卦序
+	ShangGua    string          //上卦
+	ShangShu    int             //上卦数
+	XiaGua      string          //下卦
+	XiaShu      int             //下卦数
+	JiXiong     string          //吉凶（？）
+	GuaXiang    string          //卦象
+	GuaMing     string          //卦名
+	GuaYi       string          //卦意（邵雍）
+	FuHao       string          //符号
+	GuaYaos     [YaoMax]*GuaYao //初，二，三，四，五，上
+	Yong        string          //用九,用六
+	YongJiXiong string          //用九,用六吉凶
 }
 
 var gx map[string]*GuaXiang
@@ -27,12 +39,12 @@ var gx map[string]*GuaXiang
 func init() {
 	gx = make(map[string]*GuaXiang)
 
-	file_64gua, err := DataFiles.Open("data/64gua.csv")
+	file64gua, err := DataFiles.Open("data/64gua.csv")
 	if err != nil {
 		panic(err)
 	}
 
-	records, err := readData(file_64gua)
+	records, err := readData(file64gua)
 
 	if err != nil {
 		panic(err)
@@ -109,12 +121,12 @@ func init() {
 		}
 		guaxiang.GuaYaos[5] = &guyao6
 
-		gx_index := record[1]
-		if len(gx_index) < 1 {
+		gxIndex := record[1]
+		if len(gxIndex) < 1 {
 			panic("index is wrong")
 		}
 
-		gx[gx_index] = &guaxiang
+		gx[gxIndex] = &guaxiang
 	}
 }
 
@@ -122,6 +134,6 @@ func getGuaXiangs() map[string]*GuaXiang {
 	return gx
 }
 
-func GetGuaXiang(gua_idx string) *GuaXiang {
-	return gx[gua_idx]
+func GetGuaXiang(guaIdx string) *GuaXiang {
+	return gx[guaIdx]
 }

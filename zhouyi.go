@@ -8,43 +8,48 @@ import (
 	"time"
 )
 
+const TimeFormat = "2006-01-02 15:04"
+
 const (
-	//本卦
+	// BenGua 本卦
 	BenGua = iota
-	//变卦
+	// BianGua 变卦
 	BianGua
-	//互卦
+	// HuGua 互卦
 	HuGua
-	//错卦
+	// CuoGua 错卦
 	CuoGua
-	//综卦
+	// ZongGua 综卦
 	ZongGua
+	// GuaMax 卦最大值
 	GuaMax
 )
 
 type BaGua = int
 
 const (
-	//卦象:乾
+	// QianGua 卦象:乾(0)
 	QianGua BaGua = 0b000
-	//卦象:兑
+	// DuiGua 卦象:兑(1)
 	DuiGua BaGua = 0b001
-	//卦象:离
+	// LiGua 卦象:离(2)
 	LiGua BaGua = 0b010
-	//卦象:震
+	// ZhenGua 卦象:震(3)
 	ZhenGua BaGua = 0b011
-	//卦象:巽
+	// XunGua 卦象:巽(4)
 	XunGua BaGua = 0b100
-	//卦象:坎
+	// KanGua 卦象:坎(5)
 	KanGua BaGua = 0b101
-	//卦象:艮
+	// GenGua 卦象:艮(6)
 	GenGua BaGua = 0b110
-	//卦象:坤
+	// KunGua 卦象:坤(7)
 	KunGua BaGua = 0b111
 )
 
+//符号
 var fu map[int]string
 
+///卦象
 var gua map[int]string
 
 //Yi 周易卦象
@@ -53,12 +58,11 @@ type Yi struct {
 	bianShu []int
 }
 
+//Get 取卦
 func (y *Yi) Get(m int) *GuaXiang {
-
 	if m < 0 && m >= GuaMax {
 		return nil
 	}
-
 	return y.gua[m]
 }
 
@@ -66,12 +70,12 @@ func init() {
 	fu = make(map[int]string)
 	gua = make(map[int]string)
 
-	file_8gua, err := DataFiles.Open("data/8gua.csv")
+	file8gua, err := DataFiles.Open("data/8gua.csv")
 	if err != nil {
 		panic(err)
 	}
 
-	records, err := readData(file_8gua)
+	records, err := readData(file8gua)
 
 	if err != nil {
 		log.Fatal(err)
@@ -88,6 +92,7 @@ func init() {
 		fu[int(guashu)] = record[2]
 		gua[int(guashu)] = record[0]
 	}
+
 }
 
 //QiGua 起卦
@@ -95,29 +100,10 @@ func QiGua(xia, shang int) *Yi {
 	return NumberQiGua(shang, xia)
 }
 
-//TimeQiGua
+//TimeQiGua 按时间起卦
 func TimeQiGua(xia int, shang int, t time.Time) *Yi {
-	ben := benGua(shang, xia)
 	bs := timeToBian(t)
-	bian := bianGua(ben, bs)
-	hu := ben
-	if ben.ShangShu == KunGua && ben.XiaShu == KunGua ||
-		ben.ShangShu == QianGua && ben.XiaShu == QianGua {
-		hu = bian
-	}
-	hu = huGua(hu)
-	cuo := cuoGua(ben)
-	zong := zongGua(ben)
-	return &Yi{
-		gua: [GuaMax]*GuaXiang{
-			BenGua:  ben,
-			BianGua: bian,
-			HuGua:   hu,
-			CuoGua:  cuo,
-			ZongGua: zong,
-		},
-		bianShu: []int{bs},
-	}
+	return NumberQiGua(xia, shang, bs)
 }
 
 func getBianShu(bs ...int) int {
@@ -128,7 +114,7 @@ func getBianShu(bs ...int) int {
 	return bNum
 }
 
-//NumberQiGua
+//NumberQiGua 按数起卦
 func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 	ben := benGua(shang, xia)
 	bian := bianGua(ben, bs...)
@@ -154,7 +140,7 @@ func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 
 //StringToTime trans string to time
 func StringToTime(s string) time.Time {
-	t, err := time.ParseInLocation("2006-01-02 15:04", s, time.Local)
+	t, err := time.ParseInLocation(TimeFormat, s, time.Local)
 	if err != nil {
 		return time.Time{}
 	}
@@ -163,7 +149,7 @@ func StringToTime(s string) time.Time {
 }
 
 func timeToBian(t time.Time) int {
-	t, _ = time.ParseInLocation("2006-01-02 15:04", t.Format("2006-01-02 15:04"), t.Location())
+	t, _ = time.ParseInLocation(TimeFormat, t.Format(TimeFormat), t.Location())
 	bnum := t.Unix()
 	if bnum != 0 {
 		return int(bnum % 6)
@@ -189,7 +175,7 @@ func getGua(i int) string {
 	return gua[7]
 }
 
-//三数取卦数(1~8)
+// GetGua3Num 三数取卦数(1~8)
 func GetGua3Num(shang, zhong, xia int) int {
 	shangYao := shang % 2
 	zhongYao := zhong % 2
