@@ -21,12 +21,12 @@ var daYanList map[int]*DaYan
 func init() {
 	daYanList = make(map[int]*DaYan)
 
-	file_81shu, err := DataFiles.Open("data/81shu.csv")
+	file81shu, err := DataFiles.Open("data/81shu.csv")
 	if err != nil {
 		panic(err)
 	}
 
-	records, err := readData(file_81shu)
+	records, err := readData(file81shu)
 
 	if err != nil {
 		panic(err)
@@ -57,7 +57,7 @@ func init() {
 	}
 }
 
-//IsNotSuitableSex 女性不宜此数
+// IsNotSuitableGirl 女性不宜此数
 func (dy DaYan) IsNotSuitableGirl() bool {
 	return dy.NvMing == "凶"
 }

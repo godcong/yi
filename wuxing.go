@@ -1,8 +1,10 @@
 package yi
 
+type YingYang int
+
 const (
-	Yin  = 1
-	Yang = 0
+	Yin  YingYang = 1 //阴
+	Yang YingYang = 0 //阳
 )
 
 const (
@@ -22,29 +24,28 @@ const wuXingList string = "水木木火火土土金金水"
 
 //五行
 const (
-	MU int = iota + 1
-	HUO
-	TU
-	JIN
-	SHUI
+	MU   int = iota + 1 //木
+	HUO                 //火
+	TU                  //土
+	JIN                 //金
+	SHUI                //水
 )
 
-func YinYang(i int) int {
-	if i%2 == Yang {
+func ModeYinYang(i int) YingYang {
+	if i%2 == 0 {
 		return Yang
 	}
 	return Yin
 }
 
-func YinYangAttr(i int) string {
-	if YinYang(i) == Yang {
+func (yy YingYang) String() string {
+	if yy == 0 {
 		return YangStr
 	}
-
 	return YinStr
 }
 
-// GenerateThreeTalent 计算字符的三才属性
+// NumberWuXing 计算字符的三才属性
 // 1-2木：1为阳木，2为阴木
 // 3-4火：3为阳火，4为阴火
 // 5-6土：5为阳土，6为阴土
