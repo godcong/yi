@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-//源数据转换
+// 源数据转换
 func transFromJson(output interface{}) error {
 	file, err := os.OpenFile("yi.json", os.O_RDONLY, os.ModePerm)
 	if err != nil {
@@ -26,9 +26,9 @@ func transFromJson(output interface{}) error {
 	return nil
 }
 
-//Transfer 读取卦象json
+// Transfer 读取卦象json
 func Transfer() {
-	gx := make(map[string]*GuaXiang)
+	gx := make(map[string]*GuaXiangV1)
 	err := transFromJson(&gx)
 	if err != nil {
 		return

@@ -1,0 +1,3394 @@
+{
+  "乾乾": {
+    "ShangGua": "乾为天",
+    "ShangShu": 0,
+    "XiaGua": "乾为天",
+    "XiaShu": 0,
+    "JiXiong": "吉",
+    "GuaXiang": "乾",
+    "GuaMing": "乾为天",
+    "GuaYi": "元亨，利贞",
+    "GuaYun": "大哉乾元，万物资始，乃统天。云行雨施，品物流形。大明始终，六位时成，时乘六龙以御天。乾道变化，各正性命，保合大和，乃利贞。首出庶物，万国咸宁",
+    "XiangYue": "天行健，君子以自强不息",
+    "FuHao": "䷀",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "潜龙勿用，阳在下也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "见龙在田，德施普也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "终日乾乾，反复道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "或跃在渊，进无咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "飞龙在天，大人造也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "亢龙有悔，盈不可久也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "天德不可为首也",
+    "YongJiXiong": "-"
+  },
+  "乾兑": {
+    "ShangGua": "乾为天",
+    "ShangShu": 0,
+    "XiaGua": "兑为泽",
+    "XiaShu": 1,
+    "JiXiong": "",
+    "GuaXiang": "履",
+    "GuaMing": "天泽履",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "素履之往，独行愿也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "幽人贞吉，中不自乱也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "眇能视，不足以有明也。跛能履，不足以与行也。咥人之凶，位不当也。武人为于大君，志刚也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "愬愬终吉，志行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "凶",
+        "YaoYue": "夬履贞厉。位正当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "元吉在上，大有庆也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "乾坎": {
+    "ShangGua": "乾为天",
+    "ShangShu": 0,
+    "XiaGua": "坎为水",
+    "XiaShu": 5,
+    "JiXiong": "",
+    "GuaXiang": "讼",
+    "GuaMing": "天水讼",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "不永所事，讼不可长也；虽小有言，其辩明也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "不克讼，归而逋也；自下讼上，患至掇也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "食旧德，从上吉也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "复即命，渝安贞，吉，不失也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "讼，元吉，以中正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "以讼受服，亦不足敬也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "乾坤": {
+    "ShangGua": "乾为天",
+    "ShangShu": 0,
+    "XiaGua": "坤为地",
+    "XiaShu": 7,
+    "JiXiong": "",
+    "GuaXiang": "否",
+    "GuaMing": "天地否",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "拔茅贞吉，志在君也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "大人否，享，不乱群也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "包羞，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "有命无咎，志行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "大人之吉，位正当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "否终则倾，何可长也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "乾巽": {
+    "ShangGua": "乾为天",
+    "ShangShu": 0,
+    "XiaGua": "巽为风",
+    "XiaShu": 4,
+    "JiXiong": "",
+    "GuaXiang": "姤",
+    "GuaMing": "天风姤",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "系于金柅，柔道牵也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "包有鱼，义不及宾也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "其行次且，行未牵也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "无鱼之凶，远民也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "九五含章，中正也；有陨自天，志不舍命也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "姤其角，上穷吝也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "乾离": {
+    "ShangGua": "乾为天",
+    "ShangShu": 0,
+    "XiaGua": "离为火",
+    "XiaShu": 2,
+    "JiXiong": "",
+    "GuaXiang": "同人",
+    "GuaMing": "天火同人",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "出门同人，又谁咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "同人于宗，吝道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "伏戎于莽，敌刚也，三岁不兴，安行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "乘其墉，义弗克也，其吉，则困而反则也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "同人之先，以中直也。大师相遇，言相克也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "同人于郊，志未得也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "乾艮": {
+    "ShangGua": "乾为天",
+    "ShangShu": 0,
+    "XiaGua": "艮为山",
+    "XiaShu": 6,
+    "JiXiong": "",
+    "GuaXiang": "遁",
+    "GuaMing": "天山遁",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "遁尾之厉，不往何灾也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "执用黄牛，固志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "系遁之厉，有疾惫也。畜臣妾吉，不可大事也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "君子好遁，小人否也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "嘉遁贞吉，以正志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "肥遁无不利，无所疑也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "乾震": {
+    "ShangGua": "乾为天",
+    "ShangShu": 0,
+    "XiaGua": "震为雷",
+    "XiaShu": 3,
+    "JiXiong": "",
+    "GuaXiang": "无妄",
+    "GuaMing": "天雷无妄",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "无妄之往，得志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "不耕获，未富也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "行人得牛，邑人灾也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "可贞无咎，固有之也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "无妄之药，不可试也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "无妄之行，穷之灾也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "兑乾": {
+    "ShangGua": "兑为泽",
+    "ShangShu": 1,
+    "XiaGua": "乾为天",
+    "XiaShu": 0,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "泽天夬",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "不胜而往，咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "有戎勿恤，得中道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "君子夬夬，终无咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "其行次且，位不当也；闻言不信，聪不明也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "中行无咎，中未光也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "无号之凶，终不可长也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "兑兑": {
+    "ShangGua": "兑为泽",
+    "ShangShu": 1,
+    "XiaGua": "兑为泽",
+    "XiaShu": 1,
+    "JiXiong": "吉",
+    "GuaXiang": "丽泽，兑。君子以朋友讲习",
+    "GuaMing": "兑为泽",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "和兑之吉，行未疑也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "孚兑之吉，信志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "来兑之凶，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "九四之喜，有庆也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "凶",
+        "YaoYue": "孚于剥，位正当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "上六引兑，未光也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "兑坎": {
+    "ShangGua": "兑为泽",
+    "ShangShu": 1,
+    "XiaGua": "坎为水",
+    "XiaShu": 5,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "泽水困",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "入于幽谷，幽不明也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "困于洒食，中有庆也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "据于疾藜，乘刚也；入于其宫，不见其妻，不祥也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "来徐徐，志在下也。虽不当位，有与也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "凶",
+        "YaoYue": "劓刖，志未得也。乃徐有说，以中直也。利用祭祀，受福也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "困于葛藟，未当也。动悔有悔，吉行也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "兑坤": {
+    "ShangGua": "兑为泽",
+    "ShangShu": 1,
+    "XiaGua": "坤为地",
+    "XiaShu": 7,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "泽地萃",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "乃乱乃萃，其志乱也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "引吉无咎，中未变也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "往无咎，上巽也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "大吉无咎，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "萃有位，志未光也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "赍咨涕洟，未安上也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "兑巽": {
+    "ShangGua": "兑为泽",
+    "ShangShu": 1,
+    "XiaGua": "巽为风",
+    "XiaShu": 4,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "泽风大过",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "藉用白茅，柔在下也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "老夫女妻，过以相与也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "栋桡之凶，不可以有辅也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "栋隆之吉，不桡乎下也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "枯杨生花，何可久也。老妇土夫，亦可丑也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "过涉之凶，不可咎也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "兑离": {
+    "ShangGua": "兑为泽",
+    "ShangShu": 1,
+    "XiaGua": "离为火",
+    "XiaShu": 2,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "泽火革",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "巩用黄牛，不可以有为也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "己日革之，行有嘉也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "革言三就，又何之矣",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "改命之吉，信志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "大人虎变，其文炳也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "君子豹变，其文蔚也。小人革面，顺以从君也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "兑艮": {
+    "ShangGua": "兑为泽",
+    "ShangShu": 1,
+    "XiaGua": "艮为山",
+    "XiaShu": 6,
+    "JiXiong": "吉",
+    "GuaXiang": "山上有泽，咸。君子以虚受人",
+    "GuaMing": "泽山咸",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "咸其拇，志在外也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "虽凶居吉，顺不害也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "咸其股，亦不处也。志在随人，所执下也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "贞吉悔亡，未感害也。憧憧往来，未光大也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "咸其脢，志末也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "咸其辅颊舌，滕口说也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "兑震": {
+    "ShangGua": "兑为泽",
+    "ShangShu": 1,
+    "XiaGua": "震为雷",
+    "XiaShu": 3,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "泽雷随",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "官有渝，从正吉也；出门交有功，不失也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "系小子，弗兼与也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "系丈夫，志舍下也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "随有获，其义凶也。有孚在道，明功也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "孚于嘉吉，位正中也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "拘系之，上穷也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坎乾": {
+    "ShangGua": "坎为水",
+    "ShangShu": 5,
+    "XiaGua": "乾为天",
+    "XiaShu": 0,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "水天需",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "需于郊，不犯难行也；利用恒，无咎，未失常也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "需于沙，衍在中也；虽小有言，以终吉也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "需于泥，灾在外也。自我致寇，敬慎不败也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "需于血，顺以听也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "酒食贞吉，以中正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "不速之客，敬之终吉；虽不当位，未大失也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坎兑": {
+    "ShangGua": "坎为水",
+    "ShangShu": 5,
+    "XiaGua": "兑为泽",
+    "XiaShu": 1,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "水泽节",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "不出户庭，知通塞也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "不出门庭，失时极也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "不节之嗟，又谁咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "安节之亨，承上道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "甘节之吉，居位中也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "苦节贞凶，其道穷也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坎坎": {
+    "ShangGua": "坎为水",
+    "ShangShu": 5,
+    "XiaGua": "坎为水",
+    "XiaShu": 5,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "坎为水",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "习坎入坎，失道凶也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "求小得，未出中也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "来之坎坎，终无功也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "樽酒簋贰，刚柔际也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "坎不盈，中未大也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "上六失道，凶三岁也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坎坤": {
+    "ShangGua": "坎为水",
+    "ShangShu": 5,
+    "XiaGua": "坤为地",
+    "XiaShu": 7,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "水地比",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "比之初六，有它吉也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "比之自内，不自失也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "比之匪人，不亦伤乎",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "外比于贤，以从上也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "显比之吉，位正中也。舍逆取顺，失前禽也。邑人不诫，上使中也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "比之无首，无所终也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坎巽": {
+    "ShangGua": "坎为水",
+    "ShangShu": 5,
+    "XiaGua": "巽为风",
+    "XiaShu": 4,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "水风井",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "井泥不食，下也。旧井无禽，时舍也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "井谷射鲋，无与也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "井渫不食，行恻也。求王明，受福也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "井甃无咎，修井也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "寒泉之食，中正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "元吉在上，大成也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坎离": {
+    "ShangGua": "坎为水",
+    "ShangShu": 5,
+    "XiaGua": "离为火",
+    "XiaShu": 2,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "水火既济",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "曳其轮，义无咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "七日得，以中道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "三年克之，惫也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "终日戒，有所疑也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "东邻杀牛，不如西邻之时也。实受其福，吉大来也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "濡其首厉，何可久也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坎艮": {
+    "ShangGua": "坎为水",
+    "ShangShu": 5,
+    "XiaGua": "艮为山",
+    "XiaShu": 6,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "水山蹇",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "往蹇来誉，宜待也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "王臣蹇蹇，终无尤也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "往蹇来反，内喜之也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "往蹇来连，当位实也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "大蹇朋来，以中节也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "往蹇来硕，志在内也；利见大人，以从贵也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坎震": {
+    "ShangGua": "坎为水",
+    "ShangShu": 5,
+    "XiaGua": "震为雷",
+    "XiaShu": 3,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "水雷屯",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "虽盘桓，志行正也；以贵下贱，大得民也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "六二之难，乘刚也；十年乃字，反常也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "即鹿无虞，以纵禽也。君子舍之，往吝，穷也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "求而往，明也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "屯其膏，施未光也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "泣血涟如，何可长也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坤乾": {
+    "ShangGua": "坤为地",
+    "ShangShu": 7,
+    "XiaGua": "乾为天",
+    "XiaShu": 0,
+    "JiXiong": "",
+    "GuaXiang": "泰",
+    "GuaMing": "地天泰",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "拔茅征吉，志在外也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "包荒，得尚于中行，以光大也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "无往不复，天地际也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "翩翩不富，皆失实也；不戒以孚，中心愿也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "以祉元吉，中以行愿也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "城复于隍，其命乱也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坤兑": {
+    "ShangGua": "坤为地",
+    "ShangShu": 7,
+    "XiaGua": "兑为泽",
+    "XiaShu": 1,
+    "JiXiong": "",
+    "GuaXiang": "临",
+    "GuaMing": "地泽临",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "咸临贞吉，志行正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "咸临，吉无不利，未顺命也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "甘临，位不当也。即忧之，咎不长也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "至临无咎，位当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "大君之宜，行中之谓也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "敦临之吉，志在内也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坤坎": {
+    "ShangGua": "坤为地",
+    "ShangShu": 7,
+    "XiaGua": "坎为水",
+    "XiaShu": 5,
+    "JiXiong": "",
+    "GuaXiang": "师",
+    "GuaMing": "地水师",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "师出以律，失律凶也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "在师中吉，承天宠也，王三锡命，怀万邦也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "师或舆尸，大无功也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "左次无咎，未失常也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "长子帅师，以中行也；弟子舆尸，使不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "大君有命，以正功也；小人勿用，必乱邦也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坤坤": {
+    "ShangGua": "坤为地",
+    "ShangShu": 7,
+    "XiaGua": "坤为地",
+    "XiaShu": 7,
+    "JiXiong": "",
+    "GuaXiang": "坤",
+    "GuaMing": "坤为地",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "履霜坚冰，阴始凝也。驯致其道，至坚冰也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "六二之动，直以方也；不习无不利，地道光也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "含章可贞，以时发也；或从王事，知光大也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "括囊无咎，慎不害也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "黄裳元吉，文在中也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "龙战于野，其道穷也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坤巽": {
+    "ShangGua": "坤为地",
+    "ShangShu": 7,
+    "XiaGua": "巽为风",
+    "XiaShu": 4,
+    "JiXiong": "",
+    "GuaXiang": "升",
+    "GuaMing": "地风升",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "允升大吉，上合志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "九二之孚，有喜也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "升虚邑，无所疑也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "王用亨于岐山，顺事也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "贞吉升阶，大得志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "冥升在上，消不富也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坤离": {
+    "ShangGua": "坤为地",
+    "ShangShu": 7,
+    "XiaGua": "离为火",
+    "XiaShu": 2,
+    "JiXiong": "",
+    "GuaXiang": "明夷",
+    "GuaMing": "地火明夷",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "君子于行，义不食也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "六二之吉，顺以则也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "南狩之志，乃大得也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "入于左腹，获心意也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "箕子之贞，明不可息也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "初登于天，照四国也。后入于地，失则也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坤艮": {
+    "ShangGua": "坤为地",
+    "ShangShu": 7,
+    "XiaGua": "艮为山",
+    "XiaShu": 6,
+    "JiXiong": "吉",
+    "GuaXiang": "谦",
+    "GuaMing": "地山谦",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "地中有山，谦。君子以裒多益寡，称物平施",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "谦谦君子，卑以自牧也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "鸣谦贞吉，中心得也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "吉",
+        "YaoYue": "劳谦君子，万民服也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "无不利，撝谦，不违则也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "利用侵伐，征不服也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "鸣谦，志未得也；可用行师，征邑国也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "坤震": {
+    "ShangGua": "坤为地",
+    "ShangShu": 7,
+    "XiaGua": "震为雷",
+    "XiaShu": 3,
+    "JiXiong": "",
+    "GuaXiang": "复",
+    "GuaMing": "地雷复",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "不远之复，以修身也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "休复之吉，以下仁也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "频复之厉，义无咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "中行独复，以从道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "敦复无悔，中以自考也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "迷复之凶，反君道也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "巽乾": {
+    "ShangGua": "巽为风",
+    "ShangShu": 4,
+    "XiaGua": "乾为天",
+    "XiaShu": 0,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "风天小畜",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "复自道，其义吉也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "牵复在中，亦不自失也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "夫妻反目，不能正室也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "有孚惕出，上合志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "有孚挛如，不独富也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "既雨既处，德积载也。君子征凶，有所疑也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "巽兑": {
+    "ShangGua": "巽为风",
+    "ShangShu": 4,
+    "XiaGua": "兑为泽",
+    "XiaShu": 1,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "风泽中孚",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "初九虞吉，志未变也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "其子和之，中心愿也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "或鼓或罢，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "马匹亡，绝类上也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "有孚挛如，位正当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "翰音登于天，何可长也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "巽坎": {
+    "ShangGua": "巽为风",
+    "ShangShu": 4,
+    "XiaGua": "坎为水",
+    "XiaShu": 5,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "风水涣",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "初六之吉，顺也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "涣奔其机，得愿也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "涣其躬，志在外也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "涣其群，元吉，光大也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "王居无咎，正位也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "涣其血，远害也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "巽坤": {
+    "ShangGua": "巽为风",
+    "ShangShu": 4,
+    "XiaGua": "坤为地",
+    "XiaShu": 7,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "风地观",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "初六童观，小人道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "窥观女贞，亦可丑也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "观我生进退，未失道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "观国之光，尚宾也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "观我生，观民也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "观其生，志未平也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "巽巽": {
+    "ShangGua": "巽为风",
+    "ShangShu": 4,
+    "XiaGua": "巽为风",
+    "XiaShu": 4,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "巽为风",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "进退，志疑也。利武人之贞，志治也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "纷若之吉，得中也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "频巽之吝，志穷也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "田获三品，有功也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "九五之吉，位中正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "巽在床下，上穷也；丧其资斧，正乎凶也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "巽离": {
+    "ShangGua": "巽为风",
+    "ShangShu": 4,
+    "XiaGua": "离为火",
+    "XiaShu": 2,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "风火家人",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "闲有家，志未变也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "六二之吉，顺以巽也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "家人嗃嗃，未失也；妇子嘻嘻，失家节也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "富家大吉，顺在位也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "王假有家，交相爱也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "威如之吉，反身之谓也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "巽艮": {
+    "ShangGua": "巽为风",
+    "ShangShu": 4,
+    "XiaGua": "艮为山",
+    "XiaShu": 6,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "风山渐",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "小子之厉，义无咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "饮食衎衎，不素饱也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "夫征不复，离群丑也。妇孕不育，失其道也。利用御寇，顺相保也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "或得其桷，顺以巽也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "终莫之胜，吉，得所愿也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "其羽可用为仪，吉，不可乱也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "巽震": {
+    "ShangGua": "巽为风",
+    "ShangShu": 4,
+    "XiaGua": "震为雷",
+    "XiaShu": 3,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "风雷益",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "元吉无咎，下不厚事也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "或益之，自外来也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "益用凶事，固有之也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "告公从，以益志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "有孚惠心，勿问之矣。惠我德，大得志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "莫益之，偏辞也。或击之，自外来也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "离乾": {
+    "ShangGua": "离为火",
+    "ShangShu": 2,
+    "XiaGua": "乾为天",
+    "XiaShu": 0,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "火天大有",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "大有初九，无交害也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "大车以载，积中不败也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "公用亨于天子，小人害也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "匪其彭，无咎，明辩晰也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "厥孚交如，信以发志也；威如之吉，易而无备也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "大有上吉，自天祐也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "离兑": {
+    "ShangGua": "离为火",
+    "ShangShu": 2,
+    "XiaGua": "兑为泽",
+    "XiaShu": 1,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "火泽睽",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "见恶人，以辟咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "遇主于巷，未失道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "见舆曳，位不当也；无初有终，遇刚也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "交孚无咎，志行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "厥宗噬肤，往有庆也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "遇雨之吉，群疑亡也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "离坎": {
+    "ShangGua": "离为火",
+    "ShangShu": 2,
+    "XiaGua": "坎为水",
+    "XiaShu": 5,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "火水未济",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "濡其尾，亦不知极也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "九二贞吉，中以行正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "未济征凶，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "贞吉悔亡，志行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "君子之光，其晖吉也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "饮酒濡首，亦不知节也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "离坤": {
+    "ShangGua": "离为火",
+    "ShangShu": 2,
+    "XiaGua": "坤为地",
+    "XiaShu": 7,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "火地晋",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "晋如摧如，独行正也。裕无咎，未受命也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "受之介福，以中正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "众允之，志上行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "鼫鼠贞厉，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "失得勿恤，往有庆也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "维用伐邑，道未光也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "离巽": {
+    "ShangGua": "离为火",
+    "ShangShu": 2,
+    "XiaGua": "巽为风",
+    "XiaShu": 4,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "火风鼎",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "鼎颠趾，未悖也。利出否，以从贵也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "鼎有实，慎所之也。我仇有疾，终无尤也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "鼎耳革，失其义也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "覆公餗，信如何也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "鼎黄耳，中以为实也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉 ",
+        "YaoYue": "玉铉在上，刚柔节也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "离离": {
+    "ShangGua": "离为火",
+    "ShangShu": 2,
+    "XiaGua": "离为火",
+    "XiaShu": 2,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "离为火",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "履错之敬，以辟咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "黄离元吉，得中道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "日昃之离，何可久也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "突如其来如，无所容也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "六五之吉，离王公也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉 ",
+        "YaoYue": "王用出征，以正邦也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "离艮": {
+    "ShangGua": "离为火",
+    "ShangShu": 2,
+    "XiaGua": "艮为山",
+    "XiaShu": 6,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "火山旅",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "旅琐琐，志穷灾也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "得童仆贞，终无尤也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "旅焚其次，亦以伤矣。以旅与下，其义丧也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "旅于处，未得位也。得其资斧，心未快也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "终以誉命，上逮也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "以旅在上，其义焚也。丧牛于易，终莫之闻也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "离震": {
+    "ShangGua": "离为火",
+    "ShangShu": 2,
+    "XiaGua": "震为雷",
+    "XiaShu": 3,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "火雷噬嗑",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "屦校灭趾，不行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "噬肤灭鼻，乘刚也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "遇毒，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "利艰贞吉，未光也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "贞厉无咎，得当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "何校灭耳，聪不明也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "艮乾": {
+    "ShangGua": "艮为山",
+    "ShangShu": 6,
+    "XiaGua": "乾为天",
+    "XiaShu": 0,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "山天大畜",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "有厉利已，不犯灾也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "舆说輹，中无尤也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "利有攸往，上合志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "六四元吉，有喜也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "六五之吉，有庆也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "何天之衢，道大行也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "艮兑": {
+    "ShangGua": "艮为山",
+    "ShangShu": 6,
+    "XiaGua": "兑为泽",
+    "XiaShu": 1,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "山泽损",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "已事遄往，尚合志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "九二利贞，中以为志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "一人行，三则疑也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "损其疾，亦可喜也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "六五元吉，自上佑也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "弗损益之，大得志也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "艮坎": {
+    "ShangGua": "艮为山",
+    "ShangShu": 6,
+    "XiaGua": "坎为水",
+    "XiaShu": 5,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "山水蒙",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "利用刑人，以正法也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "子克家，刚柔接也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "勿用娶女，行不顺也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "困蒙之吝，独远实也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "童蒙之吉，顺以巽也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "利用御寇，上下顺也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "艮坤": {
+    "ShangGua": "艮为山",
+    "ShangShu": 6,
+    "XiaGua": "坤为地",
+    "XiaShu": 7,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "山地剥",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "剥床以足，以灭下也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "剥床以辨，未有与也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "剥之无咎，失上下也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "剥床以肤，切近灾也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "以宫人宠，终无尤也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "君子得舆，民所载也；小人剥庐，终不可用也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "艮巽": {
+    "ShangGua": "艮为山",
+    "ShangShu": 6,
+    "XiaGua": "巽为风",
+    "XiaShu": 4,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "山风蛊",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "干父之蛊，意承考也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "干母之蛊，得中道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "干父之蛊，终无咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "裕父之蛊，往未得也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "干父之蛊，承以德也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "不事王侯，志可则也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "艮离": {
+    "ShangGua": "艮为山",
+    "ShangShu": 6,
+    "XiaGua": "离为火",
+    "XiaShu": 2,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "山火贲",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "舍车而徒，义弗乘也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "贲其须，与上兴也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "吉",
+        "YaoYue": "永贞之吉，终莫之陵也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "六四当位疑也。匪寇婚媾，终无尤也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "六五之吉，有喜也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "白贲无咎，上得志也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "艮艮": {
+    "ShangGua": "艮为山",
+    "ShangShu": 6,
+    "XiaGua": "艮为山",
+    "XiaShu": 6,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "艮为山",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "艮其趾，未失正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "不拯其随，未退听也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "艮其限，危薰心也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "艮其身，止诸躬也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "艮其辅，以中正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "敦艮之吉，以厚终也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "艮震": {
+    "ShangGua": "艮为山",
+    "ShangShu": 6,
+    "XiaGua": "震为雷",
+    "XiaShu": 3,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "山雷颐",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "观我朵颐，亦不足贵也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "六二征凶，行失类也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "十年勿用，道大悖也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "颠颐之吉，上施光也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "居贞之吉，顺以从上也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "由颐厉吉，大有庆也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "震乾": {
+    "ShangGua": "震为雷",
+    "ShangShu": 3,
+    "XiaGua": "乾为天",
+    "XiaShu": 0,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "雷天大壮",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "壮于趾，其孚穷也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "九二贞吉，以中也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "小人用壮，君子罔也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "藩决不羸，尚往也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "凶",
+        "YaoYue": "丧羊于易，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "不能退，不能遂，不详也；艰则吉，咎不长也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "震兑": {
+    "ShangGua": "震为雷",
+    "ShangShu": 3,
+    "XiaGua": "兑为泽",
+    "XiaShu": 1,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "雷泽归妹",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "归妹以娣，以恒也。跛能履吉，相承也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "利幽人之贞，未变常也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "归妹以须，未当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "愆期之志，有待而行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "帝乙归妹，不如其娣之袂良也。其位在中，以贵行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "上六无实，承虚筐也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "震坎": {
+    "ShangGua": "震为雷",
+    "ShangShu": 3,
+    "XiaGua": "坎为水",
+    "XiaShu": 5,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "雷水解",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "刚柔之际，义无咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "九二贞吉，得中道也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "负且乘，亦可丑也；自我致戎，又谁咎也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "解而拇，未当位也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "君子有解，小人退也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "吉",
+        "YaoYue": "公用射隼，以解悖也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "震坤": {
+    "ShangGua": "震为雷",
+    "ShangShu": 3,
+    "XiaGua": "坤为地",
+    "XiaShu": 7,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "雷地豫",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "初六鸣豫，志穷凶也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "不终日，贞吉，以中正也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "盱豫有悔，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "吉",
+        "YaoYue": "由豫大有得。志大行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "凶",
+        "YaoYue": "六五贞疾，乘刚也。恒不死，中未亡也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "平",
+        "YaoYue": "冥豫在上，何可长也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "震巽": {
+    "ShangGua": "震为雷",
+    "ShangShu": 3,
+    "XiaGua": "巽为风",
+    "XiaShu": 4,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "雷风恒",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "浚恒之凶，始求深也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "九二悔亡，能久中也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "不恒其德，无所容也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "久非其位，安得禽也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "凶",
+        "YaoYue": "妇人贞吉，从一而终也。夫子制义，从妇凶也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "振恒在上，大无功也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "震离": {
+    "ShangGua": "震为雷",
+    "ShangShu": 3,
+    "XiaGua": "离为火",
+    "XiaShu": 2,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "雷火丰",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "平",
+        "YaoYue": "虽旬无咎，过旬灾也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "吉",
+        "YaoYue": "有孚发若，信以发志也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "平",
+        "YaoYue": "丰其沛，不可大事也。折其右肱，终不可用也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "丰其蔀，位不当也。日中见斗，幽不明也。遇其夷主，吉，行也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "吉",
+        "YaoYue": "六五之吉，有庆也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "丰其屋，天际翔也。窥其户，阒其无人，自藏也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "震艮": {
+    "ShangGua": "震为雷",
+    "ShangShu": 3,
+    "XiaGua": "艮为山",
+    "XiaShu": 6,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "雷山小过",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "凶",
+        "YaoYue": "飞鸟以凶，不可如何也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "平",
+        "YaoYue": "不及其君，臣不可过也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "从或戕之，凶如何也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "平",
+        "YaoYue": "弗过遇之，位不当也。往厉必戒，终不可长也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "平",
+        "YaoYue": "密云不雨，已上也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "弗遇过之，已亢也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  },
+  "震震": {
+    "ShangGua": "震为雷",
+    "ShangShu": 3,
+    "XiaGua": "震为雷",
+    "XiaShu": 3,
+    "JiXiong": "",
+    "GuaXiang": "",
+    "GuaMing": "震为雷",
+    "GuaYi": "",
+    "GuaYun": "",
+    "XiangYue": "",
+    "FuHao": "",
+    "Yaos": [
+      {
+        "Index": 0,
+        "JiXiong": "吉",
+        "YaoYue": "震来虩虩，恐致福也。笑言哑哑，后有则也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 1,
+        "JiXiong": "凶",
+        "YaoYue": "震来厉，乘刚也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 2,
+        "JiXiong": "凶",
+        "YaoYue": "震苏苏，位不当也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 3,
+        "JiXiong": "凶",
+        "YaoYue": "震遂泥，未光也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 4,
+        "JiXiong": "凶",
+        "YaoYue": "震往来厉，危行也。其事在中，大无丧也",
+        "YaoYi": ""
+      },
+      {
+        "Index": 5,
+        "JiXiong": "凶",
+        "YaoYue": "震索索，未得中也。虽凶无咎，畏邻戒也",
+        "YaoYi": ""
+      }
+    ],
+    "Yong": "",
+    "YongJiXiong": ""
+  }
+}

@@ -54,13 +54,13 @@ var gua = [...]string{
 	QianGua: "乾",
 }
 
-//Yi 周易卦象
+// Yi 周易卦象
 type Yi struct {
-	gua     [GuaMax]*GuaXiang
+	gua     [GuaMax]*GuaXiangV1
 	bianShu []int
 }
 
-func (y *Yi) Get(m GuaMing) *GuaXiang {
+func (y *Yi) Get(m GuaMing) *GuaXiangV1 {
 
 	if m < 0 && m >= GuaMax {
 		return nil
@@ -69,7 +69,7 @@ func (y *Yi) Get(m GuaMing) *GuaXiang {
 	return y.gua[m]
 }
 
-//TimeQiGua
+// TimeQiGua
 func TimeQiGua(xia int, shang int, t time.Time) *Yi {
 	ben := benGua(shang, xia)
 	bs := timeToBian(t)
@@ -83,7 +83,7 @@ func TimeQiGua(xia int, shang int, t time.Time) *Yi {
 	cuo := cuoGua(ben)
 	zong := zongGua(ben)
 	return &Yi{
-		gua: [GuaMax]*GuaXiang{
+		gua: [GuaMax]*GuaXiangV1{
 			BenGua:  ben,
 			BianGua: bian,
 			HuGua:   hu,
@@ -102,7 +102,7 @@ func getBianShu(bs ...int) int {
 	return bNum
 }
 
-//NumberQiGua
+// NumberQiGua
 func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 	ben := benGua(shang, xia)
 	bian := bianGua(ben, bs...)
@@ -115,7 +115,7 @@ func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 	cuo := cuoGua(ben)
 	zong := zongGua(ben)
 	return &Yi{
-		gua: [GuaMax]*GuaXiang{
+		gua: [GuaMax]*GuaXiangV1{
 			BenGua:  ben,
 			BianGua: bian,
 			HuGua:   hu,
@@ -126,7 +126,7 @@ func NumberQiGua(xia int, shang int, bs ...int) *Yi {
 	}
 }
 
-//StringToTime trans string to time
+// StringToTime trans string to time
 func StringToTime(s string) time.Time {
 	t, err := time.ParseInLocation("2006-01-02 15:04", s, time.Local)
 	if err != nil {
@@ -145,12 +145,12 @@ func timeToBian(t time.Time) int {
 	return 0
 }
 
-//set 设定卦象
-func (y *Yi) set(idx int, xiang *GuaXiang) {
+// set 设定卦象
+func (y *Yi) set(idx int, xiang *GuaXiangV1) {
 	y.gua[idx] = xiang
 }
 
-//BianYao 变卦，爻
+// BianYao 变卦，爻
 func (y *Yi) BianYao() int {
 	return bianYao(y.bianShu...)
 }
@@ -167,7 +167,7 @@ func getGua(i int) string {
 	return gua[7]
 }
 
-//取爻
+// 取爻
 func getYao(i int) int {
 	if i = i % 6; i != 0 {
 		return i - 1
@@ -175,8 +175,8 @@ func getYao(i int) int {
 	return 5
 }
 
-//本卦
-func benGua(x, m int) *GuaXiang {
+// 本卦
+func benGua(x, m int) *GuaXiangV1 {
 	bg := strings.Join([]string{getGua(x), getGua(m)}, "")
 	gx := GetGuaXiang()
 	if v, b := gx[bg]; b {
@@ -185,8 +185,8 @@ func benGua(x, m int) *GuaXiang {
 	return nil
 }
 
-//变卦
-func bianGua(ben *GuaXiang, b ...int) *GuaXiang {
+// 变卦
+func bianGua(ben *GuaXiangV1, b ...int) *GuaXiangV1 {
 	gx := GetGuaXiang()
 	bz := bianYao(b...)
 	sg := gua[ben.ShangShu]
@@ -202,7 +202,7 @@ func bianGua(ben *GuaXiang, b ...int) *GuaXiang {
 	return gx[gua]
 }
 
-//变
+// 变
 func bian(gua, bian int) int {
 	idx := 1 << (2 - uint(bian))
 	if gua&idx == 0 {
@@ -213,7 +213,7 @@ func bian(gua, bian int) int {
 	return gua
 }
 
-//互
+// 互
 func hu(shang, xia int) int {
 	huXia := 0
 	er := 1 << 1
@@ -231,7 +231,7 @@ func hu(shang, xia int) int {
 	return huXia
 }
 
-//交
+// 交
 func jiao(shang, xia int) int {
 	jiaoShang := 0
 	san := 1 << 0
@@ -252,14 +252,14 @@ func jiao(shang, xia int) int {
 	return jiaoShang
 }
 
-//错
+// 错
 func cuo(gua int) int {
 	gua ^= 0x7
 	return gua
 }
 
-//错卦
-func cuoGua(ben *GuaXiang) *GuaXiang {
+// 错卦
+func cuoGua(ben *GuaXiangV1) *GuaXiangV1 {
 	gx := GetGuaXiang()
 	sg := gua[cuo(ben.ShangShu)]
 	xg := gua[cuo(ben.XiaShu)]
@@ -267,7 +267,7 @@ func cuoGua(ben *GuaXiang) *GuaXiang {
 	return gx[newGua]
 }
 
-//综
+// 综
 func zong(shang, xia int) (int, int) {
 	zShang := 0
 	zXia := 0
@@ -292,15 +292,15 @@ func zong(shang, xia int) (int, int) {
 	return zShang, zXia
 }
 
-//综卦
-func zongGua(ben *GuaXiang) *GuaXiang {
+// 综卦
+func zongGua(ben *GuaXiangV1) *GuaXiangV1 {
 	sg, xg := zong(ben.ShangShu, ben.XiaShu)
 	newGua := strings.Join([]string{gua[sg], gua[xg]}, "")
 	return gx[newGua]
 }
 
-//互卦
-func huGua(ben *GuaXiang) *GuaXiang {
+// 互卦
+func huGua(ben *GuaXiangV1) *GuaXiangV1 {
 	bg := strings.Join([]string{getGua(jiao(ben.ShangShu, ben.XiaShu)), getGua(hu(ben.ShangShu, ben.XiaShu))}, "")
 	gx := GetGuaXiang()
 	if v, b := gx[bg]; b {

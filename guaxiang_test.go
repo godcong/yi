@@ -1,11 +1,13 @@
 package yi
 
 import (
+	"encoding/json"
+	"os"
 	"testing"
 )
 
-func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
-	gx["乾坤"] = &GuaXiang{
+func qian(gx map[string]*GuaXiangV1) map[string]*GuaXiangV1 {
+	gx["乾坤"] = &GuaXiangV1{
 		ShangGua:        "乾为天",
 		ShangShu:        0x00,
 		XiaGua:          "坤为地",
@@ -28,7 +30,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["乾艮"] = &GuaXiang{
+	gx["乾艮"] = &GuaXiangV1{
 		ShangGua:        "乾为天",
 		ShangShu:        0x00,
 		XiaGua:          "艮为山",
@@ -50,7 +52,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		Yong:            "",
 		YongJiXiong:     "",
 	}
-	gx["乾坎"] = &GuaXiang{
+	gx["乾坎"] = &GuaXiangV1{
 		ShangGua:        "乾为天",
 		ShangShu:        0x00,
 		XiaGua:          "坎为水",
@@ -73,7 +75,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["乾巽"] = &GuaXiang{
+	gx["乾巽"] = &GuaXiangV1{
 		ShangGua:        "乾为天",
 		ShangShu:        0x00,
 		XiaGua:          "巽为风",
@@ -101,7 +103,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["乾震"] = &GuaXiang{
+	gx["乾震"] = &GuaXiangV1{
 		ShangGua:        "乾为天",
 		ShangShu:        0x00,
 		XiaGua:          "震为雷",
@@ -122,7 +124,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "平",
 	}
 
-	gx["乾离"] = &GuaXiang{
+	gx["乾离"] = &GuaXiangV1{
 		ShangGua:        "乾为天",
 		ShangShu:        0x00,
 		XiaGua:          "离为火",
@@ -150,7 +152,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["乾兑"] = &GuaXiang{
+	gx["乾兑"] = &GuaXiangV1{
 		ShangGua:        "乾为天",
 		ShangShu:        0x00,
 		XiaGua:          "兑为泽",
@@ -173,7 +175,7 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["乾乾"] = &GuaXiang{
+	gx["乾乾"] = &GuaXiangV1{
 		ShangGua:        "乾为天",
 		ShangShu:        0x00,
 		XiaGua:          "乾为天",
@@ -204,9 +206,9 @@ func qian(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
 
-func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
+func kun(gx map[string]*GuaXiangV1) map[string]*GuaXiangV1 {
 
-	gx["坤坤"] = &GuaXiang{
+	gx["坤坤"] = &GuaXiangV1{
 		ShangGua:        "坤为地",
 		ShangShu:        0x07,
 		XiaGua:          "坤为地",
@@ -234,7 +236,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["坤艮"] = &GuaXiang{
+	gx["坤艮"] = &GuaXiangV1{
 		ShangGua:        "坤为地",
 		ShangShu:        0x07,
 		XiaGua:          "艮为山",
@@ -262,7 +264,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["坤坎"] = &GuaXiang{
+	gx["坤坎"] = &GuaXiangV1{
 		ShangGua:        "坤为地",
 		ShangShu:        0x07,
 		XiaGua:          "坎为水",
@@ -283,7 +285,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "平",
 	}
 
-	gx["坤巽"] = &GuaXiang{
+	gx["坤巽"] = &GuaXiangV1{
 		ShangGua:        "坤为地",
 		ShangShu:        0x07,
 		XiaGua:          "巽为风",
@@ -304,7 +306,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "平",
 	}
 
-	gx["坤震"] = &GuaXiang{
+	gx["坤震"] = &GuaXiangV1{
 		ShangGua:        "坤为地",
 		ShangShu:        0x07,
 		XiaGua:          "震为雷",
@@ -332,7 +334,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["坤离"] = &GuaXiang{
+	gx["坤离"] = &GuaXiangV1{
 		ShangGua:        "坤为地",
 		ShangShu:        0x07,
 		XiaGua:          "离为火",
@@ -353,7 +355,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "凶",
 	}
 
-	gx["坤兑"] = &GuaXiang{
+	gx["坤兑"] = &GuaXiangV1{
 		ShangGua:        "坤为地",
 		ShangShu:        0x07,
 		XiaGua:          "兑为泽",
@@ -374,7 +376,7 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "吉",
 	}
 
-	gx["坤乾"] = &GuaXiang{
+	gx["坤乾"] = &GuaXiangV1{
 		ShangGua:        "坤为地",
 		ShangShu:        0x07,
 		XiaGua:          "乾为天",
@@ -397,8 +399,8 @@ func kun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
 
-func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
-	gx["艮坤"] = &GuaXiang{
+func gen(gx map[string]*GuaXiangV1) map[string]*GuaXiangV1 {
+	gx["艮坤"] = &GuaXiangV1{
 		ShangGua:        "艮为山",
 		ShangShu:        0x06,
 		XiaGua:          "坤为地",
@@ -426,7 +428,7 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["艮艮"] = &GuaXiang{
+	gx["艮艮"] = &GuaXiangV1{
 		ShangGua:        "艮为山",
 		ShangShu:        0x06,
 		XiaGua:          "艮为山",
@@ -446,7 +448,7 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "吉",
 	}
 
-	gx["艮坎"] = &GuaXiang{
+	gx["艮坎"] = &GuaXiangV1{
 		ShangGua:        "艮为山",
 		ShangShu:        0x06,
 		XiaGua:          "坎为水",
@@ -465,7 +467,7 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYao:        "利用御寇，上下顺也",
 		ShangYaoJiXiong: "平",
 	}
-	gx["艮巽"] = &GuaXiang{
+	gx["艮巽"] = &GuaXiangV1{
 		ShangGua:        "艮为山",
 		ShangShu:        0x06,
 		XiaGua:          "巽为风",
@@ -484,7 +486,7 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYao:        "不事王侯，志可则也",
 		ShangYaoJiXiong: "平",
 	}
-	gx["艮震"] = &GuaXiang{
+	gx["艮震"] = &GuaXiangV1{
 		ShangGua:        "艮为山",
 		ShangShu:        0x06,
 		XiaGua:          "震为雷",
@@ -504,7 +506,7 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "吉",
 	}
 
-	gx["艮离"] = &GuaXiang{
+	gx["艮离"] = &GuaXiangV1{
 		ShangGua:        "艮为山",
 		ShangShu:        0x06,
 		XiaGua:          "离为火",
@@ -524,7 +526,7 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "平",
 	}
 
-	gx["艮兑"] = &GuaXiang{
+	gx["艮兑"] = &GuaXiangV1{
 		ShangGua:        "艮为山",
 		ShangShu:        0x06,
 		XiaGua:          "兑为泽",
@@ -543,7 +545,7 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYao:        "弗损益之，大得志也",
 		ShangYaoJiXiong: "吉",
 	}
-	gx["艮乾"] = &GuaXiang{
+	gx["艮乾"] = &GuaXiangV1{
 		ShangGua:        "艮为山",
 		ShangShu:        0x06,
 		XiaGua:          "乾为天",
@@ -563,7 +565,7 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "吉",
 	}
 
-	gx["坎坤"] = &GuaXiang{
+	gx["坎坤"] = &GuaXiangV1{
 		ShangGua:        "坎为水",
 		ShangShu:        0x05,
 		XiaGua:          "坤为地",
@@ -585,9 +587,9 @@ func gen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
 
-func kan(gx map[string]*GuaXiang) map[string]*GuaXiang {
+func kan(gx map[string]*GuaXiangV1) map[string]*GuaXiangV1 {
 
-	gx["坎艮"] = &GuaXiang{
+	gx["坎艮"] = &GuaXiangV1{
 		ShangGua:        "坎为水",
 		ShangShu:        0x05,
 		XiaGua:          "艮为山",
@@ -607,7 +609,7 @@ func kan(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "吉",
 	}
 
-	gx["坎坎"] = &GuaXiang{
+	gx["坎坎"] = &GuaXiangV1{
 		ShangGua:        "坎为水",
 		ShangShu:        0x05,
 		XiaGua:          "坎为水",
@@ -626,7 +628,7 @@ func kan(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYao:        "上六失道，凶三岁也",
 		ShangYaoJiXiong: "凶",
 	}
-	gx["坎巽"] = &GuaXiang{
+	gx["坎巽"] = &GuaXiangV1{
 		ShangGua:        "坎为水",
 		ShangShu:        0x05,
 		XiaGua:          "巽为风",
@@ -646,7 +648,7 @@ func kan(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "吉",
 		Yong:            "",
 	}
-	gx["坎震"] = &GuaXiang{
+	gx["坎震"] = &GuaXiangV1{
 		ShangGua:        "坎为水",
 		ShangShu:        0x05,
 		XiaGua:          "震为雷",
@@ -667,7 +669,7 @@ func kan(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		Yong:            "",
 	}
 
-	gx["坎离"] = &GuaXiang{
+	gx["坎离"] = &GuaXiangV1{
 		ShangGua:        "坎为水",
 		ShangShu:        0x05,
 		XiaGua:          "离为火",
@@ -689,7 +691,7 @@ func kan(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["坎兑"] = &GuaXiang{
+	gx["坎兑"] = &GuaXiangV1{
 		ShangGua:        "坎为水",
 		ShangShu:        0x05,
 		XiaGua:          "兑为泽",
@@ -711,7 +713,7 @@ func kan(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["坎乾"] = &GuaXiang{
+	gx["坎乾"] = &GuaXiangV1{
 		ShangGua:        "坎为水",
 		ShangShu:        0x05,
 		XiaGua:          "乾为天",
@@ -735,9 +737,9 @@ func kan(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
 
-func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
+func xun(gx map[string]*GuaXiangV1) map[string]*GuaXiangV1 {
 
-	gx["巽坤"] = &GuaXiang{
+	gx["巽坤"] = &GuaXiangV1{
 		ShangGua:        "巽为风",
 		ShangShu:        0x04,
 		XiaGua:          "坤为地",
@@ -757,7 +759,7 @@ func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "平",
 	}
 
-	gx["巽艮"] = &GuaXiang{
+	gx["巽艮"] = &GuaXiangV1{
 		ShangGua:        "巽为风",
 		ShangShu:        0x04,
 		XiaGua:          "艮为山",
@@ -777,7 +779,7 @@ func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "吉",
 	}
 
-	gx["巽坎"] = &GuaXiang{
+	gx["巽坎"] = &GuaXiangV1{
 		ShangGua:        "巽为风",
 		ShangShu:        0x04,
 		XiaGua:          "坎为水",
@@ -796,7 +798,7 @@ func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYao:        "涣其血，远害也",
 		ShangYaoJiXiong: "平",
 	}
-	gx["巽巽"] = &GuaXiang{
+	gx["巽巽"] = &GuaXiangV1{
 		ShangGua:        "巽为风",
 		ShangShu:        0x04,
 		XiaGua:          "巽为风",
@@ -815,7 +817,7 @@ func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYao:        "巽在床下，上穷也；丧其资斧，正乎凶也",
 		ShangYaoJiXiong: "凶",
 	}
-	gx["巽震"] = &GuaXiang{
+	gx["巽震"] = &GuaXiangV1{
 		ShangGua:        "巽为风",
 		ShangShu:        0x04,
 		XiaGua:          "震为雷",
@@ -835,7 +837,7 @@ func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "凶",
 	}
 
-	gx["巽离"] = &GuaXiang{
+	gx["巽离"] = &GuaXiangV1{
 		ShangGua:        "巽为风",
 		ShangShu:        0x04,
 		XiaGua:          "离为火",
@@ -855,7 +857,7 @@ func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "吉",
 	}
 
-	gx["巽兑"] = &GuaXiang{
+	gx["巽兑"] = &GuaXiangV1{
 		ShangGua:        "巽为风",
 		ShangShu:        0x04,
 		XiaGua:          "兑为泽",
@@ -874,7 +876,7 @@ func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYao:        "翰音登于天，何可长也",
 		ShangYaoJiXiong: "凶",
 	}
-	gx["巽乾"] = &GuaXiang{
+	gx["巽乾"] = &GuaXiangV1{
 		ShangGua:        "巽为风",
 		ShangShu:        0x04,
 		XiaGua:          "乾为天",
@@ -898,9 +900,9 @@ func xun(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
 
-func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
+func zhen(gx map[string]*GuaXiangV1) map[string]*GuaXiangV1 {
 
-	gx["震坤"] = &GuaXiang{
+	gx["震坤"] = &GuaXiangV1{
 		ShangGua:        "震为雷",
 		ShangShu:        0x03,
 		XiaGua:          "坤为地",
@@ -922,7 +924,7 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["震艮"] = &GuaXiang{
+	gx["震艮"] = &GuaXiangV1{
 		ShangGua:        "震为雷",
 		ShangShu:        0x03,
 		XiaGua:          "艮为山",
@@ -944,7 +946,7 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["震坎"] = &GuaXiang{
+	gx["震坎"] = &GuaXiangV1{
 		ShangGua:        "震为雷",
 		ShangShu:        0x03,
 		XiaGua:          "坎为水",
@@ -965,7 +967,7 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		Yong:            "",
 		YongJiXiong:     "",
 	}
-	gx["震巽"] = &GuaXiang{
+	gx["震巽"] = &GuaXiangV1{
 		ShangGua:        "震为雷",
 		ShangShu:        0x03,
 		XiaGua:          "巽为风",
@@ -986,7 +988,7 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		Yong:            "",
 		YongJiXiong:     "",
 	}
-	gx["震震"] = &GuaXiang{
+	gx["震震"] = &GuaXiangV1{
 		ShangGua:        "震为雷",
 		ShangShu:        0x03,
 		XiaGua:          "震为雷",
@@ -1008,7 +1010,7 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["震离"] = &GuaXiang{
+	gx["震离"] = &GuaXiangV1{
 		ShangGua:        "震为雷",
 		ShangShu:        0x03,
 		XiaGua:          "离为火",
@@ -1030,7 +1032,7 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["震兑"] = &GuaXiang{
+	gx["震兑"] = &GuaXiangV1{
 		ShangGua:        "震为雷",
 		ShangShu:        0x03,
 		XiaGua:          "兑为泽",
@@ -1051,7 +1053,7 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		Yong:            "",
 		YongJiXiong:     "",
 	}
-	gx["震乾"] = &GuaXiang{
+	gx["震乾"] = &GuaXiangV1{
 		ShangGua:        "震为雷",
 		ShangShu:        0x03,
 		XiaGua:          "乾为天",
@@ -1075,9 +1077,9 @@ func zhen(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
 
-func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
+func li(gx map[string]*GuaXiangV1) map[string]*GuaXiangV1 {
 
-	gx["离坤"] = &GuaXiang{
+	gx["离坤"] = &GuaXiangV1{
 		ShangGua:        "离为火",
 		ShangShu:        0x02,
 		XiaGua:          "坤为地",
@@ -1099,7 +1101,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["离艮"] = &GuaXiang{
+	gx["离艮"] = &GuaXiangV1{
 		ShangGua:        "离为火",
 		ShangShu:        0x02,
 		XiaGua:          "艮为山",
@@ -1121,7 +1123,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["离坎"] = &GuaXiang{
+	gx["离坎"] = &GuaXiangV1{
 		ShangGua:        "离为火",
 		ShangShu:        0x02,
 		XiaGua:          "坎为水",
@@ -1143,7 +1145,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["离巽"] = &GuaXiang{
+	gx["离巽"] = &GuaXiangV1{
 		ShangGua:        "离为火",
 		ShangShu:        0x02,
 		XiaGua:          "巽为风",
@@ -1171,7 +1173,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["离震"] = &GuaXiang{
+	gx["离震"] = &GuaXiangV1{
 		ShangGua:        "离为火",
 		ShangShu:        0x02,
 		XiaGua:          "震为雷",
@@ -1193,7 +1195,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["离离"] = &GuaXiang{
+	gx["离离"] = &GuaXiangV1{
 		ShangGua:        "离为火",
 		ShangShu:        0x02,
 		XiaGua:          "离为火",
@@ -1215,7 +1217,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["离兑"] = &GuaXiang{
+	gx["离兑"] = &GuaXiangV1{
 		ShangGua:        "离为火",
 		ShangShu:        0x02,
 		XiaGua:          "兑为泽",
@@ -1237,7 +1239,7 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["离乾"] = &GuaXiang{
+	gx["离乾"] = &GuaXiangV1{
 		ShangGua:        "离为火",
 		ShangShu:        0x02,
 		XiaGua:          "乾为天",
@@ -1267,8 +1269,8 @@ func li(gx map[string]*GuaXiang) map[string]*GuaXiang {
 	return gx
 }
 
-func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
-	gx["兑坤"] = &GuaXiang{
+func dui(gx map[string]*GuaXiangV1) map[string]*GuaXiangV1 {
+	gx["兑坤"] = &GuaXiangV1{
 		ShangGua:        "兑为泽",
 		ShangShu:        0x01,
 		XiaGua:          "坤为地",
@@ -1290,7 +1292,7 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["兑艮"] = &GuaXiang{
+	gx["兑艮"] = &GuaXiangV1{
 		ShangGua:        "兑为泽",
 		ShangShu:        0x01,
 		XiaGua:          "艮为山",
@@ -1318,7 +1320,7 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["兑坎"] = &GuaXiang{
+	gx["兑坎"] = &GuaXiangV1{
 		ShangGua:        "兑为泽",
 		ShangShu:        0x01,
 		XiaGua:          "坎为水",
@@ -1338,7 +1340,7 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "平",
 	}
 
-	gx["兑巽"] = &GuaXiang{
+	gx["兑巽"] = &GuaXiangV1{
 		ShangGua:        "兑为泽",
 		ShangShu:        0x01,
 		XiaGua:          "巽为风",
@@ -1358,7 +1360,7 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		ShangYaoJiXiong: "凶",
 	}
 
-	gx["兑震"] = &GuaXiang{
+	gx["兑震"] = &GuaXiangV1{
 		ShangGua:        "兑为泽",
 		ShangShu:        0x01,
 		XiaGua:          "震为雷",
@@ -1380,7 +1382,7 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["兑离"] = &GuaXiang{
+	gx["兑离"] = &GuaXiangV1{
 		ShangGua:        "兑为泽",
 		ShangShu:        0x01,
 		XiaGua:          "离为火",
@@ -1408,7 +1410,7 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["兑兑"] = &GuaXiang{
+	gx["兑兑"] = &GuaXiangV1{
 		ShangGua:        "兑为泽",
 		ShangShu:        0x01,
 		XiaGua:          "兑为泽",
@@ -1436,7 +1438,7 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 		YongJiXiong:     "",
 	}
 
-	gx["兑乾"] = &GuaXiang{
+	gx["兑乾"] = &GuaXiangV1{
 		ShangGua:        "兑为泽",
 		ShangShu:        0x01,
 		XiaGua:          "乾为天",
@@ -1468,7 +1470,7 @@ func dui(gx map[string]*GuaXiang) map[string]*GuaXiang {
 }
 
 func TestSetGuaXiang(t *testing.T) {
-	gx := make(map[string]*GuaXiang)
+	gx := make(map[string]*GuaXiangV1)
 	gx = qian(gx)
 	gx = kun(gx)
 	gx = gen(gx)
@@ -1478,7 +1480,7 @@ func TestSetGuaXiang(t *testing.T) {
 	gx = li(gx)
 	gx = dui(gx)
 	setGuaXiang(gx)
-
+	setGuaXiangV2(gx)
 }
 
 func TestGetGuaXiang(t *testing.T) {
@@ -1486,4 +1488,22 @@ func TestGetGuaXiang(t *testing.T) {
 		t.Log("not enough", GetGuaXiang())
 	}
 
+}
+
+func TestOutputJSONGuaXiangs(t *testing.T) {
+	gx = GetGuaXiang()
+
+	gxs := make(map[string]*GuaXiang)
+	for k, v := range gx {
+		gxs[k] = updateGX(v)
+	}
+	f, err := json.Marshal(gxs)
+	if err != nil {
+		return
+	}
+	err = os.WriteFile("guaxiang.json", f, 0644)
+	if err != nil {
+		return
+	}
+	t.Log("write success")
 }
