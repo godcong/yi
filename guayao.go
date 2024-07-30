@@ -9,7 +9,7 @@ type GuaYao struct {
 	NvMing  string // 女命
 }
 
-func getGuaYao(xiang *GuaXiang, yao int) GuaYao {
+func getGuaYao(xiang GuaXiang, yao int) GuaYao {
 	if yao < 0 || yao > 5 {
 		panic("wrong yao")
 	}

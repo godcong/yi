@@ -29,6 +29,10 @@ func (idx GuaXiangIndex) index() uint {
 	return uint(idx)
 }
 
+func (idx GuaXiangIndex) String() string {
+	return ""
+}
+
 // GuaXiang 卦象
 type GuaXiang struct {
 	GuaXu       uint           // 卦序
@@ -97,13 +101,16 @@ func loadGuaXiang() (map[string]GuaXiang, error) {
 	}
 	return data, nil
 }
-func getGuaXiangs() map[SixtyFourMax]GuaXiang {
+func getGuaXiangs() map[string]GuaXiang {
 	return guaxiangData
 }
 
-func GetGuaXiang(index GuaXiangIndex) GuaXiang {
-	if !index.IsValid() {
-		panic(fmt.Errorf("guaxiang index out of range: %d", index))
+func GetGuaXiang(name string) GuaXiang {
+	// if !index.IsValid() {
+	// 	panic(fmt.Errorf("guaxiang index out of range: %d", index))
+	// }
+	if gx, ok := guaxiangData[name]; ok {
+		return gx
 	}
-	return guaxiangData[index.index()]
+	panic(fmt.Errorf("guaxiang not found: %s", name))
 }
