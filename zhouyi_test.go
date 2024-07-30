@@ -42,21 +42,21 @@ func TestTimeToBian(t *testing.T) {
 }
 
 func TestNumberQiGua(t *testing.T) {
-	//t.Log(bian(7, 0))
-	//gua1 := NumberQiGua(23, 20, int(StringToTime("2018-01-01 00:00").Unix()/1000000%6))
-	//log.Println(gua1.Get(BenGua), gua1.Get(BianGua))
-	//gua2 := NumberQiGua(23, 20, int(StringToTime("2019-01-01 00:00").Unix()/1000000%6))
-	//log.Println(gua2.Get(BenGua), gua2.Get(BianGua))
-	//gua3 := NumberQiGua(23, 20, int(StringToTime("2020-01-01 00:00").Unix()/1000000%6))
-	//log.Println(gua3.Get(BenGua), gua3.Get(BianGua))
-	//gua4 := NumberQiGua(23, 20, int(StringToTime("2021-01-01 00:00").Unix()/1000000%6))
-	//log.Println(gua4.Get(BenGua), gua4.Get(BianGua))
-	//gua5 := NumberQiGua(23, 20, int(StringToTime("2022-01-01 00:00").Unix()/1000000%6))
-	//log.Println(gua5.Get(BenGua), gua5.Get(BianGua))
-	//gua6 := NumberQiGua(23, 20, int(StringToTime("2023-01-01 00:00").Unix()/1000000%6))
-	//log.Println(gua6.Get(BenGua), gua6.Get(BianGua))
-	//gua7 := NumberQiGua(23, 20, int(StringToTime("2024-01-01 00:00").Unix()/1000000%6))
-	//log.Println(gua7.Get(BenGua), gua7.Get(BianGua))
+	// t.Log(bian(7, 0))
+	// gua1 := NumberQiGua(23, 20, int(StringToTime("2018-01-01 00:00").Unix()/1000000%6))
+	// log.Println(gua1.Get(BenGua), gua1.Get(BianGua))
+	// gua2 := NumberQiGua(23, 20, int(StringToTime("2019-01-01 00:00").Unix()/1000000%6))
+	// log.Println(gua2.Get(BenGua), gua2.Get(BianGua))
+	// gua3 := NumberQiGua(23, 20, int(StringToTime("2020-01-01 00:00").Unix()/1000000%6))
+	// log.Println(gua3.Get(BenGua), gua3.Get(BianGua))
+	// gua4 := NumberQiGua(23, 20, int(StringToTime("2021-01-01 00:00").Unix()/1000000%6))
+	// log.Println(gua4.Get(BenGua), gua4.Get(BianGua))
+	// gua5 := NumberQiGua(23, 20, int(StringToTime("2022-01-01 00:00").Unix()/1000000%6))
+	// log.Println(gua5.Get(BenGua), gua5.Get(BianGua))
+	// gua6 := NumberQiGua(23, 20, int(StringToTime("2023-01-01 00:00").Unix()/1000000%6))
+	// log.Println(gua6.Get(BenGua), gua6.Get(BianGua))
+	// gua7 := NumberQiGua(23, 20, int(StringToTime("2024-01-01 00:00").Unix()/1000000%6))
+	// log.Println(gua7.Get(BenGua), gua7.Get(BianGua))
 }
 
 func TestQiGua(t *testing.T) {
@@ -77,7 +77,7 @@ func TestQiGua(t *testing.T) {
 				shang: 8,
 			},
 			want: &Yi{
-				gua: [GuaMax]*GuaXiang{
+				gua: [ceGuaMax]*GuaXiang{
 					BenGua: {
 						GuaXu:    2,
 						ShangShu: 7,
@@ -94,7 +94,7 @@ func TestQiGua(t *testing.T) {
 				shang: 7,
 			},
 			want: &Yi{
-				gua: [GuaMax]*GuaXiang{
+				gua: [ceGuaMax]*GuaXiang{
 					BenGua: {
 						GuaXu:    52,
 						ShangShu: 6,

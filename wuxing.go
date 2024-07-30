@@ -1,56 +1,53 @@
 package yi
 
-type YingYang int
+// DAO 道分阴阳
+// ENUM(YING,YANG)
+type DAO bool
 
 const (
-	Yin  YingYang = 1 //阴
-	Yang YingYang = 0 //阳
+	Yin  DAO = false // 阴
+	Yang DAO = true  // 阳
 )
 
-const (
-	YinStr  string = "阴"
-	YangStr string = "阳"
-)
-
-type Sex int
+type Gender int
 
 // 性别
 const (
-	SexBoy  Sex = 0b01 //"男"
-	SexGirl Sex = 0b10 //"女"
+	GenderBoy  Gender = 0b01 // "男"
+	GenderGirl Gender = 0b10 // "女"
 )
 
 const wuXingList string = "水木木火火土土金金水"
 
-//五行
+// 五行
 const (
-	MU   int = iota + 1 //木
-	HUO                 //火
-	TU                  //土
-	JIN                 //金
-	SHUI                //水
+	MU   int = iota + 1 // 木
+	HUO                 // 火
+	TU                  // 土
+	JIN                 // 金
+	SHUI                // 水
 )
 
-func ModeYinYang(i int) YingYang {
+func NumberToDAO(i int) DAO {
 	if i%2 == 0 {
 		return Yang
 	}
-	return Yin
+	return i%2 == 0
 }
 
-func (yy YingYang) String() string {
-	if yy == 0 {
-		return YangStr
+func (yy DAO) String() string {
+	if yy {
+		return "阳"
 	}
-	return YinStr
+	return "阴"
 }
 
-// NumberWuXing 计算字符的三才属性
+// NumberWuXing 计算字符的五行属性
 // 1-2木：1为阳木，2为阴木
 // 3-4火：3为阳火，4为阴火
 // 5-6土：5为阳土，6为阴土
 // 7-8金：7为阳金，8为阴金
 // 9-10水：9为阳水，10为阴水
-func NumberWuXing(i int) string {
+func NumberWuXing(i uint) string {
 	return string([]rune(wuXingList)[i%10])
 }

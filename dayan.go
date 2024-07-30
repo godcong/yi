@@ -1,78 +1,82 @@
 package yi
 
 import (
+	"fmt"
 	"math/bits"
 	"strconv"
 	"strings"
 )
 
+type DaYanIndex uint
+
 // DaYan ...
 type DaYan struct {
-	Number  int
+	Index   DaYanIndex
 	Lucky   string
-	NvMing  string
-	Max     bool
+	nvMing  string
+	max     bool
 	SkyNine string
 	Comment string
 }
 
-var daYanList map[int]*DaYan
-
-func init() {
-	daYanList = make(map[int]*DaYan)
+func loadDaYan() ([DaYanMax]DaYan, error) {
+	var dayanData [DaYanMax]DaYan
 
 	file81shu, err := DataFiles.Open("data/81shu.csv")
 	if err != nil {
-		panic(err)
+		return dayanData, err
 	}
 
 	records, err := readData(file81shu)
-
 	if err != nil {
-		panic(err)
+		return dayanData, err
 	}
 
 	for _, record := range records {
-		bihua, err := strconv.ParseInt(record[0], 10, bits.UintSize)
-		if err != nil {
-			panic(err)
+		bihua, _ := strconv.ParseUint(record[0], 10, bits.UintSize)
+		idx := DaYanIndex(bihua)
+		if !idx.IsValid() {
+			return dayanData, fmt.Errorf("dayan number out of range: %d", idx)
 		}
 
-		var max bool = false
-		maxstr := strings.TrimSpace(record[3])
-		if maxstr == "最吉" {
-			max = true
-		}
-
-		dayan := DaYan{
-			Number:  int(bihua),
+		dayanData[bihua-1] = DaYan{
+			Index:   idx,
 			Lucky:   record[1],
-			NvMing:  record[2],
-			Max:     max,
+			nvMing:  record[2],
+			max:     strings.TrimSpace(record[3]) == "最吉",
 			SkyNine: record[5],
 			Comment: record[6],
 		}
-
-		daYanList[dayan.Number-1] = &dayan
 	}
+	return dayanData, nil
 }
 
-// IsNotSuitableGirl 女性不宜此数
-func (dy DaYan) IsNotSuitableGirl() bool {
-	return dy.NvMing == "凶"
+// IsNvMing 女性不宜此数
+func (dy DaYan) IsNvMing() bool {
+	return dy.nvMing == "凶"
 }
 
-//IsMax 是否最大好运数
+// IsMax 是否最大好运数
 func (dy DaYan) IsMax() bool {
-	return dy.Max
+	return dy.max
 }
 
-//GetDaYan 获取大衍之数
-func GetDaYan(idx int) DaYan {
-	if idx <= 0 {
-		panic("wrong idx")
+// DaYanByIndex 获取大衍之数
+func DaYanByIndex(idx DaYanIndex) DaYan {
+	if !idx.IsValid() {
+		panic(fmt.Errorf("dayan number out of range: %d", idx))
 	}
-	i := (idx - 1) % 81
+	return dayanData[idx.index()]
+}
 
-	return *daYanList[i]
+func (idx DaYanIndex) IsValid() bool {
+	return idx >= 1 && idx.index() < DaYanMax
+}
+
+func (idx DaYanIndex) DaYan() DaYan {
+	return DaYanByIndex(idx)
+}
+
+func (idx DaYanIndex) index() uint {
+	return uint((idx - 1) % 81)
 }

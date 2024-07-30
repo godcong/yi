@@ -4,9 +4,9 @@ import "strings"
 
 // GuaYao ...
 type GuaYao struct {
-	Yao     string //二爻
-	JiXiong string //二爻吉凶
-	NvMing  string //女命
+	Yao     string // 爻
+	JiXiong string // 吉凶
+	NvMing  string // 女命
 }
 
 func getGuaYao(xiang *GuaXiang, yao int) GuaYao {
@@ -14,14 +14,14 @@ func getGuaYao(xiang *GuaXiang, yao int) GuaYao {
 		panic("wrong yao")
 	}
 
-	return *xiang.GuaYaos[yao]
+	return xiang.GuaYaos[yao]
 }
 
-//FilterYao 过滤爻
-func (y *Yi) FilterYao(sex Sex, fs ...string) bool {
+// FilterYao 过滤爻
+func (y *Yi) FilterYao(sex Gender, fs ...string) bool {
 	yao := getGuaYao(y.Get(BianGua), y.BianYao())
 	for _, s := range fs {
-		if sex == SexGirl && yao.NvMing != "" {
+		if sex == GenderGirl && yao.NvMing != "" {
 			if yao.NvMing == s {
 				return false
 			} else {
@@ -36,11 +36,11 @@ func (y *Yi) FilterYao(sex Sex, fs ...string) bool {
 	return true
 }
 
-//IsLucky 是否为吉
-func (y *Yi) IsLucky(sex Sex) bool {
+// IsLucky 是否为吉
+func (y *Yi) IsLucky(sex Gender) bool {
 	yao := getGuaYao(y.Get(BianGua), y.BianYao())
 
-	if sex == SexGirl && yao.NvMing != "" {
+	if sex == GenderGirl && yao.NvMing != "" {
 		if strings.Contains(yao.NvMing, "凶") {
 			return false
 		}
