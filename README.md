@@ -4,26 +4,153 @@
 
 周易六十四卦计算与查询库，提供完整的起卦、卦象变换、五行生克、六十甲子、六亲世应、81 数理、解卦等功能。
 
-## 功能特性
+---
 
-- **四种起卦法**：铜钱法、蓍草法（大衍法）、梅花易数、时间起卦
-- **卦象变换**：本卦、变卦、互卦、错卦、综卦五种关系
-- **解卦系统**：综合本卦/变卦/互卦/动爻/彖象辞输出结构化解读
-- **五行生克**：五行相生、相克、被生、被克关系计算
-- **六十甲子**：天干地支、纳音五行、阴阳属性
-- **六亲世应**：卦宫五行→六亲映射，世应位置推算
-- **81 数理**：大衍之数吉凶分析，含天九/意象/基业/家庭/健康
-- **彖象文言**：64 卦彖辞、大象辞，乾坤文言
+## 🌟 每日一卦 (Daily Hexagram Skill)
 
-## 安装
+**推荐使用方式** — 集成 AI 助手的每日占卜体验，一句话完成起卦。
+
+> 用户说「算一卦」→ AI 自动收集信息 → 生成完整运势报告（800+ 字）
+
+### 安装
+
+#### 方式一：安装脚本（推荐）
+
+```bash
+# macOS / Linux
+curl -fsSL https://raw.githubusercontent.com/godcong/yi/master/skill/scripts/install.sh | bash
+
+# Windows (PowerShell)
+iwr -Uri https://raw.githubusercontent.com/godcong/yi/master/skill/scripts/install.sh | iex
+```
+
+脚本会自动下载对应平台的 `yi` 二进制 + Skill 文件。
+
+#### 方式二：Go Install
+
+```bash
+go install github.com/godcong/yi/cmd/divine@latest
+```
+
+然后手动复制 `skill/` 目录到 AI 助手的 skills 目录：
+```bash
+cp -r skill/ ~/.qclaw/skills/daily-hexagram/
+cp divine ~/.qclaw/skills/daily-hexagram/bin/yi
+```
+
+### 使用
+
+在 AI 助手中，直接对话即可：
+
+| 你说 | AI 做的事 |
+|------|----------|
+| 「算一卦」「今日运势」 | 收集姓名+生日 → 每日卦（同人同日同卦） |
+| 「换个卦看看」 | 换时辰重新起一卦 |
+| 「用铜钱算」 | 切换到铜钱法起卦 |
+| 「用蓍草算」 | 切换到大衍法起卦 |
+| 「梅花易数算一卦」 | 切换到梅花易数 |
+
+**首次使用** AI 会询问姓名和生日，之后自动记住。同一个人同一天永远是同一个卦。
+
+### 输出报告内容
+
+```
+🎯 卦象概览     — 卦名/符号/吉凶 + 核心意象 + 运势基调
+🔮 卦象详解     — 本卦/变卦/动爻/互卦/错卦/综卦解读
+💫 八维度运势   — 事业/爱情/财运/考试/健康/出行/官司/家宅
+📋 宜忌指南     — 今日宜做之事 / 今日禁忌
+🌟 今日指引     — 综合行动指引 + 幸运方位/数字/颜色
+```
+
+完整报告不少于 800 字。
+
+### 支持的方法
+
+| 方法 | CLI | 说明 |
+|------|-----|------|
+| 每日卦 | `daily` | 仅用日期，同人同日固定 |
+| 时间卦 | `time` | 含时辰，不同时间不同卦 |
+| 铜钱法 | `coins` | 六次投掷，最经典 |
+| 大衍法 | `dayan` | 蓍草五十策，最古老 |
+| 梅花易数 | `meihua` | 时辰推演 |
+| 数字起卦 | `number` | 自定义上下卦数字 |
+
+### Skill 目录结构
+
+```
+daily-hexagram/
+├── SKILL.md              # AI 指令（数据直出 + AI 串联分工）
+├── bin/yi                # 占卜程序（编译好的二进制）
+├── references/
+│   └── data-format.md    # JSON 输出结构参考
+├── scripts/
+│   ├── install.sh        # 安装脚本
+│   └── install.bat
+└── user_profile.json     # 用户信息（自动创建）
+```
+
+---
+
+## 🖥️ CLI 命令行工具
+
+### 安装
+
+```bash
+go install github.com/godcong/yi/cmd/divine@latest
+```
+
+### 用法
+
+```bash
+# 每日一卦（需要 -seed 确保个性化）
+yi -method daily -seed "张三" -format json
+
+# 时间起卦
+yi -method time -seed "张三" -sex female -format json
+
+# 铜钱法
+yi -method coins -coins-seed 42
+
+# 梅花易数
+yi -method meihua -seed "张三" -year 2026 -month 5 -day 12
+
+# 大衍法
+yi -method dayan -dayan-seed 999
+
+# 数字起卦
+yi -method number -ben 3 -bian 5 -dong 2
+```
+
+### 完整参数
+
+| 参数 | 默认 | 说明 |
+|------|------|------|
+| `-method` | `time` | 起卦方法：`time` / `daily` / `coins` / `meihua` / `dayan` / `number` |
+| `-seed` | `""` | 用户标识（姓名/ID），`daily` 和 `time` 必传 |
+| `-format` | `text` | 输出格式：`text` / `json` |
+| `-sex` | `male` | 性别：`male` / `female` |
+| `-year` | 当前年 | 公历年 |
+| `-month` | 当前月 | 公历月 |
+| `-day` | 当前日 | 公历日 |
+| `-hour` | 当前时 | 小时 0-23 |
+| `-coins-seed` | 0 | 铜钱法种子（0=随机） |
+| `-dayan-seed` | 0 | 大衍法种子 |
+| `-ben` | -1 | 数字起卦上卦（0-7） |
+| `-bian` | -1 | 数字起卦下卦（0-7） |
+| `-dong` | 0 | 数字起卦动爻（0-5） |
+| `-version` | — | 打印版本号 |
+
+---
+
+## 📚 Go 函数库
+
+### 安装
 
 ```bash
 go get github.com/godcong/yi
 ```
 
-## 快速开始
-
-### 铜钱法起卦
+### 快速开始
 
 ```go
 package main
@@ -34,226 +161,120 @@ import (
 )
 
 func main() {
-    // 方式一：随机种子
-    zy, coins := yi.DivineByCoins(42)
-    fmt.Printf("六次投掷: %v\n", coins)
-    fmt.Printf("本卦: %s\n", zy.GetGua(yi.Ben).Ming)
-    fmt.Printf("变卦: %s\n", zy.GetGua(yi.Bian).Ming)
+    // 每日一卦（同人同日同卦）
+    zy, _ := yi.DivineByDailyHexagram("张三")
+    result := yi.JieGua(zy, yi.Male)
+    fmt.Println(yi.FormatJieGua(result))
 
-    // 方式二：手动输入6个爻值（6=老阴, 7=少阴, 8=少阳, 9=老阳）
-    zy2, err := yi.DivineByCoinValues([6]int{9, 8, 7, 6, 9, 8})
-    if err != nil {
-        panic(err)
-    }
-    fmt.Printf("手动起卦: %s\n", zy2.GetGua(yi.Ben).Ming)
+    // 铜钱法
+    zy2, coins := yi.DivineByCoins(42)
+    fmt.Printf("本卦: %s, 变卦: %s\n", zy2.GetGua(yi.Ben).Ming, zy2.GetGua(yi.Bian).Ming)
 
-    // 方式三：当前时间随机
-    zy3, coins3 := yi.DivineByCoinsRand()
-    _ = zy3 // use result
-    _ = coins3
+    // 蓍草法
+    zy3, _ := yi.DivineByDayan(999)
+
+    // 梅花易数
+    zy4 := yi.DivineByMeihua(3, 5, 2)
+
+    // 时间起卦
+    zy5 := yi.DivineByTimeGua(yi.TimeGuaParams{
+        Year: 2024, Month: 6, Day: 15, Hour: 10,
+    })
+
+    // 当前时间快速起卦
+    zy6 := yi.DivineByCurrentTime()
+    _ = zy6
 }
 ```
 
-### 蓍草法（大衍法）起卦
+### 新增: 每日卦函数
 
 ```go
-zy, results := yi.DivineByDayan(999)
-fmt.Printf("本卦: %s\n", zy.GetGua(yi.Ben).Ming)
-for i, r := range results {
-    fmt.Printf("第%d爻: 值=%d, 变=%v\n", i+1, r.YaoValue, r.IsChanging)
-}
-
-// 手动输入爻值
-zy2, err := yi.DivineByDayanValues([6]int{7, 7, 7, 7, 7, 7})
+// 同人同日同卦 — 每天固定
+zy, err := yi.DivineByDailyHexagram("张三")
 if err != nil {
     panic(err)
 }
-```
-
-### 梅花易数起卦
-
-```go
-// 报数起卦：上卦=3, 下卦=5, 动爻=2
-zy := yi.DivineByMeihua(3, 5, 2)
-fmt.Printf("梅花起卦: %s\n", zy.GetGua(yi.Ben).Ming)
-
-// 时间梅花起卦
-zy2, year, month, day, hour := yi.DivineByMeihuaTime(time.Now())
-fmt.Printf("时间: %d年%d月%d日%d时\n", year, month, day, hour)
-fmt.Printf("梅花时间起卦: %s\n", zy2.GetGua(yi.Ben).Ming)
-```
-
-### 时间起卦法
-
-```go
-// 公历时间起卦
-zy := yi.DivineByTimeGua(yi.TimeGuaParams{
-    Year:  2024,
-    Month: 6,
-    Day:   15,
-    Hour:  10,
-})
-fmt.Printf("时间起卦: %s\n", zy.GetGua(yi.Ben).Ming)
-
-// 农历时间起卦
-zy2 := yi.DivineByLunarTime(2024, 5, 10, 4)
-fmt.Printf("农历起卦: %s\n", zy2.GetGua(yi.Ben).Ming)
-
-// 当前时间快速起卦
-zy3 := yi.DivineByCurrentTime()
-_ = zy3
-```
-
-### 解卦
-
-```go
-zy, _ := yi.DivineByCoins(42)
 result := yi.JieGua(zy, yi.Male)
-fmt.Println(yi.FormatJieGua(result))
+
+// result.JieDu 包含预置的 8 维度运势 + 宜忌
+fmt.Println(result.JieDu.ShiYe)   // 事业运势
+fmt.Println(result.JieDu.CoreImage) // 核心意象
+fmt.Println(result.JieDu.Yi)      // 宜
+fmt.Println(result.JieDu.Ji)      // 忌
+
+// result.WuXingInfo 包含五行幸运元素
+fmt.Println(result.WuXingInfo.LuckyNumber) // 幸运数字
+fmt.Println(result.WuXingInfo.LuckyColor)  // 幸运颜色
 ```
 
-### 81 数理查询
+### API 总览
 
-```go
-dayan, err := yi.GetDayan(21)
-if err != nil {
-    panic(err)
-}
-fmt.Printf("笔画数: %d\n", dayan.Number)
-fmt.Printf("吉凶: %s\n", dayan.JiXiong)
-fmt.Printf("天九: %s\n", dayan.TianJiu)
-fmt.Printf("意象: %s\n", dayan.YiXiang)
-fmt.Printf("基业: %s\n", dayan.Foundation)
-fmt.Printf("含义: %s\n", dayan.Meaning)
-fmt.Printf("是否吉: %v\n", dayan.IsJi())
-fmt.Printf("是否最吉: %v\n", dayan.IsBest())
-```
-
-### 五行生克
-
-```go
-// 根据笔画数获取五行
-wx := yi.GetWuXingByNumber(7)
-fmt.Printf("笔画7的五行: %s\n", wx) // 阴金
-
-// 五行相生：木→火→土→金→水→木
-fmt.Printf("木生: %s\n", yi.Wood.Sheng())   // 火
-fmt.Printf("火生: %s\n", yi.Fire.Sheng())   // 土
-
-// 五行相克：木→土→水→火→金→木
-fmt.Printf("木克: %s\n", yi.Wood.Ke())      // 土
-fmt.Printf("金克: %s\n", yi.Metal.Ke())     // 木
-
-// 被生/被克
-fmt.Printf("木被生: %s\n", yi.Wood.BeiSheng()) // 水
-fmt.Printf("木被克: %s\n", yi.Wood.BeiKe())    // 金
-```
-
-### 卦象查询
-
-```go
-// 按卦序查询（1-64）
-gua, err := yi.GetGuaByXu(1)
-if err != nil {
-    panic(err)
-}
-fmt.Printf("第1卦: %s %s\n", gua.GuaSymbol, gua.Ming)
-
-// 按索引查询
-gua2, err := yi.GetGuaByIndex("乾乾")
-fmt.Printf("乾为天: %s\n", gua2.TuanText)
-
-// 获取爻辞
-yao := gua2.GetYao(yi.Chu) // 初爻
-fmt.Printf("初爻爻辞: %s\n", yao.Ci)
-```
-
-## API 总览
-
-### 起卦函数
+#### 起卦函数
 
 | 函数 | 说明 |
 |------|------|
-| `DivineByNumber(shang, xia int, bianYao ...int) *ZhouYi` | 按数起卦（核心函数） |
-| `DivineByCoins(seed int64) (*ZhouYi, [6]CoinResult)` | 铜钱法起卦 |
-| `DivineByCoinValues(values [6]int) (*ZhouYi, error)` | 铜钱法手动输入 |
-| `DivineByDayan(seed int64) (*ZhouYi, [6]DayanResult)` | 蓍草法起卦 |
-| `DivineByDayanValues(values [6]int) (*ZhouYi, error)` | 蓍草法手动输入 |
-| `DivineByMeihua(shang, xia, bian int) *ZhouYi` | 梅花易数起卦 |
-| `DivineByMeihuaTime(t time.Time) (*ZhouYi, int, int, int, int)` | 梅花时间起卦 |
-| `DivineByTimeGua(params TimeGuaParams) *ZhouYi` | 公历时间起卦 |
-| `DivineByLunarTime(y, m, d, h int) *ZhouYi` | 农历时间起卦 |
-| `DivineByCurrentTime() *ZhouYi` | 当前时间快速起卦 |
+| `DivineByDailyHexagram(seed string) (*ZhouYi, error)` | 🆕 每日一卦 |
+| `DivineByCurrentTime(personalSeed ...string) *ZhouYi` | 当前时间起卦 |
+| `DivineByCoins(seed int64) (*ZhouYi, [6]CoinResult)` | 铜钱法 |
+| `DivineByCoinValues(values [6]int) (*ZhouYi, error)` | 铜钱法手动 |
+| `DivineByDayan(seed int64) (*ZhouYi, [6]DayanResult)` | 大衍法 |
+| `DivineByDayanValues(values [6]int) (*ZhouYi, error)` | 大衍法手动 |
+| `DivineByMeihua(shang, xia, bian int) *ZhouYi` | 梅花易数 |
+| `DivineByMeihuaTime(t time.Time, personalSeed ...string)` | 梅花时间 |
+| `DivineByTimeGua(params TimeGuaParams, personalSeed ...string) *ZhouYi` | 公历时间 |
+| `DivineByLunarTime(y, m, d, h int) *ZhouYi` | 农历时间 |
+| `DivineByNumber(shang, xia int, bianYao ...int) *ZhouYi` | 数字起卦 |
 
-### 解卦函数
+#### 解卦
 
 | 函数 | 说明 |
 |------|------|
 | `JieGua(zy *ZhouYi, sex Sex) *JieGuaResult` | 解卦主函数 |
-| `FormatJieGua(result *JieGuaResult) string` | 格式化解卦结果 |
+| `FormatJieGua(result *JieGuaResult) string` | 格式化输出 |
 
-### 卦象查询
+#### 解卦结果结构
+
+`JieGuaResult` 包含：
+
+| 字段 | 说明 |
+|------|------|
+| `BenGuaInfo` / `BianGuaInfo` | 本卦/变卦 {Ming, GuaName, Symbol, GuaYi, TuanText, XiangText, JiXiong, ...} |
+| `HuGuaInfo` / `CuoGuaInfo` / `ZongGuaInfo` | 互卦/错卦/综卦 |
+| `DongYaoPos` / `DongYaoText` / `DongYaoJiXiong` | 动爻位置/爻辞/吉凶 |
+| `IsJi` / `JiXiongReason` | 综合吉凶/理由 |
+| `FenXi` | 八维度解读 [{Category, Content, JiXiong, Source}] |
+| `JieDu` | 🆕 预置释义 {CoreImage, ShiYe, AiQing, ..., Yi, Ji} |
+| `WuXingInfo` | 🆕 五行幸运元素 {WuXing, Direction, LuckyNumber, LuckyColor} |
+
+#### 卦象查询
 
 | 函数/方法 | 说明 |
 |------|------|
 | `GetGuaByIndex(index string) (*Gua, error)` | 按索引查卦（如 "乾乾"） |
 | `GetGuaByXu(xu int) (*Gua, error)` | 按卦序查卦（1-64） |
-| `GetBaguaName(bg Bagua) string` | 获取八卦名称 |
-| `GetBaguaSymbol(bg Bagua) string` | 获取八卦符号 |
 | `ZhouYi.GetGua(guaType int) *Gua` | 获取本/变/互/错/综卦 |
 | `ZhouYi.IsJi(sex Sex) bool` | 判断吉凶 |
 | `Gua.GetYao(pos YaoPosition) *Yao` | 获取指定爻 |
 | `Gua.GetShiYing() *ShiYingInfo` | 获取世应信息 |
-| `Gua.GetGuaGong() Bagua` | 获取归属卦宫 |
-| `Gua.GetGuaPosition() GuaPosition` | 获取宫位 |
+| `Gua.GetGuaGong() Bagua` | 归属卦宫 |
 
-### 五行与六亲
+#### 五行与六亲
 
 | 函数/方法 | 说明 |
 |------|------|
 | `GetWuXingByNumber(n int) string` | 笔画数→五行 |
-| `WuXing.Sheng() WuXing` | 我生 |
-| `WuXing.Ke() WuXing` | 我克 |
-| `WuXing.BeiSheng() WuXing` | 生我 |
-| `WuXing.BeiKe() WuXing` | 克我 |
+| `WuXing.Sheng()` / `.Ke()` / `.BeiSheng()` / `.BeiKe()` | 生克关系 |
 | `GetLiuQin(guaGongWX, yaoWX WuXing) LiuQin` | 计算六亲 |
-| `GetGuaGongWuXing(bagua Bagua) WuXing` | 卦宫→五行 |
-| `GetLiuQinForGua(guaGongWX WuXing) map[WuXing]LiuQin` | 卦宫六亲映射表 |
 
-### 甲子干支
-
-| 函数 | 说明 |
-|------|------|
-| `GetJiaZi(index int) (*JiaZiInfo, error)` | 按序号查甲子（1-60） |
-| `GetJiaZiByGanZhi(gan TianGan, zhi DiZhi) (*JiaZiInfo, error)` | 按干支查甲子 |
-| `GetTianGanName(gan TianGan) string` | 天干名称 |
-| `GetDiZhiName(zhi DiZhi) string` | 地支名称 |
-| `GetTianGanWuXing(gan TianGan) WuXing` | 天干五行 |
-| `GetDiZhiWuXing(zhi DiZhi) WuXing` | 地支五行 |
-
-### 81 数理
+#### 81 数理
 
 | 函数/方法 | 说明 |
 |------|------|
 | `GetDayan(n int) (*Dayan, error)` | 查询数理（1-81） |
-| `MustGetDayan(n int) Dayan` | 查询数理（忽略错误） |
-| `Dayan.IsJi() bool` | 是否吉 |
-| `Dayan.IsXiong() bool` | 是否凶 |
-| `Dayan.IsBest() bool` | 是否最吉 |
-| `Dayan.IsSuitableForFemale() bool` | 是否适合女性 |
+| `Dayan.IsJi()` / `.IsXiong()` / `.IsBest()` | 吉凶判断 |
 
-### 彖象文言
-
-| 函数/方法 | 说明 |
-|------|------|
-| `Gua.GetTuan() string` | 获取彖辞 |
-| `GetAllTuan() []struct{Index, Text string}` | 全部彖辞 |
-| `Gua.GetXiang() string` | 获取象辞（大象） |
-| `GetAllXiang() []struct{Index, Text string}` | 全部象辞 |
-| `GetWenYan(index string) string` | 获取文言（仅乾坤） |
-| `HasWenYan(index string) bool` | 是否有文言 |
-
-## 核心类型
+### 核心类型
 
 | 类型 | 说明 |
 |------|------|
@@ -262,58 +283,63 @@ fmt.Printf("初爻爻辞: %s\n", yao.Ci)
 | `ZhouYi` (别名 `IChing`) | 周易：含五种卦象 + 动爻 |
 | `Bagua` (别名 `Trigram`) | 八卦：0=乾…7=坤 |
 | `WuXing` | 五行：木/火/土/金/水 |
-| `YinYang` | 阴阳 |
 | `Sex` | 性别：Male/Female |
 | `LiuQin` | 六亲：父母/兄弟/妻财/子孙/官鬼 |
-| `GuaPosition` | 宫位：本宫/一世/…/游魂/归魂 |
 | `Dayan` | 大衍数理：1-81 的吉凶详情 |
-| `TianGan` | 天干：甲乙丙丁… |
-| `DiZhi` | 地支：子丑寅卯… |
-| `JiaZiInfo` | 甲子信息 |
-| `JieGuaResult` | 解卦结果 |
-| `GuaInfo` | 卦象解读信息 |
+| `JieGuaResult` | 解卦结果（含 JieDu + WuXingInfo） |
+| `GuaJieDu` | 🆕 预置释义（8 维度 + 宜忌） |
+| `WuXingInfo` | 🆕 五行幸运元素 |
 
-## 卦象类型常量
+### 卦象类型常量
 
 | 常量 | 值 | 说明 |
 |------|------|------|
-| `Ben` | 0 | 本卦（原始卦象） |
-| `Bian` | 1 | 变卦（动爻变化后） |
+| `Ben` | 0 | 本卦 |
+| `Bian` | 1 | 变卦 |
 | `Hu` | 2 | 互卦（2-3-4爻为下卦，3-4-5爻为上卦） |
 | `Cuo` | 3 | 错卦（阴阳全反） |
 | `Zong` | 4 | 综卦（上下颠倒） |
 
-## 八卦常量
+### 八卦常量
 
-| 常量 | 值 | 二进制 | 名称 |
+| 常量 | 值 | 五行 | 名称 |
 |------|------|------|------|
-| `Qian` | 0 | 0b000 | 乾 ☰ |
-| `Dui` | 1 | 0b001 | 兑 ☱ |
-| `Li` | 2 | 0b010 | 离 ☲ |
-| `Zhen` | 3 | 0b011 | 震 ☳ |
-| `Xun` | 4 | 0b100 | 巽 ☴ |
-| `Kan` | 5 | 0b101 | 坎 ☵ |
-| `Gen` | 6 | 0b110 | 艮 ☶ |
-| `Kun` | 7 | 0b111 | 坤 ☷ |
+| `Qian` | 0 | 金 | 乾 ☰ |
+| `Dui` | 1 | 金 | 兑 ☱ |
+| `Li` | 2 | 火 | 离 ☲ |
+| `Zhen` | 3 | 木 | 震 ☳ |
+| `Xun` | 4 | 木 | 巽 ☴ |
+| `Kan` | 5 | 水 | 坎 ☵ |
+| `Gen` | 6 | 土 | 艮 ☶ |
+| `Kun` | 7 | 土 | 坤 ☷ |
 
 > **约定**：项目记阳为 0、阴为 1（bit 表示），与直觉相反。
+
+---
 
 ## 数据生成
 
 数据存储在 `data/` 目录下的 JSON 文件中：
 
-- `data/gua.json` — 64 卦数据
-- `data/tuan.json` — 彗辞数据
-- `data/xiang.json` — 象辞数据
-- `data/wenyan.json` — 文言数据
-- `data/jiazi.json` — 六十甲子数据
-- `data/guagong.json` — 卦宫数据
+- `data/gua.json` — 64 卦
+- `data/tuan.json` — 彗辞
+- `data/xiang.json` — 象辞
+- `data/wenyan.json` — 文言
+- `data/jiazi.json` — 六十甲子
+- `data/jiegua.json` — 🆕 解卦释义（8维度运势+宜忌+核心意象）
+- `data/guagong.json` — 卦宫
 
-运行以下命令重新生成 `data_generated.go`：
+运行以下命令重新生成 `data.gen.go`：
 
 ```bash
+# 先删除旧文件，否则 go generate 会跳过
+rm data.gen.go
 go generate ./...
 ```
+
+**注意**：`go generate` 只在 `data.gen.go` 不存在时才生成，修改数据后需先删除再运行。
+
+---
 
 ## 文档
 
@@ -322,6 +348,8 @@ go generate ./...
 - [八卦与六十四卦](docs/八卦与六十四卦.md) — 卦象体系与变换
 - [大衍之数](docs/大衍之数.md) — 81 数理吉凶
 - [六亲与世应](docs/六亲与世应.md) — 六亲系统与世应推算
+
+---
 
 ## 许可
 
