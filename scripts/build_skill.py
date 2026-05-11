@@ -56,28 +56,28 @@ def build_skill(platform, binary_path, skill_dir, output_dir):
     skill_name = f"daily-hexagram-{platform}.skill"
     output_path = os.path.join(output_dir, skill_name)
 
-    skill_inner = "daily-hexagram"
     with tempfile.TemporaryDirectory() as td:
-        inner_dir = os.path.join(td, skill_inner)
-        os.makedirs(inner_dir)
+        # Put files directly at root (no enclosing directory).
+        # skillhub extracts zip to stage_dir then moves stage_dir to <install_root>/<slug>/,
+        # so SKILL.md must be at zip root => <install_root>/<slug>/SKILL.md
 
         # Copy SKILL.md
-        shutil.copy2(os.path.join(skill_dir, "SKILL.md"), inner_dir)
+        shutil.copy2(os.path.join(skill_dir, "SKILL.md"), td)
 
         # Copy references/
         ref_src = os.path.join(skill_dir, "references")
-        ref_dst = os.path.join(inner_dir, "references")
+        ref_dst = os.path.join(td, "references")
         if os.path.exists(ref_src):
             shutil.copytree(ref_src, ref_dst)
 
         # Copy scripts/
         scripts_src = os.path.join(skill_dir, "scripts")
-        scripts_dst = os.path.join(inner_dir, "scripts")
+        scripts_dst = os.path.join(td, "scripts")
         if os.path.exists(scripts_src):
             shutil.copytree(scripts_src, scripts_dst)
 
         # Copy binary as bin/yi
-        bin_dir = os.path.join(inner_dir, "bin")
+        bin_dir = os.path.join(td, "bin")
         os.makedirs(bin_dir)
         if is_windows:
             shutil.copy2(binary_path, os.path.join(bin_dir, "yi.exe"))
@@ -86,7 +86,7 @@ def build_skill(platform, binary_path, skill_dir, output_dir):
             # Ensure executable
             os.chmod(os.path.join(bin_dir, "yi"), 0o755)
 
-        # Create zip
+        # Create zip (files at root, no enclosing directory)
         with zipfile.ZipFile(output_path, "w", zipfile.ZIP_DEFLATED) as zf:
             for root, dirs, files in os.walk(td):
                 for fname in files:
