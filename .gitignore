@@ -34,3 +34,7 @@ AGENTS.md
 # Temporary files
 fix*.ps1
 fix_data.py
+
+# Skill packaging
+*.skill
+dist/
