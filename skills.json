@@ -8,42 +8,42 @@
       "summary": "周易每日一卦占卜，八维度运势解读",
       "version": "1.2.1",
       "zip_url": "https://github.com/godcong/yi/releases/download/v1.2.1/daily-hexagram-linux-amd64.skill",
-      "sha256": "",
+      "sha256": "99e6d28f4aaf4be4cdadf6184598b9b348a566d41fb9e45cf1f0b319c9bf80d6",
       "homepage": "https://github.com/godcong/yi",
       "tags": ["周易", "占卜", "卦象", "运势", "每日一卦", "易经"],
       "categories": ["lifestyle", "entertainment"],
       "platforms": {
         "linux-amd64": {
           "url": "https://github.com/godcong/yi/releases/download/v1.2.1/daily-hexagram-linux-amd64.skill",
-          "sha256": ""
+          "sha256": "99e6d28f4aaf4be4cdadf6184598b9b348a566d41fb9e45cf1f0b319c9bf80d6"
         },
         "darwin-amd64": {
           "url": "https://github.com/godcong/yi/releases/download/v1.2.1/daily-hexagram-darwin-amd64.skill",
-          "sha256": ""
+          "sha256": "8ee1ef3c92ed4162a85959227ab2c322396e09b2c310b1a402b67fd2b255cb76"
         },
         "darwin-arm64": {
           "url": "https://github.com/godcong/yi/releases/download/v1.2.1/daily-hexagram-darwin-arm64.skill",
-          "sha256": ""
+          "sha256": "c28be1a0e10c2a124ee2280af5591bce93763bc59bfffdf6f174f90f983f47e9"
         },
         "windows-amd64": {
           "url": "https://github.com/godcong/yi/releases/download/v1.2.1/daily-hexagram-windows-amd64.skill",
-          "sha256": ""
+          "sha256": "b36b6cd7dbb3a6f00cb537808ce0985a27901cee46de21f2bf51d0f777f7f4a6"
         },
         "windows-arm64": {
           "url": "https://github.com/godcong/yi/releases/download/v1.2.1/daily-hexagram-windows-arm64.skill",
-          "sha256": ""
+          "sha256": "b897b9db67c6045edc1e031c75017fb0de085faa61e1566e08ec45237fa0b773"
         },
         "linux-arm64": {
           "url": "https://github.com/godcong/yi/releases/download/v1.2.1/daily-hexagram-linux-arm64.skill",
-          "sha256": ""
+          "sha256": "94eaeba3bab2e0b1d939c23d234365a2b5b57d52eff8cd6064995043cdb8f1f3"
         },
         "linux-386": {
           "url": "https://github.com/godcong/yi/releases/download/v1.2.1/daily-hexagram-linux-386.skill",
-          "sha256": ""
+          "sha256": "843a4d9aa135c35bfbbb8611ce4ece4135b66bd85f0129879166b326c08dc181"
         },
         "windows-386": {
           "url": "https://github.com/godcong/yi/releases/download/v1.2.1/daily-hexagram-windows-386.skill",
-          "sha256": ""
+          "sha256": "a1b4e830226925a7c1f20401ca43df6931620b8ec4a1f847d16c21cca57e8f3a"
         }
       }
     }
