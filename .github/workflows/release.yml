@@ -28,3 +28,15 @@ jobs:
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build .skill files
+        run: python3 scripts/build_skill.py --dist dist/ --skill-dir skill/ --output dist/
+
+      - name: Upload .skill files to release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for f in dist/*.skill; do
+            echo "Uploading $f..."
+            gh release upload ${{ github.ref_name }} "$f" --clobber
+          done
