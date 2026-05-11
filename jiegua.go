@@ -73,6 +73,9 @@ type JieGuaResult struct {
 
 	// Detailed interpretation (释义) - pre-written multi-aspect explanations
 	JieDu *GuaJieDu // from jiegua.json data, nil if not available
+
+	// Five-element lucky attributes
+	WuXingInfo *WuXingInfo // 幸运方位/数字/颜色, derived from upper trigram
 }
 
 // GuaInfo contains interpretation details for a single hexagram.
@@ -132,7 +135,12 @@ func JieGua(zy *ZhouYi, sex Sex) *JieGuaResult {
 	result.JiXiongReason = buildJiXiongReason(zy, sex, result)
 
 	// Detailed interpretation (释义) from pre-written data
-	result.JieDu = GetGuaJieDu(result.BenGuaInfo.Ming)
+	result.JieDu = GetGuaJieDuByIndex(zy.GetGua(Ben).Index)
+
+	// Five-element lucky attributes
+	if benGua := zy.GetGua(Ben); benGua != nil {
+		result.WuXingInfo = GetWuXingInfo(benGua.ShangNum)
+	}
 
 	// Aspect-based analysis
 	result.FenXi = buildFenXi(zy, sex, result)
@@ -249,45 +257,31 @@ func buildFenXi(zy *ZhouYi, sex Sex, result *JieGuaResult) []GuaFenXi {
 		var source string
 		var jiXiong string
 
-		// Primary: use pre-written detailed interpretation (释义)
-		jieDuCat := fenXiToJieDuCategory(rule.Cat)
-		if jieDuCat != "" {
-			jieDuText := GetGuaJieDuByCategory(benGua.Index, jieDuCat)
-			if jieDuText != "" {
-				content = jieDuText
-				source = "释义"
-				jiXiong = aspectJiXiong(jieDuText)
-				fenXi = append(fenXi, GuaFenXi{
-					Category: rule.Cat,
-					Content:  content,
-					JiXiong:  jiXiong,
-					Source:   source,
-				})
-				continue
-			}
-		}
+		// 1) Collect keyword-based content from GuaYi and Yao.Ci
+		var kwContent string
+		var kwSource string
 
-		// Fallback: keyword extraction from GuaYi (general hexagram meaning)
+		// Extract from GuaYi (general hexagram meaning)
 		guayiMatch := extractAspectText(guaYi, rule.Keys)
 		if guayiMatch != "" {
-			content = guayiMatch
-			source = "卦义"
+			kwContent = guayiMatch
+			kwSource = "卦义"
 		}
 
 		// Extract from changing line Yao.Ci (more specific)
 		yaoMatch := extractAspectText(dongYaoCi, rule.Keys)
 		if yaoMatch != "" {
-			if content != "" {
-				content += "；" + yaoMatch
-				source = "卦义+爻辞"
+			if kwContent != "" {
+				kwContent += "；" + yaoMatch
+				kwSource = "卦义+爻辞"
 			} else {
-				content = yaoMatch
-				source = "爻辞"
+				kwContent = yaoMatch
+				kwSource = "爻辞"
 			}
 		}
 
 		// Extract from all 6 Yao.Ci if still no content
-		if content == "" {
+		if kwContent == "" {
 			for i := 0; i < int(YaoCount); i++ {
 				yao := benGua.GetYao(YaoPosition(i))
 				if yao == nil {
@@ -295,15 +289,34 @@ func buildFenXi(zy *ZhouYi, sex Sex, result *JieGuaResult) []GuaFenXi {
 				}
 				match := extractAspectText(yao.Ci, rule.Keys)
 				if match != "" {
-					content = match
-					source = yaoPosName(YaoPosition(i)) + "爻辞"
+					kwContent = match
+					kwSource = yaoPosName(YaoPosition(i)) + "爻辞"
 					break
 				}
 			}
 		}
 
-		if content == "" {
-			continue
+		// 2) Get pre-written JieDu text (释义)
+		var jieDuText string
+		jieDuCat := fenXiToJieDuCategory(rule.Cat)
+		if jieDuCat != "" {
+			jieDuText = GetGuaJieDuByCategory(benGua.Index, jieDuCat)
+		}
+
+		// 3) Merge: JieDu as lead + keyword content as supplement
+		switch {
+		case jieDuText != "" && kwContent != "" && jieDuText != kwContent:
+			// Both available and different: combine
+			content = jieDuText + "；" + kwContent
+			source = "释义+" + kwSource
+		case jieDuText != "":
+			content = jieDuText
+			source = "释义"
+		case kwContent != "":
+			content = kwContent
+			source = kwSource
+		default:
+			continue // no data for this category
 		}
 
 		// Determine JiXiong for this aspect

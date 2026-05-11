@@ -118,15 +118,18 @@ type GuaGongJSON struct {
 
 // JieGuaJSON represents detailed interpretation for one hexagram
 type JieGuaJSON struct {
-	Index   string `json:"index"`
-	ShiYi   string `json:"shiyi"`
-	AiQing  string `json:"aiqing"`
-	CaiYun  string `json:"caiyun"`
-	KaoShi  string `json:"kaoshi"`
-	JianKang string `json:"jiankang"`
-	ChuXing string `json:"chuxing"`
-	GuanSi  string `json:"guansi"`
-	JiaZhai string `json:"jiazhai"`
+	Index     string   `json:"index"`
+	ShiYi     string   `json:"shiyi"`
+	AiQing    string   `json:"aiqing"`
+	CaiYun    string   `json:"caiyun"`
+	KaoShi    string   `json:"kaoshi"`
+	JianKang  string   `json:"jiankang"`
+	ChuXing   string   `json:"chuxing"`
+	GuanSi    string   `json:"guansi"`
+	JiaZhai   string   `json:"jiazhai"`
+	CoreImage string   `json:"core_image"`
+	Yi        []string `json:"yi"`
+	Ji        []string `json:"ji"`
 }
 
 func main() {
@@ -401,6 +404,27 @@ func generateJieGuaFromJSON(sb *strings.Builder, jiegua []JieGuaJSON) error {
 		sb.WriteString(fmt.Sprintf("\t\t\tChuXing: %q,\n", j.ChuXing))
 		sb.WriteString(fmt.Sprintf("\t\t\tGuanSi: %q,\n", j.GuanSi))
 		sb.WriteString(fmt.Sprintf("\t\t\tJiaZhai: %q,\n", j.JiaZhai))
+		sb.WriteString(fmt.Sprintf("\t\t\tCoreImage: %q,\n", j.CoreImage))
+		if len(j.Yi) > 0 {
+			sb.WriteString("\t\t\tYi: []string{")
+			for i, y := range j.Yi {
+				if i > 0 {
+					sb.WriteString(", ")
+				}
+				sb.WriteString(fmt.Sprintf("%q", y))
+			}
+			sb.WriteString("},\n")
+		}
+		if len(j.Ji) > 0 {
+			sb.WriteString("\t\t\tJi: []string{")
+			for i, x := range j.Ji {
+				if i > 0 {
+					sb.WriteString(", ")
+				}
+				sb.WriteString(fmt.Sprintf("%q", x))
+			}
+			sb.WriteString("},\n")
+		}
 		sb.WriteString("\t\t},\n")
 	}
 	sb.WriteString("\t}\n\n")

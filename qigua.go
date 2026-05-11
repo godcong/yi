@@ -496,6 +496,40 @@ func DivineByCurrentTime(personalSeed ...string) *ZhouYi {
 	}, personalSeed...)
 }
 
+// DivineByDailyHexagram performs daily hexagram divination that is stable
+// for the same person on the same day.
+// Unlike time-based methods that include the hour, this uses only the date
+// (year+month+day) combined with a personal seed, ensuring the same person
+// gets the same hexagram all day regardless of when they ask.
+// The personalSeed is required and should be a stable user identifier
+// (e.g., name, phone number hash, user ID). It is hashed with the date
+// to produce a deterministic daily result.
+func DivineByDailyHexagram(year, month, day int, personalSeed string) *ZhouYi {
+	if personalSeed == "" {
+		// Fallback to time-based without hour if no seed provided
+		params := TimeGuaParams{Year: year, Month: month, Day: day, Hour: 0}
+		return DivineByTimeGua(params)
+	}
+
+	// Hash the seed with date for deterministic daily result
+	// Uses FNV-1a-like mixing: date provides the "time" component,
+	// personalSeed provides the "person" component.
+	seed := int64(year*10000+month*100+day) * 31
+	for _, c := range personalSeed {
+		seed = seed*31 + int64(c)
+	}
+
+	// Use coin method for rich randomness while being deterministic
+	zy, _ := DivineByCoins(seed)
+	return zy
+}
+
+// DivineByDailyHexagramNow is a shortcut for DivineByDailyHexagram using today's date.
+func DivineByDailyHexagramNow(personalSeed string) *ZhouYi {
+	now := time.Now()
+	return DivineByDailyHexagram(now.Year(), int(now.Month()), now.Day(), personalSeed)
+}
+
 // DivineByLunarTime performs divination using lunar calendar time parameters.
 // lunarYear: 农历年, lunarMonth: 农历月(1-12), lunarDay: 农历日(1-30), hour: 时辰(1-12)
 func DivineByLunarTime(lunarYear, lunarMonth, lunarDay, shichen int) *ZhouYi {
