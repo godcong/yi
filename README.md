@@ -14,7 +14,15 @@
 
 ### 安装
 
-#### 方式一：安装脚本（推荐）
+#### 方式一：npx 一键安装（推荐）
+
+```bash
+npx skills add daily-hexagram
+```
+
+自动下载 Skill 包 + 对应平台二进制，无需手动配置。
+
+#### 方式二：安装脚本
 
 ```bash
 # macOS / Linux
@@ -24,18 +32,16 @@ curl -fsSL https://raw.githubusercontent.com/godcong/yi/master/skill/scripts/ins
 iwr -Uri https://raw.githubusercontent.com/godcong/yi/master/skill/scripts/install.sh | iex
 ```
 
-脚本会自动下载对应平台的 `yi` 二进制 + Skill 文件。
-
-#### 方式二：Go Install
+#### 方式三：Go Install（开发者）
 
 ```bash
 go install github.com/godcong/yi/cmd/divine@latest
 ```
 
-然后手动复制 `skill/` 目录到 AI 助手的 skills 目录：
+手动复制 Skill 文件：
 ```bash
 cp -r skill/ ~/.qclaw/skills/daily-hexagram/
-cp divine ~/.qclaw/skills/daily-hexagram/bin/yi
+cp $(which divine) ~/.qclaw/skills/daily-hexagram/bin/yi
 ```
 
 ### 使用
