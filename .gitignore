@@ -13,3 +13,24 @@
 go.sum
 .vscode
 .~lock.*.csv#
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/
+
+# Claude Code settings
+.claude/
+
+# Team flow config
+.team-flow/
+.team/
+
+# AI agent files
+CLAUDE.md
+AGENTS.md
+
+# Temporary files
+fix*.ps1
+fix_data.py

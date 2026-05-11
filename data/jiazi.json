@@ -1,0 +1,482 @@
+[
+  {
+    "index": 1,
+    "name": "甲子",
+    "tian_gan": "甲",
+    "di_zhi": "子",
+    "wu_xing": "海中金",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 2,
+    "name": "乙丑",
+    "tian_gan": "乙",
+    "di_zhi": "丑",
+    "wu_xing": "海中金",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 3,
+    "name": "丙寅",
+    "tian_gan": "丙",
+    "di_zhi": "寅",
+    "wu_xing": "炉中火",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 4,
+    "name": "丁卯",
+    "tian_gan": "丁",
+    "di_zhi": "卯",
+    "wu_xing": "炉中火",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 5,
+    "name": "戊辰",
+    "tian_gan": "戊",
+    "di_zhi": "辰",
+    "wu_xing": "大林木",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 6,
+    "name": "己巳",
+    "tian_gan": "己",
+    "di_zhi": "巳",
+    "wu_xing": "大林木",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 7,
+    "name": "庚午",
+    "tian_gan": "庚",
+    "di_zhi": "午",
+    "wu_xing": "路旁土",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 8,
+    "name": "辛未",
+    "tian_gan": "辛",
+    "di_zhi": "未",
+    "wu_xing": "路旁土",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 9,
+    "name": "壬申",
+    "tian_gan": "壬",
+    "di_zhi": "申",
+    "wu_xing": "剑锋金",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 10,
+    "name": "癸酉",
+    "tian_gan": "癸",
+    "di_zhi": "酉",
+    "wu_xing": "剑锋金",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 11,
+    "name": "甲戌",
+    "tian_gan": "甲",
+    "di_zhi": "戌",
+    "wu_xing": "山头火",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 12,
+    "name": "乙亥",
+    "tian_gan": "乙",
+    "di_zhi": "亥",
+    "wu_xing": "山头火",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 13,
+    "name": "丙子",
+    "tian_gan": "丙",
+    "di_zhi": "子",
+    "wu_xing": "涧下水",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 14,
+    "name": "丁丑",
+    "tian_gan": "丁",
+    "di_zhi": "丑",
+    "wu_xing": "涧下水",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 15,
+    "name": "戊寅",
+    "tian_gan": "戊",
+    "di_zhi": "寅",
+    "wu_xing": "城头土",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 16,
+    "name": "己卯",
+    "tian_gan": "己",
+    "di_zhi": "卯",
+    "wu_xing": "城头土",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 17,
+    "name": "庚辰",
+    "tian_gan": "庚",
+    "di_zhi": "辰",
+    "wu_xing": "白蜡金",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 18,
+    "name": "辛巳",
+    "tian_gan": "辛",
+    "di_zhi": "巳",
+    "wu_xing": "白蜡金",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 19,
+    "name": "壬午",
+    "tian_gan": "壬",
+    "di_zhi": "午",
+    "wu_xing": "杨柳木",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 20,
+    "name": "癸未",
+    "tian_gan": "癸",
+    "di_zhi": "未",
+    "wu_xing": "杨柳木",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 21,
+    "name": "甲申",
+    "tian_gan": "甲",
+    "di_zhi": "申",
+    "wu_xing": "泉中水",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 22,
+    "name": "乙酉",
+    "tian_gan": "乙",
+    "di_zhi": "酉",
+    "wu_xing": "泉中水",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 23,
+    "name": "丙戌",
+    "tian_gan": "丙",
+    "di_zhi": "戌",
+    "wu_xing": "屋上土",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 24,
+    "name": "丁亥",
+    "tian_gan": "丁",
+    "di_zhi": "亥",
+    "wu_xing": "屋上土",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 25,
+    "name": "戊子",
+    "tian_gan": "戊",
+    "di_zhi": "子",
+    "wu_xing": "霹雳火",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 26,
+    "name": "己丑",
+    "tian_gan": "己",
+    "di_zhi": "丑",
+    "wu_xing": "霹雳火",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 27,
+    "name": "庚寅",
+    "tian_gan": "庚",
+    "di_zhi": "寅",
+    "wu_xing": "松柏木",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 28,
+    "name": "辛卯",
+    "tian_gan": "辛",
+    "di_zhi": "卯",
+    "wu_xing": "松柏木",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 29,
+    "name": "壬辰",
+    "tian_gan": "壬",
+    "di_zhi": "辰",
+    "wu_xing": "长流水",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 30,
+    "name": "癸巳",
+    "tian_gan": "癸",
+    "di_zhi": "巳",
+    "wu_xing": "长流水",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 31,
+    "name": "甲午",
+    "tian_gan": "甲",
+    "di_zhi": "午",
+    "wu_xing": "砂石金",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 32,
+    "name": "乙未",
+    "tian_gan": "乙",
+    "di_zhi": "未",
+    "wu_xing": "砂石金",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 33,
+    "name": "丙申",
+    "tian_gan": "丙",
+    "di_zhi": "申",
+    "wu_xing": "山下火",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 34,
+    "name": "丁酉",
+    "tian_gan": "丁",
+    "di_zhi": "酉",
+    "wu_xing": "山下火",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 35,
+    "name": "戊戌",
+    "tian_gan": "戊",
+    "di_zhi": "戌",
+    "wu_xing": "平地木",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 36,
+    "name": "己亥",
+    "tian_gan": "己",
+    "di_zhi": "亥",
+    "wu_xing": "平地木",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 37,
+    "name": "庚子",
+    "tian_gan": "庚",
+    "di_zhi": "子",
+    "wu_xing": "壁上土",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 38,
+    "name": "辛丑",
+    "tian_gan": "辛",
+    "di_zhi": "丑",
+    "wu_xing": "壁上土",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 39,
+    "name": "壬寅",
+    "tian_gan": "壬",
+    "di_zhi": "寅",
+    "wu_xing": "金箔金",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 40,
+    "name": "癸卯",
+    "tian_gan": "癸",
+    "di_zhi": "卯",
+    "wu_xing": "金箔金",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 41,
+    "name": "甲辰",
+    "tian_gan": "甲",
+    "di_zhi": "辰",
+    "wu_xing": "覆灯火",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 42,
+    "name": "乙巳",
+    "tian_gan": "乙",
+    "di_zhi": "巳",
+    "wu_xing": "覆灯火",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 43,
+    "name": "丙午",
+    "tian_gan": "丙",
+    "di_zhi": "午",
+    "wu_xing": "天河水",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 44,
+    "name": "丁未",
+    "tian_gan": "丁",
+    "di_zhi": "未",
+    "wu_xing": "天河水",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 45,
+    "name": "戊申",
+    "tian_gan": "戊",
+    "di_zhi": "申",
+    "wu_xing": "大驿土",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 46,
+    "name": "己酉",
+    "tian_gan": "己",
+    "di_zhi": "酉",
+    "wu_xing": "大驿土",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 47,
+    "name": "庚戌",
+    "tian_gan": "庚",
+    "di_zhi": "戌",
+    "wu_xing": "钗钏金",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 48,
+    "name": "辛亥",
+    "tian_gan": "辛",
+    "di_zhi": "亥",
+    "wu_xing": "钗钏金",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 49,
+    "name": "壬子",
+    "tian_gan": "壬",
+    "di_zhi": "子",
+    "wu_xing": "桑柘木",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 50,
+    "name": "癸丑",
+    "tian_gan": "癸",
+    "di_zhi": "丑",
+    "wu_xing": "桑柘木",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 51,
+    "name": "甲寅",
+    "tian_gan": "甲",
+    "di_zhi": "寅",
+    "wu_xing": "大溪水",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 52,
+    "name": "乙卯",
+    "tian_gan": "乙",
+    "di_zhi": "卯",
+    "wu_xing": "大溪水",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 53,
+    "name": "丙辰",
+    "tian_gan": "丙",
+    "di_zhi": "辰",
+    "wu_xing": "沙中土",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 54,
+    "name": "丁巳",
+    "tian_gan": "丁",
+    "di_zhi": "巳",
+    "wu_xing": "沙中土",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 55,
+    "name": "戊午",
+    "tian_gan": "戊",
+    "di_zhi": "午",
+    "wu_xing": "天上火",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 56,
+    "name": "己未",
+    "tian_gan": "己",
+    "di_zhi": "未",
+    "wu_xing": "天上火",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 57,
+    "name": "庚申",
+    "tian_gan": "庚",
+    "di_zhi": "申",
+    "wu_xing": "石榴木",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 58,
+    "name": "辛酉",
+    "tian_gan": "辛",
+    "di_zhi": "酉",
+    "wu_xing": "石榴木",
+    "yin_yang": "阴"
+  },
+  {
+    "index": 59,
+    "name": "壬戌",
+    "tian_gan": "壬",
+    "di_zhi": "戌",
+    "wu_xing": "大海水",
+    "yin_yang": "阳"
+  },
+  {
+    "index": 60,
+    "name": "癸亥",
+    "tian_gan": "癸",
+    "di_zhi": "亥",
+    "wu_xing": "大海水",
+    "yin_yang": "阴"
+  }
+]

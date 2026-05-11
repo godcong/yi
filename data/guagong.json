@@ -1,0 +1,322 @@
+[
+  {
+    "palace": 0,
+    "position": 0,
+    "index": "乾乾"
+  },
+  {
+    "palace": 0,
+    "position": 1,
+    "index": "乾巽"
+  },
+  {
+    "palace": 0,
+    "position": 2,
+    "index": "乾艮"
+  },
+  {
+    "palace": 0,
+    "position": 3,
+    "index": "乾坤"
+  },
+  {
+    "palace": 0,
+    "position": 4,
+    "index": "巽坤"
+  },
+  {
+    "palace": 0,
+    "position": 5,
+    "index": "艮坤"
+  },
+  {
+    "palace": 0,
+    "position": 6,
+    "index": "离坤"
+  },
+  {
+    "palace": 0,
+    "position": 7,
+    "index": "离乾"
+  },
+  {
+    "palace": 1,
+    "position": 0,
+    "index": "兑兑"
+  },
+  {
+    "palace": 1,
+    "position": 1,
+    "index": "兑坎"
+  },
+  {
+    "palace": 1,
+    "position": 2,
+    "index": "兑坤"
+  },
+  {
+    "palace": 1,
+    "position": 3,
+    "index": "兑艮"
+  },
+  {
+    "palace": 1,
+    "position": 4,
+    "index": "坎艮"
+  },
+  {
+    "palace": 1,
+    "position": 5,
+    "index": "坤艮"
+  },
+  {
+    "palace": 1,
+    "position": 6,
+    "index": "震艮"
+  },
+  {
+    "palace": 1,
+    "position": 7,
+    "index": "震兑"
+  },
+  {
+    "palace": 2,
+    "position": 0,
+    "index": "离离"
+  },
+  {
+    "palace": 2,
+    "position": 1,
+    "index": "离艮"
+  },
+  {
+    "palace": 2,
+    "position": 2,
+    "index": "离巽"
+  },
+  {
+    "palace": 2,
+    "position": 3,
+    "index": "离坎"
+  },
+  {
+    "palace": 2,
+    "position": 4,
+    "index": "艮坎"
+  },
+  {
+    "palace": 2,
+    "position": 5,
+    "index": "巽坎"
+  },
+  {
+    "palace": 2,
+    "position": 6,
+    "index": "乾坎"
+  },
+  {
+    "palace": 2,
+    "position": 7,
+    "index": "乾离"
+  },
+  {
+    "palace": 3,
+    "position": 0,
+    "index": "震震"
+  },
+  {
+    "palace": 3,
+    "position": 1,
+    "index": "震坤"
+  },
+  {
+    "palace": 3,
+    "position": 2,
+    "index": "震坎"
+  },
+  {
+    "palace": 3,
+    "position": 3,
+    "index": "震巽"
+  },
+  {
+    "palace": 3,
+    "position": 4,
+    "index": "坤巽"
+  },
+  {
+    "palace": 3,
+    "position": 5,
+    "index": "坎巽"
+  },
+  {
+    "palace": 3,
+    "position": 6,
+    "index": "兑巽"
+  },
+  {
+    "palace": 3,
+    "position": 7,
+    "index": "兑震"
+  },
+  {
+    "palace": 4,
+    "position": 0,
+    "index": "巽巽"
+  },
+  {
+    "palace": 4,
+    "position": 1,
+    "index": "巽乾"
+  },
+  {
+    "palace": 4,
+    "position": 2,
+    "index": "巽离"
+  },
+  {
+    "palace": 4,
+    "position": 3,
+    "index": "巽震"
+  },
+  {
+    "palace": 4,
+    "position": 4,
+    "index": "乾震"
+  },
+  {
+    "palace": 4,
+    "position": 5,
+    "index": "离震"
+  },
+  {
+    "palace": 4,
+    "position": 6,
+    "index": "艮震"
+  },
+  {
+    "palace": 4,
+    "position": 7,
+    "index": "艮巽"
+  },
+  {
+    "palace": 5,
+    "position": 0,
+    "index": "坎坎"
+  },
+  {
+    "palace": 5,
+    "position": 1,
+    "index": "坎兑"
+  },
+  {
+    "palace": 5,
+    "position": 2,
+    "index": "坎震"
+  },
+  {
+    "palace": 5,
+    "position": 3,
+    "index": "坎离"
+  },
+  {
+    "palace": 5,
+    "position": 4,
+    "index": "兑离"
+  },
+  {
+    "palace": 5,
+    "position": 5,
+    "index": "震离"
+  },
+  {
+    "palace": 5,
+    "position": 6,
+    "index": "坤离"
+  },
+  {
+    "palace": 5,
+    "position": 7,
+    "index": "坤坎"
+  },
+  {
+    "palace": 6,
+    "position": 0,
+    "index": "艮艮"
+  },
+  {
+    "palace": 6,
+    "position": 1,
+    "index": "艮离"
+  },
+  {
+    "palace": 6,
+    "position": 2,
+    "index": "艮乾"
+  },
+  {
+    "palace": 6,
+    "position": 3,
+    "index": "艮兑"
+  },
+  {
+    "palace": 6,
+    "position": 4,
+    "index": "离兑"
+  },
+  {
+    "palace": 6,
+    "position": 5,
+    "index": "乾兑"
+  },
+  {
+    "palace": 6,
+    "position": 6,
+    "index": "巽兑"
+  },
+  {
+    "palace": 6,
+    "position": 7,
+    "index": "巽艮"
+  },
+  {
+    "palace": 7,
+    "position": 0,
+    "index": "坤坤"
+  },
+  {
+    "palace": 7,
+    "position": 1,
+    "index": "坤震"
+  },
+  {
+    "palace": 7,
+    "position": 2,
+    "index": "坤兑"
+  },
+  {
+    "palace": 7,
+    "position": 3,
+    "index": "坤乾"
+  },
+  {
+    "palace": 7,
+    "position": 4,
+    "index": "震乾"
+  },
+  {
+    "palace": 7,
+    "position": 5,
+    "index": "兑乾"
+  },
+  {
+    "palace": 7,
+    "position": 6,
+    "index": "坎乾"
+  },
+  {
+    "palace": 7,
+    "position": 7,
+    "index": "坎坤"
+  }
+]

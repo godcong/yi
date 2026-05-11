@@ -1,18 +1,18 @@
-﻿package yi
+package yi
 
 // ============================================================================
-// 阴阳 (Yin-Yang)
+// Yin-Yang
 // ============================================================================
 
-// YinYang 阴阳类型
+// YinYang represents Yin-Yang type
 type YinYang int
 
 const (
-	Yang YinYang = iota // 阳 (0)
-	Yin                 // 阴 (1)
+	Yang YinYang = iota // Yang (0)
+	Yin                 // Yin (1)
 )
 
-// String 返回阴阳字符串
+// String returns Yin-Yang string
 func (yy YinYang) String() string {
 	if yy == Yang {
 		return "阳"
@@ -20,29 +20,29 @@ func (yy YinYang) String() string {
 	return "阴"
 }
 
-// IsYang 是否为阳
+// IsYang returns whether it is Yang
 func (yy YinYang) IsYang() bool {
 	return yy == Yang
 }
 
-// IsYin 是否为阴
+// IsYin returns whether it is Yin
 func (yy YinYang) IsYin() bool {
 	return yy == Yin
 }
 
 // ============================================================================
-// 性别 (Sex)
+// Sex
 // ============================================================================
 
-// Sex 性别
+// Sex represents gender
 type Sex int
 
 const (
-	Male   Sex = 0b01 // 男
-	Female Sex = 0b10 // 女
+	Male   Sex = 0b01 // Male
+	Female Sex = 0b10 // Female
 )
 
-// String 返回性别字符串
+// String returns gender string
 func (s Sex) String() string {
 	switch s {
 	case Male:
@@ -54,32 +54,32 @@ func (s Sex) String() string {
 	}
 }
 
-// IsMale 是否为男
+// IsMale returns whether it is male
 func (s Sex) IsMale() bool {
 	return s == Male
 }
 
-// IsFemale 是否为女
+// IsFemale returns whether it is female
 func (s Sex) IsFemale() bool {
 	return s == Female
 }
 
 // ============================================================================
-// 五行 (WuXing)
+// WuXing (Five Elements)
 // ============================================================================
 
-// WuXing 五行类型
+// WuXing represents Five Elements type
 type WuXing int
 
 const (
-	Wood  WuXing = iota + 1 // 木
-	Fire                    // 火
-	Earth                   // 土
-	Metal                   // 金
-	Water                   // 水
+	Wood  WuXing = iota + 1 // Wood
+	Fire                    // Fire
+	Earth                   // Earth
+	Metal                   // Metal
+	Water                   // Water
 )
 
-// String 返回五行字符串
+// String returns Five Elements string
 func (wx WuXing) String() string {
 	switch wx {
 	case Wood:
@@ -97,13 +97,14 @@ func (wx WuXing) String() string {
 	}
 }
 
-// WuXingList 五行列表 (用于计算)
-// 顺序: 水木木火火土土金金水
-const wuXingList = "水木木火火土土金金水"
+// WuXingList Five Elements list (for calculation)
+// Order: Wood, Wood, Fire, Fire, Earth, Earth, Metal, Metal, Water, Water
+// 1-2 Wood, 3-4 Fire, 5-6 Earth, 7-8 Metal, 9-10 Water
+const wuXingList = "木木火火土土金金水水"
 
-// GetWuXingByNumber 根据数字获取五行
-// 1-2木, 3-4火, 5-6土, 7-8金, 9-10水
-// 返回: 阳木/阴木/阳火/阴火/阳土/阴土/阳金/阴金/阳水/阴水
+// GetWuXingByNumber returns Five Elements by number
+// 1-2 Wood, 3-4 Fire, 5-6 Earth, 7-8 Metal, 9-10 Water
+// Returns: Yang Wood / Yin Wood / Yang Fire / Yin Fire / Yang Earth / Yin Earth / Yang Metal / Yin Metal / Yang Water / Yin Water
 func GetWuXingByNumber(n int) string {
 	idx := n % 10
 	if idx == 0 {
@@ -111,15 +112,15 @@ func GetWuXingByNumber(n int) string {
 	}
 	base := string([]rune(wuXingList)[idx-1])
 
-	// 判断阴阳
+	// Determine Yin-Yang
 	if idx%2 == 1 {
 		return "阳" + base
 	}
 	return "阴" + base
 }
 
-// GetYinYangByNumber 根据数字获取阴阳
-// 奇数为阳，偶数为阴
+// GetYinYangByNumber returns Yin-Yang by number
+// Odd numbers are Yang, even numbers are Yin
 func GetYinYangByNumber(n int) YinYang {
 	if n%2 == 0 {
 		return Yin
@@ -128,11 +129,11 @@ func GetYinYangByNumber(n int) YinYang {
 }
 
 // ============================================================================
-// 五行生克关系
+// Five Elements generation and control relationships
 // ============================================================================
 
-// Sheng 生 (我生者)
-// 木生火, 火生土, 土生金, 金生水, 水生木
+// Sheng returns what I generate (generating)
+// Wood generates Fire, Fire generates Earth, Earth generates Metal, Metal generates Water, Water generates Wood
 func (wx WuXing) Sheng() WuXing {
 	switch wx {
 	case Wood:
@@ -150,8 +151,8 @@ func (wx WuXing) Sheng() WuXing {
 	}
 }
 
-// Ke 克 (我克者)
-// 木克土, 土克水, 水克火, 火克金, 金克木
+// Ke returns what I control (controlling)
+// Wood controls Earth, Earth controls Water, Water controls Fire, Fire controls Metal, Metal controls Wood
 func (wx WuXing) Ke() WuXing {
 	switch wx {
 	case Wood:
@@ -169,7 +170,7 @@ func (wx WuXing) Ke() WuXing {
 	}
 }
 
-// BeiSheng 被生 (生我者)
+// BeiSheng returns what generates me (being generated)
 func (wx WuXing) BeiSheng() WuXing {
 	switch wx {
 	case Wood:
@@ -187,7 +188,7 @@ func (wx WuXing) BeiSheng() WuXing {
 	}
 }
 
-// BeiKe 被克 (克我者)
+// BeiKe returns what controls me (being controlled)
 func (wx WuXing) BeiKe() WuXing {
 	switch wx {
 	case Wood:

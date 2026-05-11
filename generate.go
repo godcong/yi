@@ -2,5 +2,5 @@
 
 package yi
 
-// generate.go 代码生成入口
-// 运行: go generate ./...
+// generate.go is the code generation entry point
+// Run: go generate ./...

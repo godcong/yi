@@ -1,95 +1,96 @@
-﻿// Package yi 周易卦象计算库
+// Package yi is an I Ching (Zhou Yi) hexagram calculation library.
 //
-// 本包实现了周易六十四卦的计算和查询功能，用于姓名学分析。
+// This package implements the calculation and query functions for the 64 hexagrams of I Ching,
+// used for numerology analysis.
 //
-// # 核心概念
+// # Core Concepts
 //
-// ## 八卦 (Bagua / Trigram)
+// ## Bagua (Eight Trigrams)
 //
-// 八卦是周易的基础，由三个爻组成：
-//   - 乾 (Qian) ☰ 天
-//   - 兑 (Dui)  ☱ 泽
-//   - 离 (Li)   ☲ 火
-//   - 震 (Zhen) ☳ 雷
-//   - 巽 (Xun)  ☴ 风
-//   - 坎 (Kan)  ☵ 水
-//   - 艮 (Gen)  ☶ 山
-//   - 坤 (Kun)  ☷ 地
+// The Bagua are the foundation of I Ching, each composed of three lines:
+//   - Qian (乾) ☰ Heaven
+//   - Dui (兑)  ☱ Lake
+//   - Li (离)   ☲ Fire
+//   - Zhen (震) ☳ Thunder
+//   - Xun (巽)  ☴ Wind
+//   - Kan (坎)  ☵ Water
+//   - Gen (艮)  ☶ Mountain
+//   - Kun (坤)  ☷ Earth
 //
-// ## 六十四卦 (64 Gua / Hexagrams)
+// ## 64 Gua (Hexagrams)
 //
-// 由两个八卦上下组合而成，共64种组合。
+// Formed by combining two Bagua (upper and lower), creating 64 combinations.
 //
-// ## 爻 (Yao / Line)
+// ## Yao (Lines)
 //
-// 卦的基本组成单位，分为：
-//   - 阳爻 ⚊
-//   - 阴爻 ⚋
+// The basic unit of a hexagram, divided into:
+//   - Yang line ⚊
+//   - Yin line ⚋
 //
-// 六爻从下往上依次为：初、二、三、四、五、上
+// The six lines from bottom to top are: Chu (First), Er (Second), San (Third), Si (Fourth), Wu (Fifth), Shang (Top)
 //
-// ## 起卦 (Divination)
+// ## Divination
 //
-// 支持多种起卦方式：
-//   - 按数起卦: DivineByNumber()
-//   - 按时间起卦: DivineByTime()
+// Supports multiple divination methods:
+//   - By number: DivineByNumber()
+//   - By time: DivineByTime()
 //
-// ## 卦象变换
+// ## Hexagram Transformations
 //
-//   - 本卦 (Ben): 原始卦象
-//   - 变卦 (Bian): 动爻变化后的卦象
-//   - 互卦 (Hu): 取二三四、三四五爻组成的卦
-//   - 错卦 (Cuo): 阴阳全反的卦象
-//   - 综卦 (Zong): 上下颠倒的卦象
+//   - Ben (Original): The original hexagram
+//   - Bian (Changed): The hexagram after changing lines transformation
+//   - Hu (Mutual): The hexagram formed by lines 2-3-4 and 3-4-5
+//   - Cuo (Opposite): The hexagram with all Yin/Yang reversed
+//   - Zong (Reversed): The hexagram turned upside down
 //
-// # 命名规范
+// # Naming Conventions
 //
-// 本包采用以下命名规范：
+// This package follows these naming conventions:
 //
-// 1. 周易专有术语使用拼音：
-//    - Gua (卦), Yao (爻), Bagua (八卦)
-//    - Dayan (大衍之数), Wuxing (五行)
-//    - JiXiong (吉凶), Ben/Bian/Hu/Cuo/Zong (本变互错综)
+// 1. I Ching specific terms use Pinyin:
+//    - Gua (hexagram), Yao (line), Bagua (eight trigrams)
+//    - Dayan (great expansion numbers), WuXing (five elements)
+//    - JiXiong (fortune), Ben/Bian/Hu/Cuo/Zong (transformations)
 //
-// 2. 通用操作使用英文：
+// 2. General operations use English:
 //    - Get, Divine, Filter, Is
 //    - Calculate, Transform, Parse
 //
-// 3. 提供英文别名便于理解：
+// 3. English aliases are provided for convenience:
 //    - Hexagram = Gua
 //    - Line = Yao
 //    - Trigram = Bagua
 //    - IChing = ZhouYi
 //
-// # 使用示例
+// # Usage Examples
 //
-// 基本起卦：
+// Basic divination:
 //
-//	// 按数起卦 (上卦3, 下卦5, 变爻2)
+//	// Divination by number (upper trigram 3, lower trigram 5, changing line 2)
 //	yi := yi.DivineByNumber(3, 5, 2)
 //
-//	// 获取本卦
+//	// Get the original hexagram
 //	ben := yi.GetGua(yi.Ben)
-//	fmt.Println(ben.Ming) // 输出卦名
+//	fmt.Println(ben.Ming) // Print hexagram name
 //
-//	// 判断是否吉
+//	// Check if it is auspicious
 //	if yi.IsJi(yi.Female) {
-//	    fmt.Println("吉")
+//	    fmt.Println("Auspicious")
 //	}
 //
-// 查询大衍之数：
+// Query Dayan numbers:
 //
-//	// 获取笔画数21的吉凶
+//	// Get fortune for stroke count 21
 //	dayan, err := yi.GetDayan(21)
 //	if err != nil {
 //	    log.Fatal(err)
 //	}
-//	fmt.Println(dayan.JiXiong) // 输出: 吉
+//	fmt.Println(dayan.JiXiong) // Output: 吉 (Auspicious)
 //
-// # 参考资料
+// # References
 //
-//   - 《周易》
-//   - 《易经杂说》南怀瑾
-//   - 《周易正义》孔颖达
+//   - I Ching (Book of Changes)
+//   - "I Ching Casual Talks" by Nan Huai-Chin
+//   - "Zhou Yi Zheng Yi" by Kong Ying-Da
 //
 package yi

@@ -1,4 +1,4 @@
-﻿package yi
+package yi
 
 import (
 	"errors"
@@ -6,98 +6,106 @@ import (
 )
 
 // ============================================================================
-// 类型别名 (便于国际用户理解)
+// Type aliases (for international users)
 // ============================================================================
 
-// Hexagram 是 Gua 的英文别名
+// Hexagram is an English alias for Gua
 type Hexagram = Gua
 
-// Line 是 Yao 的英文别名
+// Line is an English alias for Yao
 type Line = Yao
 
-// Trigram 是 Bagua 的英文别名
+// Trigram is an English alias for Bagua
 type Trigram = Bagua
 
-// IChing 是 ZhouYi 的英文别名
+// IChing is an English alias for ZhouYi
 type IChing = ZhouYi
 
 // ============================================================================
-// 核心类型定义
+// Core type definitions
 // ============================================================================
 
-// Gua 卦象 (六十四卦)
+// Gua represents a hexagram (64 hexagrams)
 type Gua struct {
-	Xu        int     // 卦序 (1-64)
-	Index     string  // 索引 (如: "乾乾", "坤坤")
-	Shang     string  // 上卦名称
-	ShangNum  int     // 上卦数 (0-7)
-	Xia       string  // 下卦名称
-	XiaNum    int     // 下卦数 (0-7)
-	JiXiong   string  // 吉凶
-	Xiang     string  // 卦象符号 (如: ䷀)
-	Ming      string  // 卦名 (如: 乾为天)
-	Yi        string  // 卦意 (邵雍)
-	Symbol    string  // 符号
-	Yaos      [6]*Yao // 六爻: 初，二，三，四，五，上
-	Yong        string // 用九/用六
-	YongJiXiong string // 用九/用六吉凶
+	Xu          int     // hexagram number (1-64)
+	Index       string  // index key (e.g., "乾乾", "坤坤")
+	ShangMing   string  // upper trigram full name (e.g., "乾为天")
+	ShangNum    int     // upper trigram number (0-7)
+	XiaMing     string  // lower trigram full name (e.g., "坎为水")
+	XiaNum      int     // lower trigram number (0-7)
+	JiXiong     string  // fortune (吉/凶/半吉)
+	GuaName     string  // hexagram single-char name (e.g., "乾", "屯")
+	Ming        string  // hexagram full name (e.g., "乾为天", "水雷屯")
+	GuaYi       string  // hexagram meaning (邵雍易学)
+	GuaSymbol   string  // Unicode hexagram symbol (e.g., ䷀)
+	TuanText    string  // 彖辞 (judgment commentary)
+	XiangText   string  // 大象辞 (image commentary, e.g., "天行健，君子以自强不息")
+	Yaos        [6]*Yao // six lines: first, second, third, fourth, fifth, top
+	Yong        string  // 用九/用六 (only for Qian and Kun)
+	YongJiXiong string  // Yong fortune
 }
 
-// Yao 爻 (卦中的一爻)
+// Yao represents a line (one line in a hexagram)
 type Yao struct {
-	Ci      string // 爻辞
-	JiXiong string // 爻吉凶
-	NvMing  string // 女命判断
+	Ci      string // line text (爻辞)
+	JiXiong string // line fortune (吉/凶/平)
+	NvMing  string // female-specific judgment; empty means same as general (男女通用)
 }
 
-// Bagua 八卦 (单卦)
-// 使用 int 表示，二进制: 0=阳, 1=阴
-// 0b000 = 乾(三阳), 0b111 = 坤(三阴)
+// HasNvMing returns whether this line has a female-specific judgment.
+// When false, the general JiXiong applies to both male and female.
+func (y *Yao) HasNvMing() bool {
+	return y.NvMing != ""
+}
+
+// Bagua represents the eight trigrams (single trigram)
+// Represented using int, binary: 0=Yang, 1=Yin
+// 0b000 = Qian (three Yang), 0b111 = Kun (three Yin)
 type Bagua = int
 
-// 八卦常量
+// Eight trigram constants
 const (
-	Qian Bagua = 0b000 // 乾 ☰ 天
-	Dui  Bagua = 0b001 // 兑 ☱ 泽
-	Li   Bagua = 0b010 // 离 ☲ 火
-	Zhen Bagua = 0b011 // 震 ☳ 雷
-	Xun  Bagua = 0b100 // 巽 ☴ 风
-	Kan  Bagua = 0b101 // 坎 ☵ 水
-	Gen  Bagua = 0b110 // 艮 ☶ 山
-	Kun  Bagua = 0b111 // 坤 ☷ 地
+	Qian Bagua = 0b000 // Qian ☰ Heaven
+	Dui  Bagua = 0b001 // Dui  ☱ Lake
+	Li   Bagua = 0b010 // Li   ☲ Fire
+	Zhen Bagua = 0b011 // Zhen ☳ Thunder
+	Xun  Bagua = 0b100 // Xun  ☴ Wind
+	Kan  Bagua = 0b101 // Kan  ☵ Water
+	Gen  Bagua = 0b110 // Gen  ☶ Mountain
+	Kun  Bagua = 0b111 // Kun  ☷ Earth
 )
 
-// 卦类型 (本卦、变卦、互卦、错卦、综卦)
+// Hexagram types (original, changed, mutual, opposite, reversed)
 const (
-	Ben  = iota // 本卦 (Original)
-	Bian        // 变卦 (Changed)
-	Hu          // 互卦 (Mutual)
-	Cuo         // 错卦 (Opposite)
-	Zong        // 综卦 (Reversed)
+	Ben  = iota // Original hexagram
+	Bian        // Changed hexagram
+	Hu          // Mutual hexagram
+	Cuo         // Opposite hexagram
+	Zong        // Reversed hexagram
 	GuaTypeMax
 )
 
-// YaoPosition 爻位
+// YaoPosition represents line position
 type YaoPosition int
 
 const (
-	Chu   YaoPosition = iota // 初爻 (First)
-	Er                       // 二爻 (Second)
-	San                      // 三爻 (Third)
-	Si                       // 四爻 (Fourth)
-	Wu                       // 五爻 (Fifth)
-	Shang                    // 上爻 (Top)
+	Chu   YaoPosition = iota // First line
+	Er                       // Second line
+	San                      // Third line
+	Si                       // Fourth line
+	Wu                       // Fifth line
+	Shang                    // Top line
 	YaoCount
 )
 
-// ZhouYi 周易主结构
+// ZhouYi is the main I Ching structure
 type ZhouYi struct {
 	gua     [GuaTypeMax]*Gua
-	bianYao []int // 变爻数
+	bianYao []int // changing line numbers
 }
 
 // ============================================================================
-// 错误定义
+// Error definitions
 // ============================================================================
 
 var (
@@ -108,17 +116,17 @@ var (
 )
 
 // ============================================================================
-// 核心 API
+// Core API
 // ============================================================================
 
-// Divine 起卦 (按数起卦)
-// xia: 下卦数, shang: 上卦数
+// Divine performs divination (by numbers)
+// xia: lower trigram number, shang: upper trigram number
 func Divine(xia, shang int) *ZhouYi {
 	return DivineByNumber(shang, xia)
 }
 
-// DivineByNumber 按数起卦
-// shang: 上卦数, xia: 下卦数, bianYao: 变爻数(可选)
+// DivineByNumber performs divination by numbers
+// shang: upper trigram number, xia: lower trigram number, bianYao: changing line numbers (optional)
 func DivineByNumber(shang, xia int, bianYao ...int) *ZhouYi {
 	ben := getBenGua(shang, xia)
 	bian := getBianGua(ben, bianYao...)
@@ -143,13 +151,13 @@ func DivineByNumber(shang, xia int, bianYao ...int) *ZhouYi {
 	}
 }
 
-// DivineByTime 按时间起卦
+// DivineByTime performs divination by time
 func DivineByTime(shang, xia int, t time.Time) *ZhouYi {
 	by := timeToBianYao(t)
 	return DivineByNumber(shang, xia, by)
 }
 
-// GetGua 获取指定类型的卦
+// GetGua returns the hexagram of specified type
 func (zy *ZhouYi) GetGua(guaType int) *Gua {
 	if guaType < 0 || guaType >= GuaTypeMax {
 		return nil
@@ -157,12 +165,19 @@ func (zy *ZhouYi) GetGua(guaType int) *Gua {
 	return zy.gua[guaType]
 }
 
-// GetBianYao 获取变爻位置 (0-5)
+// GetBianYao returns the changing line position (0-5)
 func (zy *ZhouYi) GetBianYao() int {
 	return calcBianYao(zy.bianYao...)
 }
 
-// GetYao 获取指定爻
+// GetAllBianYao returns all changing line numbers as a slice.
+func (zy *ZhouYi) GetAllBianYao() []int {
+	result := make([]int, len(zy.bianYao))
+	copy(result, zy.bianYao)
+	return result
+}
+
+// GetYao returns the specified line
 func (g *Gua) GetYao(pos YaoPosition) *Yao {
 	if pos < 0 || int(pos) >= int(YaoCount) {
 		return nil
@@ -171,11 +186,11 @@ func (g *Gua) GetYao(pos YaoPosition) *Yao {
 }
 
 // ============================================================================
-// 查询 API
+// Query API
 // ============================================================================
 
-// GetGuaByIndex 按索引获取卦象
-// index: 如 "乾乾", "坤坤", "坎震" 等
+// GetGuaByIndex returns hexagram by index
+// index: e.g., "QianQian", "KunKun", "KanZhen"
 func GetGuaByIndex(index string) (*Gua, error) {
 	if g, ok := guaStore[index]; ok {
 		return g, nil
@@ -183,7 +198,7 @@ func GetGuaByIndex(index string) (*Gua, error) {
 	return nil, ErrGuaNotFound
 }
 
-// GetGuaByXu 按卦序获取卦象 (1-64)
+// GetGuaByXu returns hexagram by number (1-64)
 func GetGuaByXu(xu int) (*Gua, error) {
 	if xu < 1 || xu > 64 {
 		return nil, ErrInvalidGuaIndex
@@ -196,7 +211,7 @@ func GetGuaByXu(xu int) (*Gua, error) {
 	return nil, ErrGuaNotFound
 }
 
-// GetBaguaName 获取八卦名称
+// GetBaguaName returns the trigram name
 func GetBaguaName(bg Bagua) string {
 	if bg < 0 || bg > 7 {
 		return ""
@@ -204,7 +219,7 @@ func GetBaguaName(bg Bagua) string {
 	return baguaNames[bg]
 }
 
-// GetBaguaSymbol 获取八卦符号
+// GetBaguaSymbol returns the trigram symbol
 func GetBaguaSymbol(bg Bagua) string {
 	if bg < 0 || bg > 7 {
 		return ""
@@ -213,10 +228,10 @@ func GetBaguaSymbol(bg Bagua) string {
 }
 
 // ============================================================================
-// 判断 API
+// Judgment API
 // ============================================================================
 
-// IsJi 是否为吉
+// IsJi returns whether it is auspicious
 func (zy *ZhouYi) IsJi(sex Sex) bool {
 	yao := zy.GetGua(Bian).Yaos[zy.GetBianYao()]
 	if yao == nil {
@@ -229,7 +244,7 @@ func (zy *ZhouYi) IsJi(sex Sex) bool {
 	return !contains(yao.JiXiong, "凶")
 }
 
-// FilterYao 过滤爻
+// FilterYao filters lines
 func (zy *ZhouYi) FilterYao(sex Sex, filters ...string) bool {
 	yao := zy.GetGua(Bian).Yaos[zy.GetBianYao()]
 	if yao == nil {
@@ -251,22 +266,22 @@ func (zy *ZhouYi) FilterYao(sex Sex, filters ...string) bool {
 }
 
 // ============================================================================
-// 预生成数据 (由 go generate 生成)
+// Pre-generated data (generated by go generate)
 // ============================================================================
 
-// baguaNames 八卦名称
+// baguaNames trigram names
 var baguaNames = [8]string{
-	Qian: "乾", // ☰ 天
-	Dui:  "兑", // ☱ 泽
-	Li:   "离", // ☲ 火
-	Zhen: "震", // ☳ 雷
-	Xun:  "巽", // ☴ 风
-	Kan:  "坎", // ☵ 水
-	Gen:  "艮", // ☶ 山
-	Kun:  "坤", // ☷ 地
+	Qian: "乾", // ☰ Heaven
+	Dui:  "兑", // ☱ Lake
+	Li:   "离", // ☲ Fire
+	Zhen: "震", // ☳ Thunder
+	Xun:  "巽", // ☴ Wind
+	Kan:  "坎", // ☵ Water
+	Gen:  "艮", // ☶ Mountain
+	Kun:  "坤", // ☷ Earth
 }
 
-// baguaSymbols 八卦符号
+// baguaSymbols trigram symbols
 var baguaSymbols = [8]string{
 	Qian: "☰",
 	Dui:  "☱",
@@ -278,14 +293,14 @@ var baguaSymbols = [8]string{
 	Kun:  "☷",
 }
 
-// guaStore 卦象存储 (由 go generate 填充)
+// guaStore hexagram storage (populated by go generate)
 var guaStore = map[string]*Gua{}
 
 // ============================================================================
-// 内部函数
+// Internal functions
 // ============================================================================
 
-// getBenGua 本卦
+// getBenGua returns the original hexagram
 func getBenGua(shang, xia int) *Gua {
 	idx := GetBaguaName(shang%8) + GetBaguaName(xia%8)
 	if g, ok := guaStore[idx]; ok {
@@ -294,7 +309,7 @@ func getBenGua(shang, xia int) *Gua {
 	return nil
 }
 
-// getBianGua 变卦
+// getBianGua returns the changed hexagram
 func getBianGua(ben *Gua, bianYao ...int) *Gua {
 	bz := calcBianYao(bianYao...)
 	shang := ben.ShangNum
@@ -313,7 +328,7 @@ func getBianGua(ben *Gua, bianYao ...int) *Gua {
 	return nil
 }
 
-// bianYaoTransform 变爻变换
+// bianYaoTransform transforms changing line
 func bianYaoTransform(gua, pos int) int {
 	mask := 1 << (2 - uint(pos))
 	if gua&mask == 0 {
@@ -322,7 +337,7 @@ func bianYaoTransform(gua, pos int) int {
 	return gua ^ mask
 }
 
-// calcBianYao 计算变爻位置
+// calcBianYao calculates changing line position
 func calcBianYao(bianYao ...int) int {
 	if len(bianYao) == 0 {
 		return 0
@@ -334,7 +349,7 @@ func calcBianYao(bianYao ...int) int {
 	return n - 1
 }
 
-// getHuGua 互卦
+// getHuGua returns the mutual hexagram
 func getHuGua(ben *Gua) *Gua {
 	shang := calcHuShang(ben.ShangNum, ben.XiaNum)
 	xia := calcHuXia(ben.ShangNum, ben.XiaNum)
@@ -345,7 +360,7 @@ func getHuGua(ben *Gua) *Gua {
 	return nil
 }
 
-// calcHuShang 计算互卦上卦
+// calcHuShang calculates mutual upper trigram
 func calcHuShang(shang, xia int) int {
 	result := 0
 	if xia&(1<<0) > 0 {
@@ -360,7 +375,7 @@ func calcHuShang(shang, xia int) int {
 	return result
 }
 
-// calcHuXia 计算互卦下卦
+// calcHuXia calculates mutual lower trigram
 func calcHuXia(shang, xia int) int {
 	result := 0
 	if xia&(1<<1) > 0 {
@@ -375,7 +390,7 @@ func calcHuXia(shang, xia int) int {
 	return result
 }
 
-// getCuoGua 错卦 (阴阳全反)
+// getCuoGua returns the opposite hexagram (all Yin/Yang reversed)
 func getCuoGua(ben *Gua) *Gua {
 	shang := ^ben.ShangNum & 0x7
 	xia := ^ben.XiaNum & 0x7
@@ -386,7 +401,7 @@ func getCuoGua(ben *Gua) *Gua {
 	return nil
 }
 
-// getZongGua 综卦 (上下颠倒)
+// getZongGua returns the reversed hexagram (upside down)
 func getZongGua(ben *Gua) *Gua {
 	shang := reverseBits(ben.XiaNum)
 	xia := reverseBits(ben.ShangNum)
@@ -397,12 +412,12 @@ func getZongGua(ben *Gua) *Gua {
 	return nil
 }
 
-// reverseBits 反转3位二进制
+// reverseBits reverses 3-bit binary
 func reverseBits(n int) int {
 	return ((n & 0x4) >> 2) | (n & 0x2) | ((n & 0x1) << 2)
 }
 
-// timeToBianYao 时间转变爻
+// timeToBianYao converts time to changing line
 func timeToBianYao(t time.Time) int {
 	const layout = "2006-01-02 15:04"
 	parsed, _ := time.ParseInLocation(layout, t.Format(layout), t.Location())
@@ -412,12 +427,15 @@ func timeToBianYao(t time.Time) int {
 	return 0
 }
 
-// contains 字符串包含检查
+// contains checks if string contains substring
 func contains(s, substr string) bool {
-	return len(s) >= len(substr) && (s == substr || len(s) > 0 && containsHelper(s, substr))
+	return len(s) >= len(substr) && containsHelper(s, substr)
 }
 
 func containsHelper(s, substr string) bool {
+	if len(substr) == 0 {
+		return true
+	}
 	for i := 0; i <= len(s)-len(substr); i++ {
 		if s[i:i+len(substr)] == substr {
 			return true
@@ -427,10 +445,10 @@ func containsHelper(s, substr string) bool {
 }
 
 // ============================================================================
-// 初始化 (加载数据)
+// Initialization (load data)
 // ============================================================================
 
 func init() {
-	// 数据由 go generate 生成并填充
-	// 这里保留空实现，实际数据在 data_generated.go 中
+	// Data is generated and populated by go generate
+	// This is an empty implementation, actual data is in data_generated.go
 }
