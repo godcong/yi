@@ -58,5 +58,4 @@ release:
   draft: false
   prerelease: auto
   extra_files:
-    - glob: ./skill/**/*
     - glob: ./skills/**/*

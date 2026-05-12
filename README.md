@@ -18,17 +18,47 @@
 npx skills add https://github.com/godcong/yi --skill daily-hexagram
 ```
 
-安装完成后，进入 skill 目录运行脚本下载对应平台的二进制：
+安装后，AI 首次使用时会**自动检测并下载**对应平台的 `yi` 二进制（通过 SKILL.md 内置规则），无需手动操作。
+
+<details>
+<summary>手动安装二进制（可选）</summary>
+
+如果自动安装失败，可手动运行安装脚本：
 
 ```bash
 # macOS / Linux
-cd ~/.qclaw/skills/daily-hexagram
 ./scripts/install.sh
 
 # Windows (PowerShell)
-cd ~/.qclaw/skills/daily-hexagram
 .\scripts\install.bat
 ```
+
+或通过 Go 编译安装：
+
+```bash
+go install github.com/godcong/yi/cmd/divine@latest
+# 然后将编译好的 yi 复制到 skill 目录的 bin/ 下
+```
+
+</details>
+
+### 兼容的 AI Agent
+
+本 Skill 遵循 [Agent Skills 开放标准](https://agentskills.io/)，兼容所有支持该标准的 AI Agent：
+
+| Agent | 安装命令示例 |
+|-------|------------|
+| Claude Code | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a claude-code` |
+| Trae | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a trae` |
+| Cursor | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a cursor` |
+| Codex | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a codex` |
+| Goose | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a goose` |
+| Gemini CLI | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a gemini-cli` |
+| Roo Code | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a roo` |
+| Windsurf | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a windsurf` |
+| 其他 | 省略 `-a` 参数，交互选择目标 Agent |
+
+完整支持列表见 [npx skills 文档](https://www.npmjs.com/package/skills)。
 
 ### 使用
 

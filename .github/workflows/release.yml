@@ -30,9 +30,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build .skill files
-        run: python3 scripts/build_skill.py --dist dist/ --skill-dir skill/ --output dist/
+        run: python3 scripts/build_skill.py --dist dist/ --skill-dir skills/daily-hexagram --output dist/
 
-      - name: Upload .skill files to release
+      - name: Update skills.json checksums
+        run: python3 scripts/update_skills_json.py --dist dist/ --skills-json skills.json --version ${{ github.ref_name }}
+
+      - name: Upload .skill files and skills.json to release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -40,3 +43,5 @@ jobs:
             echo "Uploading $f..."
             gh release upload ${{ github.ref_name }} "$f" --clobber
           done
+          echo "Uploading skills.json..."
+          gh release upload ${{ github.ref_name }} skills.json --clobber
