@@ -97,6 +97,11 @@ type GuaInfo struct {
 // JieGua performs hexagram interpretation from a ZhouYi divination result.
 // This is the main entry point for interpretation after any divination method.
 func JieGua(zy *ZhouYi, sex Sex) *JieGuaResult {
+	return JieGuaWithLang(zy, sex, LangZH)
+}
+
+// JieGuaWithLang performs hexagram interpretation with language support.
+func JieGuaWithLang(zy *ZhouYi, sex Sex, lang Language) *JieGuaResult {
 	if zy == nil {
 		return nil
 	}
@@ -132,7 +137,7 @@ func JieGua(zy *ZhouYi, sex Sex) *JieGuaResult {
 
 	// Overall judgment
 	result.IsJi = zy.IsJi(sex)
-	result.JiXiongReason = buildJiXiongReason(zy, sex, result)
+	result.JiXiongReason = buildJiXiongReasonWithLang(zy, sex, result, lang)
 
 	// Detailed interpretation (释义) from pre-written data
 	result.JieDu = GetGuaJieDuByIndex(zy.GetGua(Ben).Index)
@@ -403,132 +408,141 @@ func aspectJiXiong(text string) string {
 
 // buildJiXiongReason constructs the reason string for the judgment.
 func buildJiXiongReason(zy *ZhouYi, sex Sex, result *JieGuaResult) string {
+	return buildJiXiongReasonWithLang(zy, sex, result, LangZH)
+}
+
+// buildJiXiongReasonWithLang constructs the reason string with language support.
+func buildJiXiongReasonWithLang(zy *ZhouYi, sex Sex, result *JieGuaResult, lang Language) string {
+	t := getI18n(lang)
 	benGua := zy.GetGua(Ben)
 	bianGua := zy.GetGua(Bian)
 	if benGua == nil || bianGua == nil {
+		if lang == LangEN {
+			return "Hexagram data incomplete, cannot judge"
+		}
 		return "卦象数据不完整，无法判断"
 	}
 
 	var reason string
 
 	// 1. Original hexagram fortune
-	reason += "本卦【" + benGua.Ming + "】" + benGua.JiXiong + "；"
+	reason += "【" + t.BenGua + "】" + benGua.Ming + " " + TranslateJiXiong(benGua.JiXiong, lang) + "; "
 
 	// 2. Changed hexagram fortune
-	reason += "变卦【" + bianGua.Ming + "】" + bianGua.JiXiong + "；"
+	reason += "【" + t.BianGua + "】" + bianGua.Ming + " " + TranslateJiXiong(bianGua.JiXiong, lang) + "; "
 
 	// 3. Changing line text
 	if result.DongYaoText != "" {
-		posName := yaoPosName(result.DongYaoPos)
-		reason += "动爻在" + posName + "，爻辞「" + result.DongYaoText + "」，" + result.DongYaoJiXiong + "；"
+		posName := TranslateYaoPos(yaoPosName(result.DongYaoPos), lang)
+		reason += t.DongYaoPos + " " + posName + ", " + t.YaoCi + "「" + result.DongYaoText + "」, " + TranslateJiXiong(result.DongYaoJiXiong, lang) + "; "
 	}
 
 	// 4. Xiang commentary (大象辞)
 	if benGua.XiangText != "" {
-		reason += "象曰：" + benGua.XiangText + "；"
+		reason += t.XiangYue + ": " + benGua.XiangText + "; "
 	}
 
 	// 5. Overall
 	if result.IsJi {
-		reason += "综合判断：吉"
+		reason += t.ZongHePanduan + ": " + t.Ji
 	} else {
-		reason += "综合判断：凶"
+		reason += t.ZongHePanduan + ": " + t.Xiong
 	}
 
 	return reason
 }
 
-// FormatJieGua formats the interpretation result as a readable string.
-// Structure:
-//   【解卦】 - 卦象的解读（卦象分析、卦义、彖辞、象辞）
-//   【释义】 - 解读内容的释义（事业/爱情/财运等分类详解）
-//   【综合判断】 - 整体吉凶判断
+// FormatJieGua formats the interpretation result as a readable string (Chinese).
 func FormatJieGua(result *JieGuaResult) string {
+	return FormatJieGuaWithLang(result, LangZH)
+}
+
+// FormatJieGuaWithLang formats the interpretation result with language support.
+func FormatJieGuaWithLang(result *JieGuaResult, lang Language) string {
 	if result == nil {
-		return "解卦结果为空"
+		return getI18n(lang).EmptyResult
 	}
 
+	t := getI18n(lang)
 	var output string
 
 	// Header
 	output += "═══════════════════════════════════\n"
-	output += "           解  卦  结  果\n"
+	output += "           " + t.JieGuaResult + "\n"
 	output += "═══════════════════════════════════\n\n"
 
-	// ─────────────────────────────────────────
-	// Section 1: 解卦 — Hexagram interpretation
-	// ─────────────────────────────────────────
-	output += "━━━━━━━━ 【解卦】 卦象解读 ━━━━━━━━\n\n"
+	// Section 1: Hexagram interpretation
+	output += "━━━━━━━━ " + t.JieGuaSection + " ━━━━━━━━\n\n"
 
 	// Original hexagram
 	if result.BenGuaInfo != nil {
-		output += "【本卦】" + result.BenGuaInfo.Symbol + " " + result.BenGuaInfo.Ming
-		output += "（" + result.BenGuaInfo.JiXiong + "）\n"
+		output += "【" + t.BenGua + "】" + result.BenGuaInfo.Symbol + " " + result.BenGuaInfo.Ming
+		output += "（" + TranslateJiXiong(result.BenGuaInfo.JiXiong, lang) + "）\n"
 		if result.BenGuaInfo.GuaGong != "" {
-			output += "  归属：" + result.BenGuaInfo.GuaGong + "·" + result.BenGuaInfo.Position + "\n"
-			output += "  世爻：" + result.BenGuaInfo.ShiYao + "  应爻：" + result.BenGuaInfo.YingYao + "\n"
+			guaGong := result.BenGuaInfo.GuaGong
+			if lang == LangEN {
+				guaGong = TranslateBaguaName(guaGong, lang)
+			}
+			output += "  " + t.GuiShu + ": " + guaGong + "·" + result.BenGuaInfo.Position + "\n"
+			output += "  " + t.ShiYao + ": " + TranslateYaoPos(result.BenGuaInfo.ShiYao, lang) + "  " + t.YingYao + ": " + TranslateYaoPos(result.BenGuaInfo.YingYao, lang) + "\n"
 		}
 		if result.BenGuaInfo.GuaYi != "" {
-			output += "  卦义：" + result.BenGuaInfo.GuaYi + "\n"
+			output += "  " + t.GuaYi + ": " + result.BenGuaInfo.GuaYi + "\n"
 		}
 		if result.BenGuaInfo.TuanText != "" {
-			output += "  彖曰：" + result.BenGuaInfo.TuanText + "\n"
+			output += "  " + t.TuanYue + ": " + result.BenGuaInfo.TuanText + "\n"
 		}
 		if result.BenGuaInfo.XiangText != "" {
-			output += "  象曰：" + result.BenGuaInfo.XiangText + "\n"
+			output += "  " + t.XiangYue + ": " + result.BenGuaInfo.XiangText + "\n"
 		}
 	}
 
 	// Changed hexagram
 	if result.BianGuaInfo != nil {
-		output += "\n【变卦】" + result.BianGuaInfo.Symbol + " " + result.BianGuaInfo.Ming
-		output += "（" + result.BianGuaInfo.JiXiong + "）\n"
+		output += "\n【" + t.BianGua + "】" + result.BianGuaInfo.Symbol + " " + result.BianGuaInfo.Ming
+		output += "（" + TranslateJiXiong(result.BianGuaInfo.JiXiong, lang) + "）\n"
 	}
 
 	// Related hexagrams
 	if result.HuGuaInfo != nil {
-		output += "【互卦】" + result.HuGuaInfo.Symbol + " " + result.HuGuaInfo.Ming + "\n"
+		output += "【" + t.HuGua + "】" + result.HuGuaInfo.Symbol + " " + result.HuGuaInfo.Ming + "\n"
 	}
 	if result.CuoGuaInfo != nil {
-		output += "【错卦】" + result.CuoGuaInfo.Symbol + " " + result.CuoGuaInfo.Ming + "\n"
+		output += "【" + t.CuoGua + "】" + result.CuoGuaInfo.Symbol + " " + result.CuoGuaInfo.Ming + "\n"
 	}
 	if result.ZongGuaInfo != nil {
-		output += "【综卦】" + result.ZongGuaInfo.Symbol + " " + result.ZongGuaInfo.Ming + "\n"
+		output += "【" + t.ZongGua + "】" + result.ZongGuaInfo.Symbol + " " + result.ZongGuaInfo.Ming + "\n"
 	}
 
 	// Changing line analysis
 	if result.DongYaoText != "" {
-		output += "\n【动爻分析】\n"
-		output += "  动爻位置：" + yaoPosName(result.DongYaoPos) + "\n"
-		output += "  爻辞：" + result.DongYaoText + "\n"
-		output += "  吉凶：" + result.DongYaoJiXiong + "\n"
+		output += "\n【" + t.DongYaoAnalysis + "】\n"
+		output += "  " + t.DongYaoPos + ": " + TranslateYaoPos(yaoPosName(result.DongYaoPos), lang) + "\n"
+		output += "  " + t.YaoCi + ": " + result.DongYaoText + "\n"
+		output += "  " + t.JiXiong + ": " + TranslateJiXiong(result.DongYaoJiXiong, lang) + "\n"
 	}
 
-	// ─────────────────────────────────────────
-	// Section 2: 释义 — Detailed explanations
-	// ─────────────────────────────────────────
-	output += "\n━━━━━━ 【释义】 解读内容的释义 ━━━━━━\n\n"
+	// Section 2: Detailed explanations
+	output += "\n━━━━━━ " + t.ShiYiSection + " ━━━━━━\n\n"
 
 	if len(result.FenXi) > 0 {
 		for _, fx := range result.FenXi {
-			output += "【" + string(fx.Category) + "】"
+			output += "【" + TranslateCategory(string(fx.Category), lang) + "】"
 			if fx.JiXiong != "" {
-				output += "（" + fx.JiXiong + "）"
+				output += "（" + TranslateJiXiong(fx.JiXiong, lang) + "）"
 			}
 			output += "\n  " + fx.Content + "\n"
 		}
 	} else {
-		output += "  暂无详解数据。\n"
+		output += "  " + t.NoData + "\n"
 	}
 
-	// ─────────────────────────────────────────
-	// Section 3: 综合判断 — Overall judgment
-	// ─────────────────────────────────────────
-	output += "\n━━━━━━━━ 【综合判断】 ━━━━━━━━\n\n"
+	// Section 3: Overall judgment
+	output += "\n━━━━━━━━ " + t.ZongHeSection + " ━━━━━━━━\n\n"
 	if result.IsJi {
-		output += "  ✦ 吉 ✦\n"
+		output += "  ✦ " + t.Ji + " ✦\n"
 	} else {
-		output += "  ✧ 凶 ✧\n"
+		output += "  ✧ " + t.Xiong + " ✧\n"
 	}
 	if result.JiXiongReason != "" {
 		output += "  " + result.JiXiongReason + "\n"

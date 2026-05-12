@@ -24,6 +24,7 @@ func main() {
 	seed := flag.String("seed", "", "Personal seed for unique result (user ID, name, etc.)")
 	sex := flag.String("sex", "male", "Sex for interpretation: male or female")
 	format := flag.String("format", "text", "Output format: text or json")
+	lang := flag.String("lang", "zh", "Output language: zh (Chinese) or en (English)")
 	benGua := flag.Int("ben", -1, "Ben gua number (0-7, for method=number)")
 	bianGua := flag.Int("bian", -1, "Bian gua number (0-7, for method=number)")
 	dongYao := flag.Int("dong", 0, "Dong yao position (0-5, for method=number)")
@@ -39,6 +40,14 @@ func main() {
 	if *showVersion {
 		fmt.Printf("yi %s (commit: %s, built: %s)\n", version, commit, date)
 		os.Exit(0)
+	}
+
+	var langVal yi.Language
+	switch strings.ToLower(*lang) {
+	case "en", "english":
+		langVal = yi.LangEN
+	default:
+		langVal = yi.LangZH
 	}
 
 	var zy *yi.ZhouYi
@@ -112,13 +121,13 @@ func main() {
 		os.Exit(1)
 	}
 
-	result := yi.JieGua(zy, sexVal)
+	result := yi.JieGuaWithLang(zy, sexVal, langVal)
 
 	switch *format {
 	case "json":
 		data, _ := json.MarshalIndent(result, "", "  ")
 		fmt.Println(string(data))
 	default:
-		fmt.Println(yi.FormatJieGua(result))
+		fmt.Println(yi.FormatJieGuaWithLang(result, langVal))
 	}
 }

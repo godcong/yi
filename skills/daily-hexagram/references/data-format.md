@@ -1,6 +1,6 @@
-# 数据格式参考
+# Data Format Reference / 数据格式参考
 
-## gua.json 结构
+## gua.json Structure
 
 ```json
 {
@@ -12,7 +12,7 @@
 }
 ```
 
-## jiegua.json 结构（📡 程序直出）
+## jiegua.json Structure (📡 Program Direct Output)
 
 ```json
 {
@@ -31,93 +31,93 @@
 }
 ```
 
-**查找键**：用 `index` 字段（如"乾乾"），不是 `ming`（如"乾为天"）。
+**Lookup key**: Use `index` field (e.g., "乾乾"), not `ming` (e.g., "乾为天").
 
-## JieGuaResult JSON 字段
+## JieGuaResult JSON Fields
 
-`JieGua()` 返回的完整结构：
+Full structure returned by `JieGua()`:
 
-| 字段 | 类型 | 说明 |
-|------|------|------|
-| BenGuaInfo | object | 本卦 {Ming, GuaName, Symbol, GuaYi, TuanText, XiangText, JiXiong, GuaGong, Position, ShiYao, YingYao, ShangNum} |
-| BianGuaInfo | object | 变卦（字段同上） |
-| HuGuaInfo | object | 互卦 {Ming, GuaName, GuaYi} |
-| CuoGuaInfo | object | 错卦（同HuGuaInfo） |
-| ZongGuaInfo | object | 综卦（同HuGuaInfo） |
-| DongYaoPos | int | 动爻位置 0-5（初爻到上爻） |
-| DongYaoText | string | 动爻爻辞 |
-| DongYaoJiXiong | string | 动爻吉凶 |
-| IsJi | bool | 综合吉凶判断 |
-| JiXiongReason | string | 吉凶理由 |
-| FenXi | array | 八维度解读 {Category, Content, JiXiong, Source} |
-| JieDu | object | 📡 预置释义（见下） |
-| WuXingInfo | object | 📡 五行幸运元素（见下） |
+| Field | Type | Description |
+|-------|------|-------------|
+| BenGuaInfo | object | Primary hexagram {Ming, GuaName, Symbol, GuaYi, TuanText, XiangText, JiXiong, GuaGong, Position, ShiYao, YingYao, ShangNum} |
+| BianGuaInfo | object | Transformed hexagram (same fields as above) |
+| HuGuaInfo | object | Nuclear hexagram {Ming, GuaName, GuaYi} |
+| CuoGuaInfo | object | Inverse hexagram (same as HuGuaInfo) |
+| ZongGuaInfo | object | Reverse hexagram (same as HuGuaInfo) |
+| DongYaoPos | int | Moving line position 0-5 (1st to 6th line) |
+| DongYaoText | string | Moving line text |
+| DongYaoJiXiong | string | Moving line fortune |
+| IsJi | bool | Overall auspiciousness judgment |
+| JiXiongReason | string | Reason for judgment |
+| FenXi | array | 8-dimension interpretation {Category, Content, JiXiong, Source} |
+| JieDu | object | 📡 Pre-built interpretation (see below) |
+| WuXingInfo | object | 📡 Five Elements lucky attributes (see below) |
 
-## GuaJieDu 字段（📡 程序直出）
+## GuaJieDu Fields (📡 Program Direct Output)
 
-| 字段 | 说明 |
-|------|------|
-| CoreImage | 核心意象，一句话概括卦象本质 |
-| ShiYe | 事业运势（60-100字段落） |
-| AiQing | 爱情运势 |
-| CaiYun | 财运 |
-| KaoShi | 考试 |
-| JianKang | 健康 |
-| ChuXing | 出行 |
-| GuanSi | 官司 |
-| JiaZhai | 家宅 |
-| Yi | 宜列表（4-6项） |
-| Ji | 忌列表（4-6项） |
+| Field | Description |
+|-------|-------------|
+| CoreImage | Core imagery, one-sentence summary of hexagram essence |
+| ShiYe | Career fortune (60-100 char paragraph) |
+| AiQing | Love fortune |
+| CaiYun | Wealth fortune |
+| KaoShi | Exam fortune |
+| JianKang | Health fortune |
+| ChuXing | Travel fortune |
+| GuanSi | Lawsuit fortune |
+| JiaZhai | Home fortune |
+| Yi | Do's list (4-6 items) |
+| Ji | Don'ts list (4-6 items) |
 
-## WuXingInfo 字段（📡 程序直出）
+## WuXingInfo Fields (📡 Program Direct Output)
 
-| 字段 | 说明 |
-|------|------|
-| WuXing | 金/木/水/火/土（由本卦上卦 ShangNum 决定） |
-| Direction | 幸运方位 |
-| LuckyNumber | 幸运数字 |
-| LuckyColor | 幸运颜色 |
+| Field | Description |
+|-------|-------------|
+| WuXing | Metal/Wood/Water/Fire/Earth (determined by primary hexagram upper trigram ShangNum) |
+| Direction | Lucky direction |
+| LuckyNumber | Lucky number |
+| LuckyColor | Lucky color |
 
-**五行→方位/数字/颜色映射**：
+**Five Elements → Direction/Number/Color Mapping**:
 
-| 五行 | 数字 | 方位 | 颜色 |
-|------|------|------|------|
-| 水 | 1, 6 | 北 | 黑、蓝 |
-| 火 | 2, 7 | 南 | 红、紫 |
-| 木 | 3, 8 | 东 | 青、绿 |
-| 金 | 4, 9 | 西 | 白、银 |
-| 土 | 5, 10 | 东北、西南 | 黄、棕 |
+| Element | Number | Direction | Color |
+|---------|--------|-----------|-------|
+| Water | 1, 6 | North | Black, Blue |
+| Fire | 2, 7 | South | Red, Purple |
+| Wood | 3, 8 | East | Green, Cyan |
+| Metal | 4, 9 | West | White, Silver |
+| Earth | 5, 10 | Northeast, Southwest | Yellow, Brown |
 
-## GuaFenXi 结构
+## GuaFenXi Structure
 
 ```go
 type GuaFenXi struct {
-    Category FenXiCategory // 事业/爱情/财运/考试/健康/出行/官司/家宅
+    Category FenXiCategory // Career/Love/Wealth/Exams/Health/Travel/Lawsuit/Home
     Content  string
-    JiXiong  string        // 吉/凶/平
-    Source   string        // "释义" | "卦义" | "爻辞" | "卦义+爻辞"
+    JiXiong  string        // Auspicious/Inauspicious/Neutral
+    Source   string        // "Interpretation" | "Hexagram Meaning" | "Line Text" | "Meaning+Line"
 }
 ```
 
-Source 优先级：`"释义"` > `"卦义+爻辞"` > `"卦义"` > `"爻辞"`
+Source priority: `"Interpretation"` > `"Meaning+Line"` > `"Meaning"` > `"Line"`
 
-## FormatJieGua 三段式输出
+## FormatJieGua Three-Section Output
 
-1. **【解卦】卦象解读** — 本卦/变卦/互卦/错卦/综卦 + 动爻
-2. **【释义】解读内容的释义** — 八维度分类详解
-3. **【综合判断】** — 整体吉凶 + 理由
+1. **Hexagram Interpretation** — Primary/Transformed/Nuclear/Inverse/Reverse + Moving Line
+2. **Detailed Explanations** — 8-dimension categorized interpretation
+3. **Overall Judgment** — Overall fortune + reason
 
-## 八卦对应
+## Eight Trigrams Mapping
 
-| 卦 | 序号 | 地支 | 五行 |
-|----|------|------|------|
-| 乾 | 0 | 戌亥 | 金 |
-| 兑 | 1 | 酉 | 金 |
-| 离 | 2 | 午 | 火 |
-| 震 | 3 | 卯 | 木 |
-| 巽 | 4 | 辰巳 | 木 |
-| 坎 | 5 | 子 | 水 |
-| 艮 | 6 | 丑寅 | 土 |
-| 坤 | 7 | 未申 | 土 |
+| Trigram | Index | Earthly Branch | Element |
+|---------|-------|----------------|---------|
+| Qian (乾) | 0 | Xu-Hai | Metal |
+| Dui (兑) | 1 | You | Metal |
+| Li (离) | 2 | Wu | Fire |
+| Zhen (震) | 3 | Mao | Wood |
+| Xun (巽) | 4 | Chen-Si | Wood |
+| Kan (坎) | 5 | Zi | Water |
+| Gen (艮) | 6 | Chou-Yin | Earth |
+| Kun (坤) | 7 | Wei-Shen | Earth |
 
-**关键**：八卦序号 0-7（不是 1-8），ShangNum 用这个序号值。
+**Key**: Trigram index 0-7 (not 1-8), ShangNum uses this index value.
