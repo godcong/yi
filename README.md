@@ -1,29 +1,29 @@
-# yi - Go 语言周易占卜库
+# yi - I Ching (Book of Changes) Library for Go
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/godcong/yi.svg)](https://pkg.go.dev/github.com/godcong/yi)
 
-周易六十四卦计算与查询库，提供完整的起卦、卦象变换、五行生克、六十甲子、六亲世应、81 数理、解卦等功能。
+A Go library for I Ching (Book of Changes) hexagram calculation and divination, providing complete functionality for hexagram generation, transformation, Five Elements (WuXing), Sexagenary Cycle (JiaZi), Six Relations (LiuQin), Shi-Ying positions, 81 numerology, and hexagram interpretation.
 
 ---
 
-## 🌟 每日一卦 (Daily Hexagram Skill)
+## Daily Hexagram Skill
 
-**推荐使用方式** — 集成 AI 助手的每日占卜体验，一句话完成起卦。
+**Recommended usage** — Integrate with your AI assistant for daily divination.
 
-> 用户说「算一卦」→ AI 自动收集信息 → 生成完整运势报告（800+ 字）
+> User says "tell my fortune" → AI collects info → Generates full fortune report (800+ words)
 
-### 安装
+### Installation
 
 ```bash
 npx skills add https://github.com/godcong/yi --skill daily-hexagram
 ```
 
-安装后，AI 首次使用时会**自动检测并下载**对应平台的 `yi` 二进制（通过 SKILL.md 内置规则），无需手动操作。
+After installation, the AI will **automatically detect and download** the `yi` binary for your platform on first use (via built-in SKILL.md rules).
 
 <details>
-<summary>手动安装二进制（可选）</summary>
+<summary>Manual binary installation (optional)</summary>
 
-如果自动安装失败，可手动运行安装脚本：
+If automatic installation fails, run the install script manually:
 
 ```bash
 # macOS / Linux
@@ -33,21 +33,21 @@ npx skills add https://github.com/godcong/yi --skill daily-hexagram
 .\scripts\install.bat
 ```
 
-或通过 Go 编译安装：
+Or compile from source:
 
 ```bash
 go install github.com/godcong/yi/cmd/divine@latest
-# 然后将编译好的 yi 复制到 skill 目录的 bin/ 下
+# Then copy the compiled binary to the skill's bin/ directory
 ```
 
 </details>
 
-### 兼容的 AI Agent
+### Compatible AI Agents
 
-本 Skill 遵循 [Agent Skills 开放标准](https://agentskills.io/)，兼容所有支持该标准的 AI Agent：
+This Skill follows the [Agent Skills open standard](https://agentskills.io/) and works with all supporting AI agents:
 
-| Agent | 安装命令示例 |
-|-------|------------|
+| Agent | Install Command |
+|-------|----------------|
 | Claude Code | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a claude-code` |
 | Trae | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a trae` |
 | Cursor | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a cursor` |
@@ -56,123 +56,124 @@ go install github.com/godcong/yi/cmd/divine@latest
 | Gemini CLI | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a gemini-cli` |
 | Roo Code | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a roo` |
 | Windsurf | `npx skills add https://github.com/godcong/yi --skill daily-hexagram -a windsurf` |
-| 其他 | 省略 `-a` 参数，交互选择目标 Agent |
+| Others | Omit `-a` flag, interactively select target agent |
 
-完整支持列表见 [npx skills 文档](https://www.npmjs.com/package/skills)。
+See [npx skills docs](https://www.npmjs.com/package/skills) for the full list.
 
-### 使用
+### Usage
 
-在 AI 助手中，直接对话即可：
+Simply talk to your AI assistant:
 
-| 你说 | AI 做的事 |
-|------|----------|
-| 「算一卦」「今日运势」 | 收集姓名+生日 → 每日卦（同人同日同卦） |
-| 「换个卦看看」 | 换时辰重新起一卦 |
-| 「用铜钱算」 | 切换到铜钱法起卦 |
-| 「用蓍草算」 | 切换到大衍法起卦 |
-| 「梅花易数算一卦」 | 切换到梅花易数 |
+| You say | What AI does |
+|---------|-------------|
+| "tell my fortune", "daily horoscope" | Collects name + birthday → Daily hexagram (same person, same day = same hexagram) |
+| "try another one" | Changes time and generates a new hexagram |
+| "use coins" | Switches to coin method |
+| "use yarrow stalks" | Switches to Dayan (yarrow) method |
+| "plum blossom divination" | Switches to Meihua method |
 
-**首次使用** AI 会询问姓名和生日，之后自动记住。同一个人同一天永远是同一个卦。
+**First use**: AI will ask your name and birthday. After that, it remembers. Same person on the same day always gets the same hexagram.
 
-### 输出报告内容
+### Report Contents
 
 ```
-🎯 卦象概览     — 卦名/符号/吉凶 + 核心意象 + 运势基调
-🔮 卦象详解     — 本卦/变卦/动爻/互卦/错卦/综卦解读
-💫 八维度运势   — 事业/爱情/财运/考试/健康/出行/官司/家宅
-📋 宜忌指南     — 今日宜做之事 / 今日禁忌
-🌟 今日指引     — 综合行动指引 + 幸运方位/数字/颜色
+Overview       — Hexagram name / symbol / auspiciousness + core imagery + fortune基调
+Details        — Primary / transformed / moving lines / nuclear / inverse / reverse hexagrams
+8-Dim Fortune  — Career / Love / Wealth / Exams / Health / Travel / Lawsuit / Home
+Do's & Don'ts  — Today's recommended actions / taboos
+Guidance       — Action guidance + lucky direction / number / color
 ```
 
-完整报告不少于 800 字。
+Full report is at least 800 words.
 
-### 支持的方法
+### Supported Methods
 
-| 方法 | CLI | 说明 |
-|------|-----|------|
-| 每日卦 | `daily` | 仅用日期，同人同日固定 |
-| 时间卦 | `time` | 含时辰，不同时间不同卦 |
-| 铜钱法 | `coins` | 六次投掷，最经典 |
-| 大衍法 | `dayan` | 蓍草五十策，最古老 |
-| 梅花易数 | `meihua` | 时辰推演 |
-| 数字起卦 | `number` | 自定义上下卦数字 |
+| Method | CLI | Description |
+|--------|-----|-------------|
+| Daily | `daily` | Date-based only, same person same day fixed |
+| Time | `time` | Includes hour, different times yield different hexagrams |
+| Coins | `coins` | Six coin tosses, most classic |
+| Dayan | `dayan` | Yarrow stalk method, most ancient |
+| Meihua | `meihua` | Plum blossom time-based |
+| Number | `number` | Custom upper/lower trigram numbers |
 
-### Skill 目录结构
+### Skill Directory Structure
 
 ```
 daily-hexagram/
-├── SKILL.md              # AI 指令（数据直出 + AI 串联分工）
-├── bin/yi                # 占卜程序（编译好的二进制）
+├── SKILL.md              # AI instructions (data-driven + AI interpretation)
+├── bin/yi                # Divination program (compiled binary)
 ├── references/
-│   └── data-format.md    # JSON 输出结构参考
+│   └── data-format.md    # JSON output structure reference
 ├── scripts/
-│   ├── install.sh        # 安装脚本
+│   ├── install.sh        # Install script
 │   └── install.bat
-└── user_profile.json     # 用户信息（自动创建）
+└── user_profile.json     # User info (auto-created)
 ```
 
 ---
 
-## 🖥️ CLI 命令行工具
+## CLI Tool
 
-### 安装
+### Installation
 
 ```bash
 go install github.com/godcong/yi/cmd/divine@latest
 ```
 
-### 用法
+### Usage
 
 ```bash
-# 每日一卦（需要 -seed 确保个性化）
-yi -method daily -seed "张三" -format json
+# Daily hexagram (requires -seed for personalization)
+yi -method daily -seed "John" -format json
 
-# 时间起卦
-yi -method time -seed "张三" -sex female -format json
+# Time-based hexagram
+yi -method time -seed "John" -sex male -format json
 
-# 铜钱法
+# Coin method
 yi -method coins -coins-seed 42
 
-# 梅花易数
-yi -method meihua -seed "张三" -year 2026 -month 5 -day 12
+# Plum blossom method
+yi -method meihua -seed "John" -year 2026 -month 5 -day 12
 
-# 大衍法
+# Dayan (yarrow) method
 yi -method dayan -dayan-seed 999
 
-# 数字起卦
+# Number-based hexagram
 yi -method number -ben 3 -bian 5 -dong 2
 ```
 
-### 完整参数
+### All Flags
 
-| 参数 | 默认 | 说明 |
-|------|------|------|
-| `-method` | `time` | 起卦方法：`time` / `daily` / `coins` / `meihua` / `dayan` / `number` |
-| `-seed` | `""` | 用户标识（姓名/ID），`daily` 和 `time` 必传 |
-| `-format` | `text` | 输出格式：`text` / `json` |
-| `-sex` | `male` | 性别：`male` / `female` |
-| `-year` | 当前年 | 公历年 |
-| `-month` | 当前月 | 公历月 |
-| `-day` | 当前日 | 公历日 |
-| `-hour` | 当前时 | 小时 0-23 |
-| `-coins-seed` | 0 | 铜钱法种子（0=随机） |
-| `-dayan-seed` | 0 | 大衍法种子 |
-| `-ben` | -1 | 数字起卦上卦（0-7） |
-| `-bian` | -1 | 数字起卦下卦（0-7） |
-| `-dong` | 0 | 数字起卦动爻（0-5） |
-| `-version` | — | 打印版本号 |
+| Flag | Default | Description |
+|------|---------|-------------|
+| `-method` | `time` | Method: `time` / `daily` / `coins` / `meihua` / `dayan` / `number` |
+| `-seed` | `""` | User identifier (name/ID), required for `daily` and `time` |
+| `-format` | `text` | Output format: `text` / `json` |
+| `-lang` | `zh` | Output language: `zh` (Chinese) / `en` (English) |
+| `-sex` | `male` | Gender: `male` / `female` |
+| `-year` | current year | Gregorian year |
+| `-month` | current month | Gregorian month |
+| `-day` | current day | Gregorian day |
+| `-hour` | current hour | Hour 0-23 |
+| `-coins-seed` | 0 | Coin method seed (0=random) |
+| `-dayan-seed` | 0 | Dayan method seed |
+| `-ben` | -1 | Number method upper trigram (0-7) |
+| `-bian` | -1 | Number method lower trigram (0-7) |
+| `-dong` | 0 | Number method moving line (0-5) |
+| `-version` | — | Print version |
 
 ---
 
-## 📚 Go 函数库
+## Go Library
 
-### 安装
+### Installation
 
 ```bash
 go get github.com/godcong/yi
 ```
 
-### 快速开始
+### Quick Start
 
 ```go
 package main
@@ -183,196 +184,196 @@ import (
 )
 
 func main() {
-    // 每日一卦（同人同日同卦）
-    zy, _ := yi.DivineByDailyHexagram("张三")
+    // Daily hexagram (same person, same day = same hexagram)
+    zy, _ := yi.DivineByDailyHexagram("John")
     result := yi.JieGua(zy, yi.Male)
     fmt.Println(yi.FormatJieGua(result))
 
-    // 铜钱法
+    // Coin method
     zy2, coins := yi.DivineByCoins(42)
-    fmt.Printf("本卦: %s, 变卦: %s\n", zy2.GetGua(yi.Ben).Ming, zy2.GetGua(yi.Bian).Ming)
+    fmt.Printf("Primary: %s, Transformed: %s\n", zy2.GetGua(yi.Ben).Ming, zy2.GetGua(yi.Bian).Ming)
 
-    // 蓍草法
+    // Dayan (yarrow) method
     zy3, _ := yi.DivineByDayan(999)
 
-    // 梅花易数
+    // Plum blossom method
     zy4 := yi.DivineByMeihua(3, 5, 2)
 
-    // 时间起卦
+    // Time-based hexagram
     zy5 := yi.DivineByTimeGua(yi.TimeGuaParams{
         Year: 2024, Month: 6, Day: 15, Hour: 10,
     })
 
-    // 当前时间快速起卦
+    // Quick hex from current time
     zy6 := yi.DivineByCurrentTime()
     _ = zy6
 }
 ```
 
-### 新增: 每日卦函数
+### Daily Hexagram Function
 
 ```go
-// 同人同日同卦 — 每天固定
-zy, err := yi.DivineByDailyHexagram("张三")
+// Same person, same day = same hexagram
+zy, err := yi.DivineByDailyHexagram("John")
 if err != nil {
     panic(err)
 }
 result := yi.JieGua(zy, yi.Male)
 
-// result.JieDu 包含预置的 8 维度运势 + 宜忌
-fmt.Println(result.JieDu.ShiYe)   // 事业运势
-fmt.Println(result.JieDu.CoreImage) // 核心意象
-fmt.Println(result.JieDu.Yi)      // 宜
-fmt.Println(result.JieDu.Ji)      // 忌
+// result.JieDu contains pre-built 8-dimension fortune + do's/don'ts
+fmt.Println(result.JieDu.ShiYe)   // Career fortune
+fmt.Println(result.JieDu.CoreImage) // Core imagery
+fmt.Println(result.JieDu.Yi)      // Do's
+fmt.Println(result.JieDu.Ji)      // Don'ts
 
-// result.WuXingInfo 包含五行幸运元素
-fmt.Println(result.WuXingInfo.LuckyNumber) // 幸运数字
-fmt.Println(result.WuXingInfo.LuckyColor)  // 幸运颜色
+// result.WuXingInfo contains Five Elements lucky attributes
+fmt.Println(result.WuXingInfo.LuckyNumber) // Lucky number
+fmt.Println(result.WuXingInfo.LuckyColor)  // Lucky color
 ```
 
-### API 总览
+### API Overview
 
-#### 起卦函数
+#### Divination Functions
 
-| 函数 | 说明 |
-|------|------|
-| `DivineByDailyHexagram(seed string) (*ZhouYi, error)` | 🆕 每日一卦 |
-| `DivineByCurrentTime(personalSeed ...string) *ZhouYi` | 当前时间起卦 |
-| `DivineByCoins(seed int64) (*ZhouYi, [6]CoinResult)` | 铜钱法 |
-| `DivineByCoinValues(values [6]int) (*ZhouYi, error)` | 铜钱法手动 |
-| `DivineByDayan(seed int64) (*ZhouYi, [6]DayanResult)` | 大衍法 |
-| `DivineByDayanValues(values [6]int) (*ZhouYi, error)` | 大衍法手动 |
-| `DivineByMeihua(shang, xia, bian int) *ZhouYi` | 梅花易数 |
-| `DivineByMeihuaTime(t time.Time, personalSeed ...string)` | 梅花时间 |
-| `DivineByTimeGua(params TimeGuaParams, personalSeed ...string) *ZhouYi` | 公历时间 |
-| `DivineByLunarTime(y, m, d, h int) *ZhouYi` | 农历时间 |
-| `DivineByNumber(shang, xia int, bianYao ...int) *ZhouYi` | 数字起卦 |
+| Function | Description |
+|----------|-------------|
+| `DivineByDailyHexagram(seed string) (*ZhouYi, error)` | Daily hexagram |
+| `DivineByCurrentTime(personalSeed ...string) *ZhouYi` | Current time hexagram |
+| `DivineByCoins(seed int64) (*ZhouYi, [6]CoinResult)` | Coin method |
+| `DivineByCoinValues(values [6]int) (*ZhouYi, error)` | Coin method manual |
+| `DivineByDayan(seed int64) (*ZhouYi, [6]DayanResult)` | Dayan (yarrow) method |
+| `DivineByDayanValues(values [6]int) (*ZhouYi, error)` | Dayan method manual |
+| `DivineByMeihua(shang, xia, bian int) *ZhouYi` | Plum blossom method |
+| `DivineByMeihuaTime(t time.Time, personalSeed ...string)` | Plum blossom time |
+| `DivineByTimeGua(params TimeGuaParams, personalSeed ...string) *ZhouYi` | Gregorian time |
+| `DivineByLunarTime(y, m, d, h int) *ZhouYi` | Lunar time |
+| `DivineByNumber(shang, xia int, bianYao ...int) *ZhouYi` | Number-based |
 
-#### 解卦
+#### Interpretation
 
-| 函数 | 说明 |
-|------|------|
-| `JieGua(zy *ZhouYi, sex Sex) *JieGuaResult` | 解卦主函数 |
-| `FormatJieGua(result *JieGuaResult) string` | 格式化输出 |
+| Function | Description |
+|----------|-------------|
+| `JieGua(zy *ZhouYi, sex Sex) *JieGuaResult` | Main interpretation function |
+| `FormatJieGua(result *JieGuaResult) string` | Formatted output |
 
-#### 解卦结果结构
+#### Interpretation Result Structure
 
-`JieGuaResult` 包含：
+`JieGuaResult` contains:
 
-| 字段 | 说明 |
-|------|------|
-| `BenGuaInfo` / `BianGuaInfo` | 本卦/变卦 {Ming, GuaName, Symbol, GuaYi, TuanText, XiangText, JiXiong, ...} |
-| `HuGuaInfo` / `CuoGuaInfo` / `ZongGuaInfo` | 互卦/错卦/综卦 |
-| `DongYaoPos` / `DongYaoText` / `DongYaoJiXiong` | 动爻位置/爻辞/吉凶 |
-| `IsJi` / `JiXiongReason` | 综合吉凶/理由 |
-| `FenXi` | 八维度解读 [{Category, Content, JiXiong, Source}] |
-| `JieDu` | 🆕 预置释义 {CoreImage, ShiYe, AiQing, ..., Yi, Ji} |
-| `WuXingInfo` | 🆕 五行幸运元素 {WuXing, Direction, LuckyNumber, LuckyColor} |
+| Field | Description |
+|-------|-------------|
+| `BenGuaInfo` / `BianGuaInfo` | Primary / Transformed hexagram {Ming, GuaName, Symbol, GuaYi, TuanText, XiangText, JiXiong, ...} |
+| `HuGuaInfo` / `CuoGuaInfo` / `ZongGuaInfo` | Nuclear / Inverse / Reverse hexagrams |
+| `DongYaoPos` / `DongYaoText` / `DongYaoJiXiong` | Moving line position / text / auspiciousness |
+| `IsJi` / `JiXiongReason` | Overall auspiciousness / reason |
+| `FenXi` | 8-dimension interpretation [{Category, Content, JiXiong, Source}] |
+| `JieDu` | Pre-built interpretation {CoreImage, ShiYe, AiQing, ..., Yi, Ji} |
+| `WuXingInfo` | Five Elements lucky info {WuXing, Direction, LuckyNumber, LuckyColor} |
 
-#### 卦象查询
+#### Hexagram Lookup
 
-| 函数/方法 | 说明 |
-|------|------|
-| `GetGuaByIndex(index string) (*Gua, error)` | 按索引查卦（如 "乾乾"） |
-| `GetGuaByXu(xu int) (*Gua, error)` | 按卦序查卦（1-64） |
-| `ZhouYi.GetGua(guaType int) *Gua` | 获取本/变/互/错/综卦 |
-| `ZhouYi.IsJi(sex Sex) bool` | 判断吉凶 |
-| `Gua.GetYao(pos YaoPosition) *Yao` | 获取指定爻 |
-| `Gua.GetShiYing() *ShiYingInfo` | 获取世应信息 |
-| `Gua.GetGuaGong() Bagua` | 归属卦宫 |
+| Function/Method | Description |
+|-----------------|-------------|
+| `GetGuaByIndex(index string) (*Gua, error)` | Lookup by index (e.g., "乾乾") |
+| `GetGuaByXu(xu int) (*Gua, error)` | Lookup by sequence number (1-64) |
+| `ZhouYi.GetGua(guaType int) *Gua` | Get primary / transformed / nuclear / inverse / reverse |
+| `ZhouYi.IsJi(sex Sex) bool` | Check auspiciousness |
+| `Gua.GetYao(pos YaoPosition) *Yao` | Get specific line |
+| `Gua.GetShiYing() *ShiYingInfo` | Get Shi-Ying info |
+| `Gua.GetGuaGong() Bagua` | Get palace归属 |
 
-#### 五行与六亲
+#### Five Elements & Six Relations
 
-| 函数/方法 | 说明 |
-|------|------|
-| `GetWuXingByNumber(n int) string` | 笔画数→五行 |
-| `WuXing.Sheng()` / `.Ke()` / `.BeiSheng()` / `.BeiKe()` | 生克关系 |
-| `GetLiuQin(guaGongWX, yaoWX WuXing) LiuQin` | 计算六亲 |
+| Function/Method | Description |
+|-----------------|-------------|
+| `GetWuXingByNumber(n int) string` | Stroke count → Five Elements |
+| `WuXing.Sheng()` / `.Ke()` / `.BeiSheng()` / `.BeiKe()` | Generating / overcoming relations |
+| `GetLiuQin(guaGongWX, yaoWX WuXing) LiuQin` | Calculate Six Relations |
 
-#### 81 数理
+#### 81 Numerology
 
-| 函数/方法 | 说明 |
-|------|------|
-| `GetDayan(n int) (*Dayan, error)` | 查询数理（1-81） |
-| `Dayan.IsJi()` / `.IsXiong()` / `.IsBest()` | 吉凶判断 |
+| Function/Method | Description |
+|-----------------|-------------|
+| `GetDayan(n int) (*Dayan, error)` | Lookup numerology (1-81) |
+| `Dayan.IsJi()` / `.IsXiong()` / `.IsBest()` | Auspiciousness check |
 
-### 核心类型
+### Core Types
 
-| 类型 | 说明 |
-|------|------|
-| `Gua` (别名 `Hexagram`) | 卦象：含卦名/卦义/彖辞/象辞/六爻 |
-| `Yao` (别名 `Line`) | 爻：含爻辞/吉凶/女命 |
-| `ZhouYi` (别名 `IChing`) | 周易：含五种卦象 + 动爻 |
-| `Bagua` (别名 `Trigram`) | 八卦：0=乾…7=坤 |
-| `WuXing` | 五行：木/火/土/金/水 |
-| `Sex` | 性别：Male/Female |
-| `LiuQin` | 六亲：父母/兄弟/妻财/子孙/官鬼 |
-| `Dayan` | 大衍数理：1-81 的吉凶详情 |
-| `JieGuaResult` | 解卦结果（含 JieDu + WuXingInfo） |
-| `GuaJieDu` | 🆕 预置释义（8 维度 + 宜忌） |
-| `WuXingInfo` | 🆕 五行幸运元素 |
+| Type | Description |
+|------|-------------|
+| `Gua` (alias `Hexagram`) | Hexagram: name / meaning / Tuan / Xiang / six lines |
+| `Yao` (alias `Line`) | Line: line text / auspiciousness / female fate |
+| `ZhouYi` (alias `IChing`) | I Ching: five hexagram types + moving lines |
+| `Bagua` (alias `Trigram`) | Eight Trigrams: 0=Qian...7=Kun |
+| `WuXing` | Five Elements: Wood / Fire / Earth / Metal / Water |
+| `Sex` | Gender: Male / Female |
+| `LiuQin` | Six Relations: Parents / Siblings / Wealth / Offspring / Official |
+| `Dayan` | Dayan numerology: 1-81 auspiciousness details |
+| `JieGuaResult` | Interpretation result (includes JieDu + WuXingInfo) |
+| `GuaJieDu` | Pre-built interpretation (8 dimensions + do's/don'ts) |
+| `WuXingInfo` | Five Elements lucky attributes |
 
-### 卦象类型常量
+### Hexagram Type Constants
 
-| 常量 | 值 | 说明 |
-|------|------|------|
-| `Ben` | 0 | 本卦 |
-| `Bian` | 1 | 变卦 |
-| `Hu` | 2 | 互卦（2-3-4爻为下卦，3-4-5爻为上卦） |
-| `Cuo` | 3 | 错卦（阴阳全反） |
-| `Zong` | 4 | 综卦（上下颠倒） |
+| Constant | Value | Description |
+|----------|-------|-------------|
+| `Ben` | 0 | Primary hexagram |
+| `Bian` | 1 | Transformed hexagram |
+| `Hu` | 2 | Nuclear hexagram (lines 2-3-4 lower, 3-4-5 upper) |
+| `Cuo` | 3 | Inverse hexagram (all yin/yang flipped) |
+| `Zong` | 4 | Reverse hexagram (upside down) |
 
-### 八卦常量
+### Eight Trigrams Constants
 
-| 常量 | 值 | 五行 | 名称 |
-|------|------|------|------|
-| `Qian` | 0 | 金 | 乾 ☰ |
-| `Dui` | 1 | 金 | 兑 ☱ |
-| `Li` | 2 | 火 | 离 ☲ |
-| `Zhen` | 3 | 木 | 震 ☳ |
-| `Xun` | 4 | 木 | 巽 ☴ |
-| `Kan` | 5 | 水 | 坎 ☵ |
-| `Gen` | 6 | 土 | 艮 ☶ |
-| `Kun` | 7 | 土 | 坤 ☷ |
+| Constant | Value | WuXing | Name |
+|----------|-------|--------|------|
+| `Qian` | 0 | Metal | Qian ☰ (Heaven) |
+| `Dui` | 1 | Metal | Dui ☱ (Lake) |
+| `Li` | 2 | Fire | Li ☲ (Fire) |
+| `Zhen` | 3 | Wood | Zhen ☳ (Thunder) |
+| `Xun` | 4 | Wood | Xun ☴ (Wind) |
+| `Kan` | 5 | Water | Kan ☵ (Water) |
+| `Gen` | 6 | Earth | Gen ☶ (Mountain) |
+| `Kun` | 7 | Earth | Kun ☷ (Earth) |
 
-> **约定**：项目记阳为 0、阴为 1（bit 表示），与直觉相反。
+> **Convention**: This project marks Yang as 0, Yin as 1 (bit representation), which is opposite to intuition.
 
 ---
 
-## 数据生成
+## Data Generation
 
-数据存储在 `data/` 目录下的 JSON 文件中：
+Data is stored in JSON files under `data/`:
 
-- `data/gua.json` — 64 卦
-- `data/tuan.json` — 彗辞
-- `data/xiang.json` — 象辞
-- `data/wenyan.json` — 文言
-- `data/jiazi.json` — 六十甲子
-- `data/jiegua.json` — 🆕 解卦释义（8维度运势+宜忌+核心意象）
-- `data/guagong.json` — 卦宫
+- `data/gua.json` — 64 hexagrams
+- `data/tuan.json` — Tuan (Judgment) texts
+- `data/xiang.json` — Xiang (Image) texts
+- `data/wenyan.json` — Wenyan (Commentary) texts
+- `data/jiazi.json` — Sexagenary Cycle (60 JiaZi)
+- `data/jiegua.json` — Hexagram interpretations (8-dimension fortune + do's/don'ts + core imagery)
+- `data/guagong.json` — Palace归属
 
-运行以下命令重新生成 `data.gen.go`：
+Regenerate `data.gen.go`:
 
 ```bash
-# 先删除旧文件，否则 go generate 会跳过
+# Delete old file first, otherwise go generate will skip
 rm data.gen.go
 go generate ./...
 ```
 
-**注意**：`go generate` 只在 `data.gen.go` 不存在时才生成，修改数据后需先删除再运行。
+**Note**: `go generate` only generates when `data.gen.go` doesn't exist. Delete it first after modifying data.
 
 ---
 
-## 文档
+## Documentation
 
-- [数理简介](docs/数理简介.md) — 阴阳→八卦→六十四卦→八十一象的数理链路
-- [起卦方法](docs/起卦方法.md) — 四种起卦法详解
-- [八卦与六十四卦](docs/八卦与六十四卦.md) — 卦象体系与变换
-- [大衍之数](docs/大衍之数.md) — 81 数理吉凶
-- [六亲与世应](docs/六亲与世应.md) — 六亲系统与世应推算
+- [Introduction to Numerology](docs/numerology.md) — The numerical chain from Yin-Yang to 81 numerology
+- [Divination Methods](docs/divination-methods.md) — Four divination methods explained
+- [Eight Trigrams & 64 Hexagrams](docs/trigrams-hexagrams.md) — Hexagram system and transformations
+- [Dayan Numerology](docs/dayan-numerology.md) — 81 numerology auspiciousness
+- [Six Relations & Shi-Ying](docs/six-relations-shiying.md) — Six Relations system and Shi-Ying calculation
 
 ---
 
-## 许可
+## License
 
 MIT License

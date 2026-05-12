@@ -1,289 +1,284 @@
 ---
 name: daily-hexagram
-description: 周易每日一卦占卜。当用户请求"每日一卦"、"今日卦象"、"占卜"、"起卦"、"算一卦"、"今日运势"、"卦象"、"算卦"时触发。通过时间起卦+用户种子生成个性化卦象，输出包含卦象详解、八维度运势、宜忌指南、今日指引的完整运势报告。支持铜钱法、梅花易数、大衍法等多种起卦方式。
-compatibility: 需要 yi 二进制程序（首次使用时自动下载，或通过 Go 1.21+ 编译安装）
+description: Daily I Ching hexagram divination. Triggered when users ask for "daily horoscope", "tell my fortune", "divination", "cast a hexagram", "today's fortune", etc. Generates personalized hexagrams using time-based divination + user seed, outputting a complete fortune report with hexagram details, 8-dimension fortune, do's & don'ts, and daily guidance. Supports coin method, plum blossom, yarrow stalk, and other divination methods.
+compatibility: Requires yi binary (auto-downloaded on first use, or compiled via Go 1.21+)
 ---
 
-# Daily Hexagram (每日一卦)
+# Daily Hexagram (I Ching Divination)
 
-周易占卜技能，通过 `yi` 程序获取卦象数据，AI 串联解读，输出完整运势报告。
+I Ching divination skill using the `yi` program to fetch hexagram data, with AI interpretation for complete fortune reports.
 
 ---
 
-## ⚠️ 最高优先级规则
+## Highest Priority Rules
 
-### 规则1：绝不向用户暴露技术细节
+### Rule 1: Never Expose Technical Details to Users
 
-**用户不应该看到任何 CLI 命令、参数名、技术术语。** 以下内容严禁出现在对用户的回复中：
+**Users should never see CLI commands, parameter names, or technical jargon.** The following must NOT appear in user-facing responses:
 
 - ❌ `bin/yi -method daily -seed "xxx" -format json`
-- ❌ `method=coins`、`-coins-seed`、`FenXi[0].JiXiong`
-- ❌ "起卦方式"、"铜钱法"、"梅花易数"等作为选项让用户选择
-- ❌ JSON 字段名、Go 结构体名
+- ❌ `method=coins`, `-coins-seed`, `FenXi[0].JiXiong`
+- ❌ "divination method", "coin method", "plum blossom" as options for users to choose
+- ❌ JSON field names, Go struct names
 
-**正确做法**：
-- 用户说"算一卦" → AI 内部自动执行 daily 方法，不提方法名
-- 用户说"想换个卦" → AI 内部自动换 time 方法，告诉用户"给你换个时辰重新起一卦"
-- 用户说"用铜钱算" → AI 内部用 coins 方法，告诉用户"好，铜钱起卦中..."
-- 用户看到的是**自然的对话**，不是操作手册
+**Correct approach**:
+- User says "tell my fortune" → AI internally executes daily method, don't mention method name
+- User says "try another one" → AI internally switches to time method, tells user "let me cast a new hexagram with a different time"
+- User says "use coins" → AI uses coins method, tells user "Alright, casting with coins..."
+- Users see **natural conversation**, not an operation manual
 
-### 规则2：用户信息必须收集并持久化 + 绝对禁止内部解释泄露
+### Rule 2: User Information Must Be Collected and Persisted + Absolutely No Internal Explanation Leakage
 
-每日一卦的核心是"同人同日同卦"，没有用户标识就无法实现。**必须收集并存储用户信息。**
+The core of daily hexagram is "same person, same day, same hexagram" — without user identification this is impossible. **User information must be collected and stored.**
 
-**🚫 致命禁令：收集用户信息时，禁止输出任何前置解释。** 以下是你绝对不能对用户说的话：
+**Fatal prohibition: When collecting user info, do NOT output any前置 explanation.** You absolutely must NOT say:
 
-- ❌ "用户首次使用，需要收集信息"
-- ❌ "按 skill 规则"、"按技能要求"
-- ❌ "需要先收集姓名"、"先配置个人信息"
-- ❌ "检查配置文件"、"存储用户信息"
-- ❌ 任何解释"为什么"要问姓名生日的功能性说明
+- ❌ "User is first-time, need to collect info"
+- ❌ "Per skill rules", "per skill requirements"
+- ❌ "Need to collect name first", "configure personal info first"
+- ❌ "Check config file", "store user info"
+- ❌ Any functional explanation of "why" you're asking for name/birthday
 
-**正确做法只有一个：像算命先生一样，直接问。** 不要加任何`用户首次使用`、`需要收集信息`之类的前缀。就是一上来直接：想问卦 → 直接开口问名字。一句话的过渡都不要有。
+**The only correct approach: Ask directly, like a fortune teller.** No prefix about "first-time use", "need to collect info". Just ask directly: want a fortune reading → ask for name. No transitional sentences.
 
-### 规则3：确保 yi 可用（首次调用时）
+### Rule 3: Ensure yi is Available (On First Invocation)
 
-**每次起卦前，必须确认 `bin/yi` 可用。** 按以下优先级处理：
+**Before each divination, confirm `bin/yi` is available.** Handle in this priority:
 
-1. **检查已有二进制**：`{skill目录}/bin/yi`（Windows 为 `bin/yi.exe`）是否存在且可执行
-2. **运行安装脚本下载**：不存在 → 执行 `{skill目录}/scripts/install.sh`（macOS/Linux）或 `{skill目录}/scripts/install.ps1`（Windows），脚本会自动检测平台、从 GitHub Release 下载预编译二进制；若下载失败则自动回退到 Go 编译
-3. **Go 编译回退**：若脚本不可用，直接执行：
+1. **Check existing binary**: Does `{skill_dir}/bin/yi` (Windows: `bin/yi.exe`) exist and is executable?
+2. **Run install script to download**: If not → execute `{skill_dir}/scripts/install.sh` (macOS/Linux) or `{skill_dir}/scripts/install.ps1` (Windows), which auto-detects platform and downloads pre-compiled binary from GitHub Release; falls back to Go compilation if download fails
+3. **Go compilation fallback**: If script unavailable, execute directly:
    ```bash
-   GOBIN="{skill目录}/bin" go install github.com/godcong/yi/cmd/divine@latest
+   GOBIN="{skill_dir}/bin" go install github.com/godcong/yi/cmd/divine@latest
    ```
-   然后将 `{skill目录}/bin/divine`（或 `divine.exe`）重命名为 `yi`（或 `yi.exe`）
-4. **全部失败**：告知用户"卦象程序暂时无法就绪，请稍后再试"
+   Then rename `{skill_dir}/bin/divine` (or `divine.exe`) to `yi` (or `yi.exe`)
+4. **All failed**: Tell user "The divination program is temporarily unavailable, please try again later"
 
-**严禁向用户暴露** "二进制"、"安装"、"下载"、"脚本"、"Go" 等技术词汇。等待期间自然地说"稍等，卦象准备中..."
+**Never expose** "binary", "installation", "download", "script", "Go" technical terms to users. Say naturally "hold on, preparing the hexagram..." while waiting.
 
-### 规则4：数据直出 + AI 串联
+### Rule 4: Data-Driven Output + AI Interpretation
 
-八维度运势/宜忌/幸运元素已由程序预置完整内容，**AI 不重写，直接输出**。AI 只负责卦象详解展开、五卦关系串联、今日指引。
+8-dimension fortune / do's & don'ts / lucky elements are pre-built by the program with complete content. **AI does NOT rewrite, outputs directly**. AI is only responsible for hexagram detail expansion, five-hexagram relationship synthesis, and daily guidance.
 
 ---
 
-## 用户信息收集流程
+## User Information Collection Flow
 
-### 首次使用
+### First Use
 
-**当用户第一次请求占卜、且无 user_profile.json 时：**
+**When user requests divination for the first time and no user_profile.json exists:**
 
-**直接问。不要说任何关于"规则"、"skill"、"配置"、"收集信息"的话。**
+**Ask directly. Do NOT say anything about "rules", "skill", "config", "collecting info".**
 
-像算命先生一样开口，每次可以不一样。例如：
+Like a fortune teller, each time can be different. For example:
 
-> "想给你算一卦～怎么称呼你？"
+> "I'd like to read your fortune~ What should I call you?"
 >
-> "来来来，报上名来，我给你算算今天的运势～"
+> "Come come, tell me your name and I'll read today's fortune for you~"
 >
-> "嗯，让我算一卦……对了，怎么称呼？生辰是？"
+> "Hmm, let me cast a hexagram... by the way, what's your name? And your birth date?"
 >
-> "算卦看缘，先告诉我你的名字和生日～"
->
-> "算卦得有主，你是谁呀？名字说说～"
->
-> "帮你看看今日运势，你叫什么名字？方便的话生辰也给我～"
+> "Fortune telling depends on fate, first tell me your name and birthday~"
 
-**必收**：姓名（用于种子）
-**选收**：出生日期、性别
+**Required**: Name (used as seed)
+**Optional**: Birth date, gender
 
-如果用户只给了名字没给生日，也行，直接用名字做种子。不要追问生日，下次有机会再补。
+If user only gives name without birthday, that's fine — use name as seed. Don't press for birthday,补 it next time there's a chance.
 
-### 用户纠正个人信息
+### User Corrects Personal Information
 
-当用户说"我不是XXX"、"我的生日不是XXX"、"名字错了"等时：
+When user says "I'm not XXX", "my birthday isn't XXX", "wrong name", etc.:
 
-1. **自然追问**正确信息，不要解释为什么之前搞错了。例如：
-   - "哦？那怎么称呼你？"
-   - "抱歉认错了～那您是？"
-   - "哈哈搞错了，重新来，你是谁呀？"
-2. 收到正确信息后**更新 user_profile.json**
-3. **立即用新数据重新起一卦**，输出完整运势报告
-4. 不要提"配置"、"数据已更新"、"信息已保存"等话术，直接出卦象结果
+1. **Naturally ask** for correct info, don't explain why it was wrong before. For example:
+   - "Oh? Then what should I call you?"
+   - "Sorry for the mistake~ Then who are you?"
+2. After receiving correct info, **update user_profile.json**
+3. **Immediately re-cast hexagram with new data**, output complete fortune report
+4. Don't mention "config", "data updated", "info saved" — just output hexagram result directly
 
-收集后立即存入配置文件：
+Store immediately in config file:
 
 ```
-文件路径：{skill目录}/user_profile.json
-内容：
+File path: {skill_dir}/user_profile.json
+Content:
 {
-  "name": "张三",
+  "name": "John",
   "birthday": "1990-05-20",
   "sex": "male",
   "created": "2026-05-12"
 }
 ```
 
-### 后续使用
+### Subsequent Use
 
-读取配置文件，自动填充 seed 和 sex，**不再询问**。如果用户主动提供新信息，更新配置并重新起卦。
+Read config file, auto-fill seed and sex, **no more asking**. If user voluntarily provides new info, update config and re-cast hexagram.
 
-**用户纠正时**：自然追问正确信息 → 更新 user_profile.json → 立即重新起卦输出结果。参见上方「用户纠正个人信息」节。
+**When user corrects**: Naturally ask for correct info → update user_profile.json → immediately re-cast and output result. See "User Corrects Personal Information" section above.
 
-### 种子构成
+### Seed Composition
 
-种子 = 姓名 + 出生日期（如有），确保：
-- 同人同日 → 同一卦 ✅
-- 不同人 → 不同卦 ✅
-- 同人不同日 → 不同卦 ✅
+Seed = name + birth date (if available), ensuring:
+- Same person, same day → same hexagram ✅
+- Different people → different hexagrams ✅
+- Same person, different day → different hexagrams ✅
 
-**具体拼接**：`{姓名}` 或 `{姓名}_{生日}`
-
----
-
-## 起卦方法选择（AI 内部逻辑，不对用户暴露）
-
-| 用户意图 | 内部方法 | 说明 | 命令 |
-|---------|---------|------|------|
-| "每日一卦"、"今日运势"、"算一卦" | `daily` | 默认方式，同人同日固定 | `bin/yi -method daily -seed "{种子}" -sex {性别} -format json` |
-| "换个卦"、"再算一次"、"重新起" | `time` | 含时辰，不同时间不同卦 | `bin/yi -method time -seed "{种子}" -sex {性别} -format json` |
-| "用铜钱算"、"铜钱起卦" | `coins` | 经典铜钱法 | `bin/yi -method coins -coins-seed {当前秒数} -format json` |
-| "用蓍草"、"大衍法" | `dayan` | 最古老的蓍草法 | `bin/yi -method dayan -dayan-seed {当前秒数} -format json` |
-| "梅花易数"、"按时间算" | `meihua` | 梅花易数时辰法 | `bin/yi -method meihua -seed "{种子}" -format json` |
-| 用户报数 | `number` | 数字起卦 | `bin/yi -method number -ben {上卦} -bian {下卦} -dong {动爻} -format json` |
-
-**默认**：90% 的情况用 `daily`。只有用户明确要求换方式时才切换。
-
-**换卦话术**：
-- "给你换个时辰重新起一卦"（→ time）
-- "好，用铜钱给你起一卦"（→ coins）
-- "换个方式再看看"（→ time）
+**Specific concatenation**: `{name}` or `{name}_{birthday}`
 
 ---
 
-## 工作流程
+## Divination Method Selection (AI Internal Logic, Not Exposed to Users)
 
-### Step 1：读取用户信息
+| User Intent | Internal Method | Description | Command |
+|-------------|-----------------|-------------|---------|
+| "daily horoscope", "today's fortune", "tell my fortune" | `daily` | Default method, same person same day fixed | `bin/yi -method daily -seed "{seed}" -sex {sex} -format json` |
+| "try another", "cast again", "new one" | `time` | Includes hour, different times yield different hexagrams | `bin/yi -method time -seed "{seed}" -sex {sex} -format json` |
+| "use coins", "coin casting" | `coins` | Classic coin method | `bin/yi -method coins -coins-seed {current_second} -format json` |
+| "use yarrow", "Dayan method" | `dayan` | Most ancient yarrow stalk method | `bin/yi -method dayan -dayan-seed {current_second} -format json` |
+| "plum blossom", "by time" | `meihua` | Plum blossom time method | `bin/yi -method meihua -seed "{seed}" -format json` |
+| User reports numbers | `number` | Number-based hexagram | `bin/yi -method number -ben {upper} -bian {lower} -dong {moving} -format json` |
 
-```
-1. 读取 {skill目录}/user_profile.json
-2. 如果不存在 → 询问姓名+生日 → 存入配置
-3. 构建种子：name 或 name_birthday
-4. 确定 sex（配置 / 默认 male / 用户当前指定）
-```
+**Default**: 90% of the time use `daily`. Only switch when user explicitly requests a different method.
 
-### Step 2：执行起卦
-
-根据用户意图选择方法（见上表），执行对应命令，**-format json 必传**。
-
-### Step 3：生成运势报告
-
-按下方模板生成，📡=程序直出 🧠=AI串联。
+**Switching phrases**:
+- "Let me cast a new hexagram with a different time" (→ time)
+- "Alright, casting with coins for you" (→ coins)
+- "Let me try another way" (→ time)
 
 ---
 
-## 输出模板
+## Workflow
 
-### 🎯 卦象概览
+### Step 1: Read User Info
 
 ```
-🎯 {BenGuaInfo.Ming} {BenGuaInfo.Symbol} → {BianGuaInfo.Ming} {BianGuaInfo.Symbol} ｜ ✦ {吉凶} ✦
+1. Read {skill_dir}/user_profile.json
+2. If not exists → ask for name + birthday → store in config
+3. Build seed: name or name_birthday
+4. Determine sex (from config / default male / user specified)
+```
+
+### Step 2: Execute Divination
+
+Select method based on user intent (see table above), execute corresponding command, **-format json is required**.
+
+### Step 3: Generate Fortune Report
+
+Generate using the template below, 📡=program direct output 🧠=AI synthesis.
+
+---
+
+## Output Template
+
+### Overview
+
+```
+🎯 {BenGuaInfo.Ming} {BenGuaInfo.Symbol} → {BianGuaInfo.Ming} {BianGuaInfo.Symbol} ｜ ✦ {Auspiciousness} ✦
 
 📡 {JieDu.CoreImage}
-🧠 {2-3句话概括今日运势基调，结合变卦趋势}
+🧠 {2-3 sentences summarizing today's fortune基调,结合 transformed hexagram trend}
 ```
 
-### 🔮 卦象详解
+### Hexagram Details
 
 ```
-🔮 卦象详解
+Hexagram Details
 
-【本卦】{BenGuaInfo.Ming} {BenGuaInfo.Symbol}（{BenGuaInfo.JiXiong}）
-  🧠 {结合GuaYi/TuanText/XiangText展开解读，3-5句话}
-  📡 八宫：{BenGuaInfo.GuaGong} ｜ 世应：{BenGuaInfo.ShiYao}-{BenGuaInfo.YingYao} ｜ {BenGuaInfo.Position}
+[Primary] {BenGuaInfo.Ming} {BenGuaInfo.Symbol} ({BenGuaInfo.JiXiong})
+  🧠 {Interpretation combining GuaYi/TuanText/XiangText, 3-5 sentences}
+  📡 Palace: {BenGuaInfo.GuaGong} ｜ Shi-Ying: {BenGuaInfo.ShiYao}-{BenGuaInfo.YingYao} ｜ {BenGuaInfo.Position}
 
-【变卦】{BianGuaInfo.Ming} {BianGuaInfo.Symbol}（{BianGuaInfo.JiXiong}）
-  🧠 {变卦解读，2-3句话，说明变化趋势}
+[Transformed] {BianGuaInfo.Ming} {BianGuaInfo.Symbol} ({BianGuaInfo.JiXiong})
+  🧠 {Transformed hexagram interpretation, 2-3 sentences, explaining change trend}
 
-【动爻】{DongYaoPos}爻（{DongYaoJiXiong}）{DongYaoText}
-  🧠 {对动爻含义的解读，2-3句话}
+[Moving Line] Position {DongYaoPos} ({DongYaoJiXiong}) {DongYaoText}
+  🧠 {Interpretation of moving line meaning, 2-3 sentences}
 
-【互/错/综】
-  🧠 互卦{HuGuaInfo.GuaName}：1-2句 | 错卦{CuoGuaInfo.GuaName}：1-2句 | 综卦{ZongGuaInfo.GuaName}：1-2句
+[Nuclear/Inverse/Reverse]
+  🧠 Nuclear {HuGuaInfo.GuaName}: 1-2 sentences | Inverse {CuoGuaInfo.GuaName}: 1-2 sentences | Reverse {ZongGuaInfo.GuaName}: 1-2 sentences
 ```
 
-### 💫 八维度运势
+### 8-Dimension Fortune
 
 ```
-💫 八维度运势
+8-Dimension Fortune
 
-💼 事业（📡{FenXi[0].JiXiong}）
+Career (📡{FenXi[0].JiXiong})
 📡 {JieDu.ShiYe}
 
-💕 爱情（📡{FenXi[1].JiXiong}）
+Love (📡{FenXi[1].JiXiong})
 📡 {JieDu.AiQing}
 
-💰 财运（📡{FenXi[2].JiXiong}）
+Wealth (📡{FenXi[2].JiXiong})
 📡 {JieDu.CaiYun}
 
-📚 考试（📡{FenXi[3].JiXiong}）
+Exams (📡{FenXi[3].JiXiong})
 📡 {JieDu.KaoShi}
 
-🏥 健康（📡{FenXi[4].JiXiong}）
+Health (📡{FenXi[4].JiXiong})
 📡 {JieDu.JianKang}
 
-🚗 出行（📡{FenXi[5].JiXiong}）
+Travel (📡{FenXi[5].JiXiong})
 📡 {JieDu.ChuXing}
 
-⚖️ 官司（📡{FenXi[6].JiXiong}）
+Lawsuit (📡{FenXi[6].JiXiong})
 📡 {JieDu.GuanSi}
 
-🏠 家宅（📡{FenXi[7].JiXiong}）
+Home (📡{FenXi[7].JiXiong})
 📡 {JieDu.JiaZhai}
 ```
 
-**注意**：八维度内容已由程序预置完整段落，**直接输出 JieDu 对应字段**，无需 AI 重新编写。如用户有特定问卦事项，可追加1-2句针对性建议。
+**Note**: 8-dimension content is pre-built by the program with complete paragraphs. **Output JieDu corresponding fields directly**, no need for AI to rewrite. If user has specific questions, can add 1-2 targeted suggestions.
 
-### 📋 宜忌指南
-
-```
-📋 宜忌指南
-
-✅ 宜：📡 {JieDu.Yi 逐项列出，用"、"分隔}
-❌ 忌：📡 {JieDu.Ji 逐项列出，用"、"分隔}
-```
-
-### 🌟 今日指引
+### Do's & Don'ts
 
 ```
-🌟 今日指引
+Do's & Don'ts
 
-🧠 {综合卦象，2-3句核心行动指引}
-
-🔮 幸运方位：📡{WuXingInfo.Direction} | 幸运数字：📡{WuXingInfo.LuckyNumber} | 幸运颜色：📡{WuXingInfo.LuckyColor}
+Do: 📡 {List JieDu.Yi items, separated by ", "}
+Don't: 📡 {List JieDu.Ji items, separated by ", "}
 ```
 
-### ⚠️ 温馨提示
+### Daily Guidance
 
 ```
-⚠️ 卦象解读仅供娱乐参考，不可作为人生决策的唯一依据。
-命运掌握在自己手中，保持积极心态最重要。
+Daily Guidance
+
+🧠 {Comprehensive hexagram synthesis, 2-3 sentences of core action guidance}
+
+Lucky Direction: 📡{WuXingInfo.Direction} | Lucky Number: 📡{WuXingInfo.LuckyNumber} | Lucky Color: 📡{WuXingInfo.LuckyColor}
+```
+
+### Disclaimer
+
+```
+Disclaimer: Hexagram interpretation is for entertainment purposes only and should not be used as the sole basis for life decisions.
+Your destiny is in your own hands — maintaining a positive mindset is most important.
 ```
 
 ---
 
-## 解读质量要求
+## Interpretation Quality Requirements
 
-| 要求 | 说明 |
-|------|------|
-| **内容量** | 完整输出不少于800字 |
-| **数据优先** | 八维度/宜忌/幸运元素直接用程序数据，不重新编写 |
-| **AI串联** | 卦象详解、五卦关系、今日指引需 AI 基于周易智慧展开 |
-| **个性化** | 结合用户性别、问卦事项追加针对性建议 |
-| **一致性** | 吉凶判断与内容描述一致，凶卦不能写"运势大好" |
-| **语气** | 像一位智慧的朋友，温暖但不逢迎，凶卦如实提醒 |
-| **无技术暴露** | 用户看不到任何 CLI 命令、参数、JSON 字段名 |
+| Requirement | Description |
+|-------------|-------------|
+| **Content volume** | Complete output no less than 800 words |
+| **Data first** | 8-dimension / do's & don'ts / lucky elements use program data directly, no rewriting |
+| **AI synthesis** | Hexagram details, five-hexagram relationships, daily guidance need AI expansion based on I Ching wisdom |
+| **Personalization** | Add targeted suggestions based on user gender, specific questions |
+| **Consistency** | Auspiciousness judgment matches content description — inauspicious hexagram shouldn't say "fortune is excellent" |
+| **Tone** | Like a wise friend, warm but not flattering, honestly提醒 for inauspicious hexagrams |
+| **No technical exposure** | Users don't see any CLI commands, parameters, JSON field names |
 
 ---
 
-## JSON 输出关键字段速查（仅供 AI 内部使用）
+## JSON Output Key Fields Quick Reference (For AI Internal Use Only)
 
-详见 `references/data-format.md`。核心新增字段：
+See `references/data-format.md`. Core new fields:
 
-- `JieDu.CoreImage` — 核心意象（一句话）
-- `JieDu.Yi` / `JieDu.Ji` — 宜忌列表
-- `JieDu.{ShiYe,AiQing,CaiYun,KaoShi,JianKang,ChuXing,GuanSi,JiaZhai}` — 8维度完整段落
-- `WuXingInfo.{WuXing,Direction,LuckyNumber,LuckyColor}` — 五行幸运元素
+- `JieDu.CoreImage` — Core imagery (one sentence)
+- `JieDu.Yi` / `JieDu.Ji` — Do's / Don'ts list
+- `JieDu.{ShiYe,AiQing,CaiYun,KaoShi,JianKang,ChuXing,GuanSi,JiaZhai}` — 8-dimension complete paragraphs
+- `WuXingInfo.{WuXing,Direction,LuckyNumber,LuckyColor}` — Five Elements lucky attributes
 
-**查找键**：JieDu 用 `Index`（如"乾乾"），不是 `Ming`（如"乾为天"）。
-WuXingInfo 由本卦上卦（ShangNum）五行决定：0乾金 1兑金 2离火 3震木 4巽木 5坎水 6艮土 7坤土。
+**Lookup key**: JieDu uses `Index` (e.g., "乾乾"), not `Ming` (e.g., "乾为天").
+WuXingInfo is determined by primary hexagram upper trigram (ShangNum) Five Elements: 0 Qian Metal 1 Dui Metal 2 Li Fire 3 Zhen Wood 4 Xun Wood 5 Kan Water 6 Gen Earth 7 Kun Earth.
