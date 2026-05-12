@@ -14,34 +14,20 @@
 
 ### 安装
 
-#### 方式一：npx 一键安装（推荐）
-
 ```bash
-npx skills add daily-hexagram
+npx skills add https://github.com/godcong/yi --skill daily-hexagram
 ```
 
-自动下载 Skill 包 + 对应平台二进制，无需手动配置。
-
-#### 方式二：安装脚本
+安装完成后，进入 skill 目录运行脚本下载对应平台的二进制：
 
 ```bash
 # macOS / Linux
-curl -fsSL https://raw.githubusercontent.com/godcong/yi/master/skill/scripts/install.sh | bash
+cd ~/.qclaw/skills/daily-hexagram
+./scripts/install.sh
 
 # Windows (PowerShell)
-iwr -Uri https://raw.githubusercontent.com/godcong/yi/master/skill/scripts/install.sh | iex
-```
-
-#### 方式三：Go Install（开发者）
-
-```bash
-go install github.com/godcong/yi/cmd/divine@latest
-```
-
-手动复制 Skill 文件：
-```bash
-cp -r skill/ ~/.qclaw/skills/daily-hexagram/
-cp $(which divine) ~/.qclaw/skills/daily-hexagram/bin/yi
+cd ~/.qclaw/skills/daily-hexagram
+.\scripts\install.bat
 ```
 
 ### 使用
