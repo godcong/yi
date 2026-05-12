@@ -46,7 +46,7 @@ compatibility: 需要 yi 二进制程序（首次使用时自动下载，或通�
 **每次起卦前，必须确认 `bin/yi` 可用。** 按以下优先级处理：
 
 1. **检查已有二进制**：`{skill目录}/bin/yi`（Windows 为 `bin/yi.exe`）是否存在且可执行
-2. **运行安装脚本下载**：不存在 → 执行 `{skill目录}/scripts/install.sh`（Windows 用 `install.bat`），脚本会自动检测平台、从 GitHub Release 下载预编译二进制；若下载失败则自动回退到 Go 编译
+2. **运行安装脚本下载**：不存在 → 执行 `{skill目录}/scripts/install.sh`（macOS/Linux）或 `{skill目录}/scripts/install.ps1`（Windows），脚本会自动检测平台、从 GitHub Release 下载预编译二进制；若下载失败则自动回退到 Go 编译
 3. **Go 编译回退**：若脚本不可用，直接执行：
    ```bash
    GOBIN="{skill目录}/bin" go install github.com/godcong/yi/cmd/divine@latest
