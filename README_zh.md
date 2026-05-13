@@ -1,15 +1,49 @@
 # yi - Go 语言周易占卜库
-
 [![Go Reference](https://pkg.go.dev/badge/github.com/godcong/yi.svg)](https://pkg.go.dev/github.com/godcong/yi)
 
 周易六十四卦计算与查询库，提供完整的起卦、卦象变换、五行生克、六十甲子、六亲世应、81 数理、解卦等功能。
+---
 
+## 项目架构
+
+项目采用清晰的分层架构：公开类型放在 `core/`，所有实现逻辑隐藏在 `internal/`，根包提供唯一的公开 API 入口。外部代码只能导入 `yi` 和 `yi/core` —— 实现细节完全封装。
+
+```
+yi/
+├── yi.go              # 公开 API - 重新导出类型，提供所有入口函数
+├── yi_test.go         # 集成测试
+├── doc.go             # 包声明
+├── core/              # 公开类型、常量、错误、数据存储
+│   ├── types.go       # 类型定义（Gua, Yao, ZhouYi, Bagua, WuXing, Sex 等）
+│   ├── constants.go   # 常量（Bagua, YaoPosition, WuXing, LiuQin 等）
+│   ├── errors.go      # 错误定义
+│   ├── store.go       # 数据存储声明
+│   └── data_gen.go    # 自动生成的数据初始化
+├── internal/          # 实现细节（外部不可导入）
+│   ├── gua/           # 卦象操作与变换
+│   ├── qigua/         # 起卦方法（铜钱、大衍、梅花、时间、农历）
+│   ├── jiegua/        # 解卦与格式化
+│   ├── wuxing/        # 五行操作
+│   ├── jiazi/         # 六十甲子
+│   ├── liuqin/        # 六亲
+│   ├── shiying/       # 世应
+│   ├── numerology/    # 81 数理
+│   ├── wenyan/        # 文言传
+│   └── i18n/          # 国际化（中/英）
+├── data/              # JSON 数据源
+├── cmd/
+│   ├── divine/        # 命令行工具
+│   └── generate/      # 代码生成器
+├── docs/              # 文档
+└── skills/            # AI Agent 技能
+```
+
+> **注意**：导入 `github.com/godcong/yi` 即可使用公开 API。类型也可通过 `github.com/godcong/yi/core` 访问。`internal/` 下的实现包外部不可导入。
 ---
 
 ## 🌟 每日一卦 (Daily Hexagram Skill)
 
-**推荐使用方式** — 集成 AI 助手的每日占卜体验，一句话完成起卦。
-
+**推荐使用方式** —— 集成 AI 助手的每日占卜体验，一句话完成起卦。
 > 用户说「算一卦」→ AI 自动收集信息 → 生成完整运势报告（800+ 字）
 
 ### 安装
@@ -24,7 +58,6 @@ npx skills add https://github.com/godcong/yi --skill daily-hexagram
 <summary>手动安装二进制（可选）</summary>
 
 如果自动安装失败，可手动运行安装脚本：
-
 ```bash
 # macOS / Linux
 ./scripts/install.sh
@@ -34,7 +67,6 @@ npx skills add https://github.com/godcong/yi --skill daily-hexagram
 ```
 
 或通过 Go 编译安装：
-
 ```bash
 go install github.com/godcong/yi/cmd/divine@latest
 # 然后将编译好的 yi 复制到 skill 目录的 bin/ 下
@@ -44,7 +76,7 @@ go install github.com/godcong/yi/cmd/divine@latest
 
 ### 兼容的 AI Agent
 
-本 Skill 遵循 [Agent Skills 开放标准](https://agentskills.io/)，兼容所有支持该标准的 AI Agent：
+本 Skill 遵循 [Agent Skills 开放标准](https://agentskills.io/)，兼容所有支持该标准的 AI Agent。
 
 | Agent | 安装命令示例 |
 |-------|------------|
@@ -157,10 +189,10 @@ yi -method number -ben 3 -bian 5 -dong 2
 | `-hour` | 当前时 | 小时 0-23 |
 | `-coins-seed` | 0 | 铜钱法种子（0=随机） |
 | `-dayan-seed` | 0 | 大衍法种子 |
-| `-ben` | -1 | 数字起卦上卦（0-7） |
-| `-bian` | -1 | 数字起卦下卦（0-7） |
-| `-dong` | 0 | 数字起卦动爻（0-5） |
-| `-version` | — | 打印版本号 |
+| `-ben` | -1 | 数字起卦上卦（1-7） |
+| `-bian` | -1 | 数字起卦下卦（1-7） |
+| `-dong` | 0 | 数字起卦动爻（1-5） |
+| `-version` | 否 | 打印版本号 |
 
 ---
 
@@ -184,7 +216,7 @@ import (
 
 func main() {
     // 每日一卦（同人同日同卦）
-    zy, _ := yi.DivineByDailyHexagram("张三")
+    zy := yi.DivineByDailyHexagram(2026, 5, 13, "张三")
     result := yi.JieGua(zy, yi.Male)
     fmt.Println(yi.FormatJieGua(result))
 
@@ -209,14 +241,11 @@ func main() {
 }
 ```
 
-### 新增: 每日卦函数
+### 每日卦函数
 
 ```go
-// 同人同日同卦 — 每天固定
-zy, err := yi.DivineByDailyHexagram("张三")
-if err != nil {
-    panic(err)
-}
+// 同人同日同卦 —— 每天固定
+zy := yi.DivineByDailyHexagram(2026, 5, 13, "张三")
 result := yi.JieGua(zy, yi.Male)
 
 // result.JieDu 包含预置的 8 维度运势 + 宜忌
@@ -224,7 +253,6 @@ fmt.Println(result.JieDu.ShiYe)   // 事业运势
 fmt.Println(result.JieDu.CoreImage) // 核心意象
 fmt.Println(result.JieDu.Yi)      // 宜
 fmt.Println(result.JieDu.Ji)      // 忌
-
 // result.WuXingInfo 包含五行幸运元素
 fmt.Println(result.WuXingInfo.LuckyNumber) // 幸运数字
 fmt.Println(result.WuXingInfo.LuckyColor)  // 幸运颜色
@@ -236,24 +264,26 @@ fmt.Println(result.WuXingInfo.LuckyColor)  // 幸运颜色
 
 | 函数 | 说明 |
 |------|------|
-| `DivineByDailyHexagram(seed string) (*ZhouYi, error)` | 🆕 每日一卦 |
+| `DivineByDailyHexagram(year, month, day int, personalSeed string) *ZhouYi` | 每日一卦 |
 | `DivineByCurrentTime(personalSeed ...string) *ZhouYi` | 当前时间起卦 |
 | `DivineByCoins(seed int64) (*ZhouYi, [6]CoinResult)` | 铜钱法 |
-| `DivineByCoinValues(values [6]int) (*ZhouYi, error)` | 铜钱法手动 |
 | `DivineByDayan(seed int64) (*ZhouYi, [6]DayanResult)` | 大衍法 |
-| `DivineByDayanValues(values [6]int) (*ZhouYi, error)` | 大衍法手动 |
-| `DivineByMeihua(shang, xia, bian int) *ZhouYi` | 梅花易数 |
-| `DivineByMeihuaTime(t time.Time, personalSeed ...string)` | 梅花时间 |
-| `DivineByTimeGua(params TimeGuaParams, personalSeed ...string) *ZhouYi` | 公历时间 |
-| `DivineByLunarTime(y, m, d, h int) *ZhouYi` | 农历时间 |
+| `DivineByMeihua(upperNum, lowerNum, dongYao int) *ZhouYi` | 梅花易数 |
+| `DivineByMeihuaTime(t time.Time, seeds ...string) (*ZhouYi, int, int, int, int)` | 梅花时间 |
+| `DivineByTimeGua(params TimeGuaParams, seed ...string) *ZhouYi` | 公历时间 |
+| `DivineByTime(year, month, day, hour int, seed ...string) *ZhouYi` | 时间起卦 |
+| `DivineByLunarTime(lunarYear, lunarMonth, lunarDay, shichenNum int) *ZhouYi` | 农历时间 |
 | `DivineByNumber(shang, xia int, bianYao ...int) *ZhouYi` | 数字起卦 |
+| `Divine(shang, xia Bagua, bianYao ...int) *ZhouYi` | 八卦起卦 |
 
 #### 解卦
 
 | 函数 | 说明 |
 |------|------|
 | `JieGua(zy *ZhouYi, sex Sex) *JieGuaResult` | 解卦主函数 |
-| `FormatJieGua(result *JieGuaResult) string` | 格式化输出 |
+| `JieGuaWithLang(zy *ZhouYi, sex Sex, lang Language) *JieGuaResult` | 多语言解卦 |
+| `FormatJieGua(result *JieGuaResult) string` | 格式化输出（中文） |
+| `FormatJieGuaWithLang(result *JieGuaResult, lang Language) string` | 多语言格式化输出 |
 
 #### 解卦结果结构
 
@@ -265,36 +295,59 @@ fmt.Println(result.WuXingInfo.LuckyColor)  // 幸运颜色
 | `HuGuaInfo` / `CuoGuaInfo` / `ZongGuaInfo` | 互卦/错卦/综卦 |
 | `DongYaoPos` / `DongYaoText` / `DongYaoJiXiong` | 动爻位置/爻辞/吉凶 |
 | `IsJi` / `JiXiongReason` | 综合吉凶/理由 |
-| `FenXi` | 八维度解读 [{Category, Content, JiXiong, Source}] |
-| `JieDu` | 🆕 预置释义 {CoreImage, ShiYe, AiQing, ..., Yi, Ji} |
-| `WuXingInfo` | 🆕 五行幸运元素 {WuXing, Direction, LuckyNumber, LuckyColor} |
+| `FenXi` | 八维度解析 [{Category, Content, JiXiong, Source}] |
+| `JieDu` | 预置释义 {CoreImage, ShiYe, AiQing, ..., Yi, Ji} |
+| `WuXingInfo` | 五行幸运元素 {WuXing, Direction, LuckyNumber, LuckyColor} |
 
-#### 卦象查询
+#### 卦象查询与判断
 
-| 函数/方法 | 说明 |
+| 函数 | 说明 |
 |------|------|
-| `GetGuaByIndex(index string) (*Gua, error)` | 按索引查卦（如 "乾乾"） |
+| `GetGuaByIndex(index string) (*Gua, error)` | 按索引查卦（如"乾乾"） |
 | `GetGuaByXu(xu int) (*Gua, error)` | 按卦序查卦（1-64） |
-| `ZhouYi.GetGua(guaType int) *Gua` | 获取本/变/互/错/综卦 |
-| `ZhouYi.IsJi(sex Sex) bool` | 判断吉凶 |
-| `Gua.GetYao(pos YaoPosition) *Yao` | 获取指定爻 |
-| `Gua.GetShiYing() *ShiYingInfo` | 获取世应信息 |
-| `Gua.GetGuaGong() Bagua` | 归属卦宫 |
+| `IsJi(zy *ZhouYi, sex Sex) bool` | 判断吉凶（独立函数） |
+| `FilterYao(zy *ZhouYi, sex Sex, filters ...string) bool` | 按吉凶过滤 |
+| `GetShiYing(g *Gua) *ShiYingInfo` | 获取世应信息（独立函数） |
+| `GetGuaGong(g *Gua) Bagua` | 归属卦宫（独立函数） |
+| `GetGuaPosition(g *Gua) GuaPosition` | 获取卦位 |
 
 #### 五行与六亲
 
-| 函数/方法 | 说明 |
+| 函数 | 说明 |
 |------|------|
-| `GetWuXingByNumber(n int) string` | 笔画数→五行 |
-| `WuXing.Sheng()` / `.Ke()` / `.BeiSheng()` / `.BeiKe()` | 生克关系 |
+| `GetWuXingByBagua(bagua Bagua) WuXing` | 八卦→五行 |
 | `GetLiuQin(guaGongWX, yaoWX WuXing) LiuQin` | 计算六亲 |
+| `Sheng(wx WuXing) WuXing` | 我生 |
+| `Ke(wx WuXing) WuXing` | 我克 |
+| `BeiSheng(wx WuXing) WuXing` | 生我 |
+| `BeiKe(wx WuXing) WuXing` | 克我 |
 
 #### 81 数理
 
-| 函数/方法 | 说明 |
+| 函数 | 说明 |
 |------|------|
 | `GetDayan(n int) (*Dayan, error)` | 查询数理（1-81） |
+| `MustGetDayan(n int) Dayan` | 查询数理（无效值会 panic） |
 | `Dayan.IsJi()` / `.IsXiong()` / `.IsBest()` | 吉凶判断 |
+
+#### 文言传
+
+| 函数 | 说明 |
+|------|------|
+| `GetWenYan(g *Gua) *WenYanData` | 获取文言传 |
+| `HasWenYan(g *Gua) bool` | 判断是否有文言传 |
+
+#### 国际化
+
+| 函数 | 说明 |
+|------|------|
+| `JieGuaWithLang(zy, sex, lang)` | 多语言解卦 |
+| `FormatJieGuaWithLang(result, lang)` | 多语言格式化输出 |
+| `TranslateJiXiong(jx, lang)` | 翻译吉凶 |
+| `TranslateCategory(cat, lang)` | 翻译类别 |
+| `TranslateYaoPos(pos, lang)` | 翻译爻位 |
+| `TranslateBaguaName(name, lang)` | 翻译八卦名 |
+| `TranslateWuXing(name, lang)` | 翻译五行 |
 
 ### 核心类型
 
@@ -303,14 +356,15 @@ fmt.Println(result.WuXingInfo.LuckyColor)  // 幸运颜色
 | `Gua` (别名 `Hexagram`) | 卦象：含卦名/卦义/彖辞/象辞/六爻 |
 | `Yao` (别名 `Line`) | 爻：含爻辞/吉凶/女命 |
 | `ZhouYi` (别名 `IChing`) | 周易：含五种卦象 + 动爻 |
-| `Bagua` (别名 `Trigram`) | 八卦：0=乾…7=坤 |
+| `Bagua` (别名 `Trigram`) | 八卦：Qian=乾…Kun=坤 |
 | `WuXing` | 五行：木/火/土/金/水 |
 | `Sex` | 性别：Male/Female |
 | `LiuQin` | 六亲：父母/兄弟/妻财/子孙/官鬼 |
-| `Dayan` | 大衍数理：1-81 的吉凶详情 |
+| `Dayan` | 大衍数理（1-81 的吉凶详情） |
 | `JieGuaResult` | 解卦结果（含 JieDu + WuXingInfo） |
-| `GuaJieDu` | 🆕 预置释义（8 维度 + 宜忌） |
-| `WuXingInfo` | 🆕 五行幸运元素 |
+| `GuaJieDu` | 预置释义（8 维度 + 宜忌） |
+| `WuXingInfo` | 五行幸运元素 |
+| `Language` | 输出语言：LangZH / LangEN |
 
 ### 卦象类型常量
 
@@ -344,22 +398,20 @@ fmt.Println(result.WuXingInfo.LuckyColor)  // 幸运颜色
 数据存储在 `data/` 目录下的 JSON 文件中：
 
 - `data/gua.json` — 64 卦
-- `data/tuan.json` — 彗辞
+- `data/tuan.json` — 彖辞
 - `data/xiang.json` — 象辞
 - `data/wenyan.json` — 文言
 - `data/jiazi.json` — 六十甲子
-- `data/jiegua.json` — 🆕 解卦释义（8维度运势+宜忌+核心意象）
+- `data/jiegua.json` — 解卦释义（8维度运势+宜忌+核心意象）
 - `data/guagong.json` — 卦宫
 
-运行以下命令重新生成 `data.gen.go`：
+运行以下命令重新生成 `core/data_gen.go`：
 
 ```bash
-# 先删除旧文件，否则 go generate 会跳过
-rm data.gen.go
-go generate ./...
+go run ./cmd/generate/
 ```
 
-**注意**：`go generate` 只在 `data.gen.go` 不存在时才生成，修改数据后需先删除再运行。
+生成器从 `data/` 目录读取 JSON 文件，输出到 `core/data_gen.go`。
 
 ---
 
@@ -369,7 +421,7 @@ go generate ./...
 - [起卦方法](docs/起卦方法.md) — 四种起卦法详解
 - [八卦与六十四卦](docs/八卦与六十四卦.md) — 卦象体系与变换
 - [大衍之数](docs/大衍之数.md) — 81 数理吉凶
-- [六亲与世应](docs/六亲与世应.md) — 六亲系统与世应推算
+- [六亲与世应](docs/六亲与世应.md) — 六亲系统与世应推演
 
 ---
 

@@ -6,6 +6,44 @@ A Go library for I Ching (Book of Changes) hexagram calculation and divination, 
 
 ---
 
+## Project Architecture
+
+The project uses a clean layered architecture: public types in `core/`, all implementation hidden in `internal/`, root package provides the only public API surface. External code can only import `yi` and `yi/core` — implementation details are fully encapsulated.
+
+```
+yi/
+├── yi.go              # Public API - re-exports types, provides all entry points
+├── yi_test.go         # Integration tests
+├── doc.go             # Package declaration
+├── core/              # Public types, constants, errors, data stores
+│   ├── types.go       # Type definitions (Gua, Yao, ZhouYi, Bagua, WuXing, Sex, etc.)
+│   ├── constants.go   # Constants (Bagua, YaoPosition, WuXing, LiuQin, etc.)
+│   ├── errors.go      # Error definitions
+│   ├── store.go       # Data store declarations
+│   └── data_gen.go    # Auto-generated data initialization
+├── internal/          # Implementation details (not importable externally)
+│   ├── gua/           # Hexagram operations & transformations
+│   ├── qigua/         # Divination methods (coins, dayan, meihua, time, lunar)
+│   ├── jiegua/        # Hexagram interpretation & formatting
+│   ├── wuxing/        # Five Elements operations
+│   ├── jiazi/         # Sexagenary Cycle
+│   ├── liuqin/        # Six Relations
+│   ├── shiying/       # Shi-Ying positions
+│   ├── numerology/    # 81 Numerology
+│   ├── wenyan/        # Wenyan commentary
+│   └── i18n/          # Internationalization (Chinese/English)
+├── data/              # JSON data sources
+├── cmd/
+│   ├── divine/        # CLI tool
+│   └── generate/      # Code generator
+├── docs/              # Documentation
+└── skills/            # AI Agent skills
+```
+
+> **Note**: Import `github.com/godcong/yi` for the public API. Types are also available via `github.com/godcong/yi/core`. Implementation packages under `internal/` are not importable by external code.
+
+---
+
 ## Daily Hexagram Skill
 
 **Recommended usage** — Integrate with your AI assistant for daily divination.
@@ -77,11 +115,11 @@ Simply talk to your AI assistant:
 ### Report Contents
 
 ```
-Overview       — Hexagram name / symbol / auspiciousness + core imagery + fortune基调
-Details        — Primary / transformed / moving lines / nuclear / inverse / reverse hexagrams
-8-Dim Fortune  — Career / Love / Wealth / Exams / Health / Travel / Lawsuit / Home
-Do's & Don'ts  — Today's recommended actions / taboos
-Guidance       — Action guidance + lucky direction / number / color
+Overview       → Hexagram name / symbol / auspiciousness + core imagery + fortune基调
+Details        → Primary / transformed / moving lines / nuclear / inverse / reverse hexagrams
+8-Dim Fortune  → Career / Love / Wealth / Exams / Health / Travel / Lawsuit / Home
+Do's & Don'ts  → Today's recommended actions / taboos
+Guidance       → Action guidance + lucky direction / number / color
 ```
 
 Full report is at least 800 words.
@@ -185,7 +223,7 @@ import (
 
 func main() {
     // Daily hexagram (same person, same day = same hexagram)
-    zy, _ := yi.DivineByDailyHexagram("John")
+    zy := yi.DivineByDailyHexagram(2026, 5, 13, "John")
     result := yi.JieGua(zy, yi.Male)
     fmt.Println(yi.FormatJieGua(result))
 
@@ -214,10 +252,7 @@ func main() {
 
 ```go
 // Same person, same day = same hexagram
-zy, err := yi.DivineByDailyHexagram("John")
-if err != nil {
-    panic(err)
-}
+zy := yi.DivineByDailyHexagram(2026, 5, 13, "John")
 result := yi.JieGua(zy, yi.Male)
 
 // result.JieDu contains pre-built 8-dimension fortune + do's/don'ts
@@ -237,24 +272,26 @@ fmt.Println(result.WuXingInfo.LuckyColor)  // Lucky color
 
 | Function | Description |
 |----------|-------------|
-| `DivineByDailyHexagram(seed string) (*ZhouYi, error)` | Daily hexagram |
+| `DivineByDailyHexagram(year, month, day int, personalSeed string) *ZhouYi` | Daily hexagram |
 | `DivineByCurrentTime(personalSeed ...string) *ZhouYi` | Current time hexagram |
 | `DivineByCoins(seed int64) (*ZhouYi, [6]CoinResult)` | Coin method |
-| `DivineByCoinValues(values [6]int) (*ZhouYi, error)` | Coin method manual |
 | `DivineByDayan(seed int64) (*ZhouYi, [6]DayanResult)` | Dayan (yarrow) method |
-| `DivineByDayanValues(values [6]int) (*ZhouYi, error)` | Dayan method manual |
-| `DivineByMeihua(shang, xia, bian int) *ZhouYi` | Plum blossom method |
-| `DivineByMeihuaTime(t time.Time, personalSeed ...string)` | Plum blossom time |
-| `DivineByTimeGua(params TimeGuaParams, personalSeed ...string) *ZhouYi` | Gregorian time |
-| `DivineByLunarTime(y, m, d, h int) *ZhouYi` | Lunar time |
+| `DivineByMeihua(upperNum, lowerNum, dongYao int) *ZhouYi` | Plum blossom method |
+| `DivineByMeihuaTime(t time.Time, seeds ...string) (*ZhouYi, int, int, int, int)` | Plum blossom time |
+| `DivineByTimeGua(params TimeGuaParams, seed ...string) *ZhouYi` | Gregorian time |
+| `DivineByTime(year, month, day, hour int, seed ...string) *ZhouYi` | Time-based divination |
+| `DivineByLunarTime(lunarYear, lunarMonth, lunarDay, shichenNum int) *ZhouYi` | Lunar time |
 | `DivineByNumber(shang, xia int, bianYao ...int) *ZhouYi` | Number-based |
+| `Divine(shang, xia Bagua, bianYao ...int) *ZhouYi` | Trigram-based |
 
 #### Interpretation
 
 | Function | Description |
 |----------|-------------|
 | `JieGua(zy *ZhouYi, sex Sex) *JieGuaResult` | Main interpretation function |
-| `FormatJieGua(result *JieGuaResult) string` | Formatted output |
+| `JieGuaWithLang(zy *ZhouYi, sex Sex, lang Language) *JieGuaResult` | Interpretation with language |
+| `FormatJieGua(result *JieGuaResult) string` | Formatted output (Chinese) |
+| `FormatJieGuaWithLang(result *JieGuaResult, lang Language) string` | Formatted output with language |
 
 #### Interpretation Result Structure
 
@@ -270,32 +307,55 @@ fmt.Println(result.WuXingInfo.LuckyColor)  // Lucky color
 | `JieDu` | Pre-built interpretation {CoreImage, ShiYe, AiQing, ..., Yi, Ji} |
 | `WuXingInfo` | Five Elements lucky info {WuXing, Direction, LuckyNumber, LuckyColor} |
 
-#### Hexagram Lookup
+#### Hexagram Lookup & Judgment
 
-| Function/Method | Description |
-|-----------------|-------------|
+| Function | Description |
+|----------|-------------|
 | `GetGuaByIndex(index string) (*Gua, error)` | Lookup by index (e.g., "乾乾") |
 | `GetGuaByXu(xu int) (*Gua, error)` | Lookup by sequence number (1-64) |
-| `ZhouYi.GetGua(guaType int) *Gua` | Get primary / transformed / nuclear / inverse / reverse |
-| `ZhouYi.IsJi(sex Sex) bool` | Check auspiciousness |
-| `Gua.GetYao(pos YaoPosition) *Yao` | Get specific line |
-| `Gua.GetShiYing() *ShiYingInfo` | Get Shi-Ying info |
-| `Gua.GetGuaGong() Bagua` | Get palace归属 |
+| `IsJi(zy *ZhouYi, sex Sex) bool` | Check auspiciousness (standalone function) |
+| `FilterYao(zy *ZhouYi, sex Sex, filters ...string) bool` | Filter by auspiciousness |
+| `GetShiYing(g *Gua) *ShiYingInfo` | Get Shi-Ying info (standalone function) |
+| `GetGuaGong(g *Gua) Bagua` | Get palace attribution (standalone function) |
+| `GetGuaPosition(g *Gua) GuaPosition` | Get hexagram position |
 
 #### Five Elements & Six Relations
 
-| Function/Method | Description |
-|-----------------|-------------|
-| `GetWuXingByNumber(n int) string` | Stroke count → Five Elements |
-| `WuXing.Sheng()` / `.Ke()` / `.BeiSheng()` / `.BeiKe()` | Generating / overcoming relations |
+| Function | Description |
+|----------|-------------|
+| `GetWuXingByBagua(bagua Bagua) WuXing` | Trigram → Five Elements |
 | `GetLiuQin(guaGongWX, yaoWX WuXing) LiuQin` | Calculate Six Relations |
+| `Sheng(wx WuXing) WuXing` | Generating relation |
+| `Ke(wx WuXing) WuXing` | Overcoming relation |
+| `BeiSheng(wx WuXing) WuXing` | Being generated |
+| `BeiKe(wx WuXing) WuXing` | Being overcome |
 
 #### 81 Numerology
 
-| Function/Method | Description |
-|-----------------|-------------|
+| Function | Description |
+|----------|-------------|
 | `GetDayan(n int) (*Dayan, error)` | Lookup numerology (1-81) |
+| `MustGetDayan(n int) Dayan` | Lookup numerology (panics on invalid) |
 | `Dayan.IsJi()` / `.IsXiong()` / `.IsBest()` | Auspiciousness check |
+
+#### Wenyan Commentary
+
+| Function | Description |
+|----------|-------------|
+| `GetWenYan(g *Gua) *WenYanData` | Get Wenyan commentary |
+| `HasWenYan(g *Gua) bool` | Check if Wenyan exists |
+
+#### Internationalization
+
+| Function | Description |
+|----------|-------------|
+| `JieGuaWithLang(zy, sex, lang)` | Interpretation with language |
+| `FormatJieGuaWithLang(result, lang)` | Formatted output with language |
+| `TranslateJiXiong(jx, lang)` | Translate auspiciousness |
+| `TranslateCategory(cat, lang)` | Translate category |
+| `TranslateYaoPos(pos, lang)` | Translate line position |
+| `TranslateBaguaName(name, lang)` | Translate trigram name |
+| `TranslateWuXing(name, lang)` | Translate Five Elements |
 
 ### Core Types
 
@@ -312,6 +372,7 @@ fmt.Println(result.WuXingInfo.LuckyColor)  // Lucky color
 | `JieGuaResult` | Interpretation result (includes JieDu + WuXingInfo) |
 | `GuaJieDu` | Pre-built interpretation (8 dimensions + do's/don'ts) |
 | `WuXingInfo` | Five Elements lucky attributes |
+| `Language` | Output language: LangZH / LangEN |
 
 ### Hexagram Type Constants
 
@@ -350,17 +411,15 @@ Data is stored in JSON files under `data/`:
 - `data/wenyan.json` — Wenyan (Commentary) texts
 - `data/jiazi.json` — Sexagenary Cycle (60 JiaZi)
 - `data/jiegua.json` — Hexagram interpretations (8-dimension fortune + do's/don'ts + core imagery)
-- `data/guagong.json` — Palace归属
+- `data/guagong.json` — Palace attribution
 
-Regenerate `data.gen.go`:
+Regenerate `core/data_gen.go`:
 
 ```bash
-# Delete old file first, otherwise go generate will skip
-rm data.gen.go
-go generate ./...
+go run ./cmd/generate/
 ```
 
-**Note**: `go generate` only generates when `data.gen.go` doesn't exist. Delete it first after modifying data.
+The generator reads JSON files from `data/` and outputs `core/data_gen.go`.
 
 ---
 
