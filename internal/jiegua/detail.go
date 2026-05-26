@@ -1,6 +1,6 @@
-package jiegua
+﻿package jiegua
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func GetGuaJieDuByIndex(index string) *core.GuaJieDu {
 	if core.GuaJieDuStore == nil {

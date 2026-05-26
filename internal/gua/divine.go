@@ -1,6 +1,6 @@
-package gua
+﻿package gua
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func Divine(shang, xia core.Bagua, bianYao ...int) *core.ZhouYi {
 	return DivineByNumber(int(shang), int(xia), bianYao...)

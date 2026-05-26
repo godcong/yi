@@ -1,17 +1,17 @@
-package yi
+﻿package yi
 
 import (
 	"time"
 
-	"yi/core"
-	"yi/internal/gua"
-	"yi/internal/i18n"
-	"yi/internal/jiegua"
-	"yi/internal/numerology"
-	"yi/internal/qigua"
-	"yi/internal/shiying"
-	"yi/internal/wenyan"
-	"yi/internal/wuxing"
+	"github.com/godcong/yi/core"
+	"github.com/godcong/yi/internal/gua"
+	"github.com/godcong/yi/internal/i18n"
+	"github.com/godcong/yi/internal/jiegua"
+	"github.com/godcong/yi/internal/numerology"
+	"github.com/godcong/yi/internal/qigua"
+	"github.com/godcong/yi/internal/shiying"
+	"github.com/godcong/yi/internal/wenyan"
+	"github.com/godcong/yi/internal/wuxing"
 )
 
 type Gua = core.Gua

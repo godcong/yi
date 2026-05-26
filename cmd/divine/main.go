@@ -1,4 +1,4 @@
-package main
+﻿package main
 
 import (
 	"encoding/json"
@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	yi "yi"
+	yi "github.com/godcong/yi"
 )
 
 // Injected by goreleaser via -ldflags

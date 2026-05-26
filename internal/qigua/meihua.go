@@ -1,10 +1,10 @@
-package qigua
+﻿package qigua
 
 import (
 	"time"
 
-	"yi/core"
-	"yi/internal/gua"
+	"github.com/godcong/yi/core"
+	"github.com/godcong/yi/internal/gua"
 )
 
 func DivineByMeihua(upperNum, lowerNum, dongYao int) *core.ZhouYi {

@@ -1,9 +1,9 @@
-package jiegua
+﻿package jiegua
 
 import (
 	"strings"
 
-	"yi/core"
+	"github.com/godcong/yi/core"
 )
 
 var fenXiRules = []struct {

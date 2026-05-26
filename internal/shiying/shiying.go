@@ -1,6 +1,6 @@
-package shiying
+﻿package shiying
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func GetShiYing(g *core.Gua) *core.ShiYingInfo {
 	pos := GetGuaPosition(g)

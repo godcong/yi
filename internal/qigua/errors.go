@@ -1,4 +1,4 @@
-package qigua
+﻿package qigua
 
 import "errors"
 

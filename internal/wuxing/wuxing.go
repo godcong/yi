@@ -1,6 +1,6 @@
-package wuxing
+﻿package wuxing
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func WuXingString(wx core.WuXing) string {
 	switch wx {

@@ -1,6 +1,6 @@
-package gua
+﻿package gua
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func IsJi(zy *core.ZhouYi, sex core.Sex) bool {
 	bianGua := zy.Gua[core.Bian]

@@ -1,8 +1,8 @@
-package qigua
+﻿package qigua
 
 import (
-	"yi/core"
-	"yi/internal/gua"
+	"github.com/godcong/yi/core"
+	"github.com/godcong/yi/internal/gua"
 )
 
 func DivineByLunarTime(lunarYear, lunarMonth, lunarDay, shichenNum int) *core.ZhouYi {

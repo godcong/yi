@@ -1,10 +1,10 @@
-package qigua
+﻿package qigua
 
 import (
 	"math/rand"
 
-	"yi/core"
-	"yi/internal/gua"
+	"github.com/godcong/yi/core"
+	"github.com/godcong/yi/internal/gua"
 )
 
 func DivineByCoins(seed int64) (*core.ZhouYi, [6]core.CoinResult) {

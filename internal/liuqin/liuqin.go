@@ -1,8 +1,8 @@
-package liuqin
+﻿package liuqin
 
 import (
-	"yi/core"
-	"yi/internal/wuxing"
+	"github.com/godcong/yi/core"
+	"github.com/godcong/yi/internal/wuxing"
 )
 
 func GetLiuQin(guaGongWX, yaoWX core.WuXing) core.LiuQin {

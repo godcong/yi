@@ -1,9 +1,9 @@
-package qigua
+﻿package qigua
 
 import (
 	"time"
 
-	"yi/core"
+	"github.com/godcong/yi/core"
 )
 
 func DivineByDailyHexagram(year, month, day int, personalSeed string) *core.ZhouYi {

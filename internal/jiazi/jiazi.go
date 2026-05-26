@@ -1,6 +1,6 @@
-package jiazi
+﻿package jiazi
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func GetJiaZiList() []core.JiaZiInfo {
 	result := make([]core.JiaZiInfo, len(core.JiaZiList))

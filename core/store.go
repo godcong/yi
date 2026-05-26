@@ -1,4 +1,4 @@
-package core
+﻿package core
 
 var GuaStore = map[string]*Gua{}
 

@@ -1,8 +1,8 @@
-package jiegua
+﻿package jiegua
 
 import (
-	"yi/core"
-	"yi/internal/i18n"
+	"github.com/godcong/yi/core"
+	"github.com/godcong/yi/internal/i18n"
 )
 
 func FormatJieGua(result *core.JieGuaResult) string {

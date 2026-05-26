@@ -1,6 +1,6 @@
-package wenyan
+﻿package wenyan
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func GetWenYan(g *core.Gua) *core.WenYanData {
 	if entries, ok := core.WenYanStore[g.Index]; ok {

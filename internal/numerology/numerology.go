@@ -1,6 +1,6 @@
-package numerology
+﻿package numerology
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func GetDayan(number int) (*core.Dayan, error) {
 	if number < 1 || number > 81 {

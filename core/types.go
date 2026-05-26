@@ -1,4 +1,4 @@
-package core
+﻿package core
 
 type Hexagram = Gua
 

@@ -1,6 +1,6 @@
-package i18n
+﻿package i18n
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 type Language string
 

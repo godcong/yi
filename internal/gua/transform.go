@@ -1,6 +1,6 @@
-package gua
+﻿package gua
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func getBenGua(shang, xia int) *core.Gua {
 	idx := GetBaguaName(core.Bagua(shang%8)) + GetBaguaName(core.Bagua(xia%8))

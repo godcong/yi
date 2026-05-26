@@ -1,10 +1,10 @@
-package jiegua
+﻿package jiegua
 
 import (
-	"yi/core"
-	"yi/internal/gua"
-	"yi/internal/i18n"
-	"yi/internal/shiying"
+	"github.com/godcong/yi/core"
+	"github.com/godcong/yi/internal/gua"
+	"github.com/godcong/yi/internal/i18n"
+	"github.com/godcong/yi/internal/shiying"
 )
 
 func JieGua(zy *core.ZhouYi, sex core.Sex) *core.JieGuaResult {

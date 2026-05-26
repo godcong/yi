@@ -1,6 +1,6 @@
-package gua
+﻿package gua
 
-import "yi/core"
+import "github.com/godcong/yi/core"
 
 func GetGuaByIndex(index string) (*core.Gua, error) {
 	if g, ok := core.GuaStore[index]; ok {
