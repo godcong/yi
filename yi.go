@@ -1,4 +1,4 @@
-﻿package yi
+package yi
 
 import (
 	"time"
@@ -45,6 +45,8 @@ type DayanResult = core.DayanResult
 type Dayan = core.Dayan
 
 type TimeGuaParams = core.TimeGuaParams
+
+type BirthdayParams = core.BirthdayParams
 
 type WenYanData = core.WenYanData
 
@@ -235,6 +237,10 @@ func DivineByDailyHexagram(year, month, day int, personalSeed string) *ZhouYi {
 
 func DivineByLunarTime(lunarYear, lunarMonth, lunarDay, shichenNum int) *ZhouYi {
 	return qigua.DivineByLunarTime(lunarYear, lunarMonth, lunarDay, shichenNum)
+}
+
+func DivineByBirthday(params BirthdayParams) *ZhouYi {
+	return qigua.DivineByBirthday(params)
 }
 
 func JieGua(zy *ZhouYi, sex Sex) *JieGuaResult {

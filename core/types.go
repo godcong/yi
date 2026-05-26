@@ -1,4 +1,4 @@
-﻿package core
+package core
 
 type Hexagram = Gua
 
@@ -327,6 +327,15 @@ type TimeGuaParams struct {
 	Month int
 	Day   int
 	Hour  int
+}
+
+type BirthdayParams struct {
+	Year        int
+	Month       int
+	Day         int
+	Hour        int
+	IsLunar     bool
+	IsLeapMonth bool
 }
 
 type WenYanData struct {
